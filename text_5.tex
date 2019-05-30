@@ -1,0 +1,316 @@
+% \begin{center}
+%     \Large{\textbf{第五章“有心力场及其应用举例”题目参考答案}}
+% \end{center}
+
+\begin{enumerate}[label=\textbf{5.\arabic*}, listparindent=\parindent]
+
+\setcounter{enumi}{0}
+
+\item 采用球坐标系，分离变量后可得径向方程：
+\alg{\frac{1}{r^2}\drv{}{r}\xkh{r^2\drv{R}{r}}+\xkh{\frac{2mE}{\hbar^2}-\frac{l\xkh{l+1}}{r^2}}R=0}
+做变量替换，设$u(r)=rR(r)$，得
+\alg{\drv{^2u}{r^2}+\xkh{\frac{2mE}{\hbar^2}-\frac{l\xkh{l+1}}{r^2}}u=0}
+考虑离原点很远处，$r\to\infty$，方程的第三项$\frac{l\xkh{l+1}}{r^2}u$与第二项相比可以忽略，故方程近似变为
+\alg{\drv{^2u}{r^2}+\frac{2mE}{\hbar^2}u=0}
+其解为$u(r)=\ee{\pm\im kr}$，$k=\frac{\sqrt{2mE}}{\hbar}$。故波函数可近似表示为
+\alg{f(\theta)\frac{u(r)}{r}=f(\theta)\xkh{C_1\frac{\ee{\im kr}}{r}+C_2\frac{\ee{-\im kr}}{r}}}
+其中指数上为正号表示发散的球面波，指数上为负号表示会聚的球面波。
+
+
+\item 实际应将氢原子作为二体问题来处理，设电子与质子的坐标为$\vec{r}_1$, $\vec{r}_2$, 可引进质心坐标$\vec{R}$和相对坐标$\vec{r}$为
+\[\vec{r}=\vec{r}_1-\vec{r}_2,\quad \vec{R}=\frac{m_1\vec{r}_1+m_2\vec{r}_2}{m_1+m_2}\]
+在量子力学的处理中，将波函数在$\vec{R}$, $\vec{r}$上分离变量$\Psi=\phi(\vec{R})\psi(\vec{r})$, 可得
+\alg{-\frac{\hbar^2}{2M}\nabla_R^2\,\phi(\vec{R})& =E_C\phi(\vec{R})\\
+\qty(-\frac{\hbar^2}{2\mu}\nabla^2-\frac{e_s^2}{r})\psi(\vec{r})&=E\psi(\vec{r})}
+其中$M=m_e+m_p$, $\mu=\frac{m_em_p}{m_e+m_p}$。可见$\phi(\vec{R})$符合自由粒子的运动规律，$\psi(\vec{r})$满足的方程与中心固定的氢原子模型的薛定谔方程相同，因此能级分布规律也相同，只需将原方程中电子质量$m$替换为等效质量$\mu$即可。由此计算的里德堡常量为
+\[R = \frac{2\pi^2 \mu e_s^4}{h^3 c} = \frac{m_p}{m_e+m_p}R_\infty\]
+$R_\infty$为修正前的里德堡常量。修正后的结果与实验测量符合地很好。
+
+\item (参见《解答》6.1) 
+
+\noindent{\color{red}\textbf{注意：}}第(2)问答案有些问题。Virial定理仅对于定态成立，故不能够将其应用于一个构造的波包上。
+
+\noindent【另解】：在$l$给定时，径向的等效势能为
+\[V_r(r) = -\frac{a}{r^s}+\frac{l(l+1)\hbar^2}{2mr^2}\]
+由于$0<s<2$，可知$r\rightarrow 0$时$V_r\rightarrow+\infty$；$r\rightarrow +\infty$时$V_r$从负值趋向于0. 这样$V_r$在$r>0$区间内形成一个“无限宽”的势阱。我们可以从薛定谔方程解的特性为出发点：由于一维体系第$i$个能级波函数有$i-1$个节点，我们可证明，在$E\rightarrow 0^-$时，波函数可存在无穷多个节点。
+
+为此，将波函数换元为$\psi(r)=\ee{\phi(r)/\hbar}$，这样$\phi(r)$就包含我们希望研究的波函数“振荡”特性。可推出$\phi(r)$满足的方程
+\[\hbar \phi''(r)+[\phi'(r)]^2=2m(V_r(r)-E)\]
+考虑$E\rightarrow 0^-$，且$r$很大时，右式主要贡献项为$-\frac{2ma}{r^s}$. 容易猜出一个解，方程的左式主要由$[\phi'(r)]^2$项贡献，即$r\rightarrow+\infty$时$\phi(r)$的趋近行为为
+\[\phi'(r)\sim \pm \im\sqrt{2ma}\,r^{-s/2}\]
+得到
+\[\phi(r)\sim \phi_0(r)\pm\im\frac{2\sqrt{2ma}}{2-s}r^{1-s/2}\]
+显然由一维体系的性质$\psi(r)$和$\psi^*(r)$同为满足薛定谔方程的波函数，故可构造实的波函数$\Psi(r)=\frac{1}{2}\qty(\psi(r)+\psi^*(r)) = \ee{\Re\,\phi(r)/\hbar}\cos(\Im\,\phi(r)/\hbar)$，因此
+\[\Psi(r)\sim A_0\cos(\frac{2\sqrt{2ma}}{2-s}r^{1-s/2}+\beta_0)\]
+因为$0<s<2$，容易发现$\cos$内函数可随着$r$的增加趋于无穷大，故$E\rightarrow 0^-$的波函数可存在无限多个节点，相应地则有无限个能级。
+
+\item (参见《解答》6.3)
+
+\item (参见《解答》6.4)
+
+%6
+\item (参见《解答》6.15)
+
+%7
+\item 题中的轨道半径应理解为最概然半径，但对于一般的s态与p态无法求出解析结果。下表列出前6个s态与前5个p态的最概然半径、平均半径及相应玻尔轨道半径值作为比较。容易看出，一般情形下有平均半径$>$最概然半径$>$玻尔轨道半径，随$n$的增加而增加，量级为$\order{n^2}$。
+\begin{table}[H]
+        \centering
+        \begin{tabular}{c|c|c|c|c|c|c}
+            \hline
+            $n$ & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
+            玻尔轨道半径 $/a_0 $ & 1.0000 & 4.0000 & 9.0000 & 16.0000 & 25.0000 & 36.0000 \\
+            最概然半径 $/a_0 $ &1.0000 &  5.23607 & 11.4772 &  19.6257 &  29.7159 & 41.7737 \\
+            平均半径 $/a_0 $ & 1.5000 & 6.0000 & 13.5000 &  24.0000 & 37.5000 & 54.0000\\\hline
+        \end{tabular}
+        \caption{5.7题的结果：前6个s态的各个半径对照}
+        \label{tab:my_label}
+    \end{table}
+\begin{table}[H]
+        \centering
+        \begin{tabular}{c|c|c|c|c|c}
+            \hline
+            $n$ &  2 & 3 & 4 & 5 & 6 \\\hline
+            玻尔轨道半径 $/a_0 $ & 4.0000 & 9.0000 & 16.0000 & 25.0000 & 36.0000 \\
+            最概然半径 $/a_0 $ & 4.0000 & 10.772 & 19.1132 & 29.3106 & 41.4378 \\
+            平均半径 $/a_0 $ & 4.0000 &  11.500 &  22.0000 & 35.500 & 52.0000\\\hline
+        \end{tabular}
+        \caption{5.7题的结果：前5个l态的各个半径对照}
+        \label{tab:my_label}
+    \end{table}
+
+%8
+\item 
+\begin{enumerate}[label=(\arabic*)]
+    \item 根据玻尔模型，可以得出玻尔半径为
+    \alg{r_n=\frac{4\pi\varepsilon_0\hbar^2}{e^2\mu}\frac{n^2}{Z}}
+    以及速度
+    \alg{v_n=\frac{e^2}{4\pi\varepsilon_0\hbar}\frac{Z}{n}}
+    计算出结果列于表3。
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c|c|c|c}
+            \hline
+            & H & He$^+$ & Li$^{++}$ \\
+            \hline
+            $r_1$/m & $5.3\et{-11}$ & $2.6\et{-11}$ & $1.8\et{-11}$ \\
+            $r_2$/m & $2.1\et{-10}$ & $1.1\et{-10}$ & $7.1\et{-11}$ \\
+            \hline
+            $v_1$/(m$\cdot$s$\inv$) & $2.2\et{6}$ & $4.4\et{6}$ & $6.6\et{6}$ \\
+            $v_2$/(m$\cdot$s$\inv$) & $1.1\et{6}$ & $2.2\et{6}$ & $3.3\et{6}$ \\
+            \hline
+            $E_1$/eV & 13.6 & 54.4 & 123 \\
+            \hline
+            $\Delta E$/eV & 10.2 & 40.8 & 91.9 \\
+            $\lambda$/nm & 122 & 30.4 & 13.5 \\
+            \hline
+        \end{tabular}
+        \caption{5.8\,题的结果}
+        \label{tab:my_label}
+    \end{table}
+    
+    \item 根据玻尔模型，可得类氢离子能级：
+    \alg{E_n=-\frac{e^4\mu}{32\pi^2\varepsilon_0^2\hbar^2}\frac{Z^2}{n^2}}
+    电子的结合能即为$E_1$，计算结果列于表3。
+    
+    \item 由基态到第一激发态的激发能为
+    \alg{\Delta E=E_2-E_1=\frac{3e^4\mu}{128\pi^2\varepsilon_0^2\hbar^2}Z^2}
+    由第一激发态退激到基态时所发光的波长为
+    \alg{\lambda=\frac{hc}{\Delta E}}
+    计算结果列于表3。
+\end{enumerate}
+
+%9
+\item 由Virial定理，在库仑势$V(r)\propto r\inv$下，有$2\jkh{T}_n=-\jkh{V}_n$。又由于$\jkh{T}_n+\jkh{V}_n=E_n=-\frac{e^4\mu}{32\pi^2\varepsilon_0^2\hbar^2n^2}$，可得
+\alg{\jkh{T}_n&=-E_n=\frac{e^4\mu}{32\pi^2\varepsilon_0^2\hbar^2n^2}\propto E_n\\
+\jkh{V}_n&=2E_n=-\frac{e^4\mu}{16\pi^2\varepsilon_0^2\hbar^2n^2}\propto E_n}
+角速度可以由玻尔模型的速度与轨道半径定义：
+\alg{\omega_n=\frac{v_n}{r_n}=\frac{e^4\mu}{16\pi^2\varepsilon_0^2\hbar^3}n^{-3}\propto E_n^{\frac{3}{2}}}
+
+%10
+\item 类氢原子的径向波函数$R_{nl}(r)$有
+\alg{R_{nl}(r)\propto\ee{-\frac{x}{2}}x^lL_{n-l-1}^{2l+1}\xkh{{x}}}
+其中$x=\frac{\mu Ze^2}{2n\pi\varepsilon_0\hbar^2}r$。角向波函数为球谐函数，
+\alg{Y_{lm}(\theta,\,\phi)\propto P_{lm}(\cos\theta)\ee{\im m\phi}}
+通过繁而不难的计算容易得到各情况下的节点，结果列于表4。
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ccc|c|c}
+    \hline
+        $n$ & $l$ & $m$ & 径向节点 & 角向节点 \\
+        \hline
+        1 & 0 & 0 & 无 & 无 \\
+        \hline
+        2 & 0 & 0 & $x=2$ & 无 \\
+        2 & 1 & 0 & $x=0$ & $\theta=\frac{\pi}{2}$ \\
+        2 & 1 & $\pm1$ & $x=0$ & $\theta=0,\,\pi$ \\
+        \hline
+        3 & 0 & 0 & $x=3\pm\sqrt{3}$ & 无 \\
+        3 & 1 & 0 & $x=0,\,4$ & $\theta=\frac{\pi}{2}$ \\
+        3 & 1 & $\pm1$ & $x=0,\,4$ & $\theta=0,\,\pi$ \\
+        \hline
+        3 & 2 & 0 & $x=0$ & $\theta=\arccos(\pm\frac{1}{\sqrt{3}})$ \\
+        3 & 2 & $\pm1$ & $x=0$ & $\theta=0,\,\frac{\pi}{2},\,\pi$ \\
+        3 & 2 & $\pm2$ & $x=0$ & $\theta=0,\,\pi$\\
+        \hline
+    \end{tabular}
+    \caption{5.10题的结果}
+    \label{tab:my_label}
+\end{table}
+
+%11
+\item 平均半径$\bar{r}$的求解请见5.14题，各量子态$(n,\,l)$按照半径由小到大的排列顺序为：
+
+\begin{small}
+\noindent(1,0), (2,1), (2,0), (3,2), (3,1), (3,0), (4,3), (4,2), (4,1), (4,0), (5,4), (5,3), (5,2), (5,1), (5,0), (6,5), (6,4), (6,3), (6,2), (7,6), (6,1), (6,0), (7,5), (7,4), (7,3), (8,7), (7,2), (7,1), (7,0), (8,6), (8,5), (9,8), (8,4), (8,3), (8,2), (9,7), (8,1), (8,0), (9,6), (10,9), (9,5), (9,4), (10,8), (9,3), (9,2), (9,1), (9,0), (10,7), (11,10), (10,6), (10,5), (11,9), (10,4), (10,3), (11,8), (10,2), (10,1), (10,0), (12,11), (11,7), (11,6), (12,10), (11,5), (12,9), (11,4), (13,12), (11,3), (11,2), (12,8), (11,1), (11,0), (13,11), (12,7), (12,6), (13,10), (12,5), (14,13), (12,4), (13,9), (12,3), (12,2), (12,1), (14,12), (12,0), (13,8), (13,7), (14,11), (15,14), (13,6), (13,5), (14,10), (13,4), (15,13), (13,3), (14,9), (13,2), (13,1), (13,0), (14,8), (15,12), (16,15), (14,7), (15,11), (14,6), (14,5), (16,14), (15,10), (14,4), (14,3), (14,2), (15,9), (14,1), (16,13), (14,0), (17,16), (15,8), (16,12), (15,7), (17,15), (15,6), (16,11), (15,5), (15,4), (17,14), (16,10), (15,3), (18,17), (15,2), (15,1), (15,0), (16,9), (17,13), (16,8), (18,16), (17,12), (16,7), (16,6), (18,15), (17,11), (16,5), (19,18), (16,4), (16,3), (17,10), (16,2), (18,14), (16,1), (16,0), (17,9), (19,17), (18,13), (17,8), (17,7), (19,16), (18,12), (20,19), (17,6), (17,5), (18,11), (19,15), (17,4), (17,3), (20,18), (17,2), (18,10), (17,1), (17,0), (19,14), (18,9), (20,17), (18,8), (19,13), (18,7), (19,12), (20,16), (18,6), (18,5), (19,11), (18,4), (18,3), (20,15), (18,2), (18,1), (18,0), (19,10), (20,14), (19,9), (19,8), (20,13), (19,7), (19,6), (20,12), (19,5), (19,4), (20,11), (19,3), (19,2), (19,1), (19,0), (20,10), (20,9), (20,8), (20,7), (20,6), (20,5), (20,4), (20,3), (20,2), (20,1), (20,0).
+\end{small}
+
+关于概率密度分布的讨论：
+\begin{enumerate}
+    \item 当角量子数$l$给定时，本征态的能量随着$n$的增加而增加。由于远离原子核的电子总能量更高，因此电子的概率密度倾向于更加远离中心。同时，$l$给定时径向的等效势能完全确定，根据薛定谔方程的特性，随着$n$的增加，径向波函数的节点个数按照0, 1, 2$\cdots$的顺序逐个增加。
+    \item 当主量子数$n$给定时，随着$l$的增大，电子的概率密度分布更加接近中心。这是由于类氢离子的$n$相同的所有能级都是简并的，伴随着$l$的增大，切向方向的动能有所增加，因此径向方向的能量会减小，使得电子更靠近原子核。
+\end{enumerate}
+
+%12
+\item 电流可以通过玻尔模型中的速度和半径来定义：
+\alg{I_n=\frac{v_ne}{2\pi r_n}=\frac{e^5\mu}{32\pi^3\varepsilon_0^2\hbar^3n^3}}
+磁矩则可以利用角动量来定义：
+\alg{m_n=\frac{L_ne}{2\mu}=\frac{n\hbar e}{2\mu}}
+计算结果列于表5中。
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    \hline
+        $n$ & $I_n$/A & $m_n$/(A$\cdot$m$^2$) \\
+        \hline
+        1 & $1.05\et{-3}$ & $9.3\et{-24}$ \\
+        2 & $1.3\et{-4}$ & $1.9\et{-23}$ \\
+        3 & $3.9\et{-5}$ & $2.8\et{-23}$ \\
+        \hline
+    \end{tabular}
+    \caption{5.12题的结果}
+    \label{tab:my_label}
+\end{table}
+
+\item (参见《解答》6.14)
+
+\item (参见《解答》6.12)
+
+\noindent{\color{red}\textbf{注意：}}《解答》中给出的$\jkh{r^{-4}}$表达式错误，请以曾谨言书上答案为准。
+\[\jkh{r^{-4}} = \frac{Z^4}{a^4}\frac{3n^2-l(l+1)}{2n^5l(l-\frac{1}{2})l(l+\frac{1}{2})(l+1)(l+\frac{3}{2})}\]
+
+\item (参见《解答》6.16)
+
+%16
+\item 
+\begin{enumerate}[label=(\arabic*)]
+    \item 基态的电子偶素中正负电子的距离可用第一玻尔轨道半径表示。对电子偶素，应取等效质量$\mu = \frac{m_e^2}{m_e+m_e} = \frac{m_e}{2}$，故玻尔半径为$a_0 = \frac{\hbar^2}{\mu e_s^2} = 1.06\ai$.
+
+    \item 基态电子的电离能为$E_{\text{电离}}=-E_1 = \frac{\mu e_s^4}{2\hbar^2} = \frac{e_s^2}{2 a_0} = 6.08\eV$，从基态到第一激发态的激发能为$\Delta E = E_2-E_1 = -\frac{3}{4}E_1 = 5.10\eV$.
+    
+    \item 从第一激发态退到基态发出波长为$\lambda = \frac{hc}{\Delta E} = 243\nm$. 
+\end{enumerate}
+
+
+\item 
+\begin{enumerate}[label=(\arabic*)]
+    \item 首先求出$\mu^-$粒子的等效质量为$\mu = \frac{m_\mu m_p}{m_\mu+m_p} = 186.0 \,m_
+    e$. 里德堡常量为$R = \frac{2\pi^2 \mu e_s^4}{h^3 c} = 2.04\ten{9}\;\mathrm{m^{-1}}$.
+    
+    \item 第一玻尔轨道半径为$a_0 = \frac{\hbar^2}{\mu e_s^2} = 0.284\;\mathrm{pm}$.
+    
+    \item 最低能量为$E_1 = -\frac{e_s^2}{2 a_0} = -2.53\keV$.
+    
+    \item 光谱莱曼系中的最短波长对应于最大能量，故应为$\infty$能级跃迁到基态的光子的波长，为$\lambda = \frac{hc}{-E_1} = 0.490\nm$.
+\end{enumerate}
+
+
+\noindent{\color{red}\textbf{注意：}}第(4)问不少同学想成第一激发态到跃迁到基态的光子，还需更加谨慎。
+
+
+\item
+\begin{enumerate}[label=(\arabic*)]
+    \item 首先求出$\pi^-$介子的等效质量为$\mu = \frac{m_\pi m_p}{m_\pi+m_p} = 235.4\,m_e$. 里德堡常量为$R = \frac{2\pi^2 \mu e_s^4}{h^3 c} = 2.58\ten{9}\;\mathrm{m^{-1}}$.
+    \item 能谱为$E_n = \frac{\mu e_s^4}{2\hbar^2}E_1 = -\frac{3.20}{n^2}\keV$.
+    \item 第$n$玻尔轨道半径为$r_n = n^2a_0$，且玻尔半径$a_0 = \frac{\hbar^2}{\mu e_s^2} = 0.225\;\mathrm{pm}$，计算得到第一、第二、第三、第四、第五玻尔轨道半径分别为$0.225\;\mathrm{pm}$，$0.899\;\mathrm{pm}$，$2.02\;\mathrm{pm}$，$3.60\;\mathrm{pm}$，$5.62\;\mathrm{pm}$.
+\end{enumerate}
+
+\item 本题的势能函数无法就$l\geq 1$的态进行解析求解，感兴趣的同学可尝试使用程序数值求解后与题中给出的观测值进行对照。
+
+\item (参见《解答》6.18)
+
+%21
+\item (参见《解答》6.19)
+
+\item (参见《解答》6.20)
+
+\item (参见《解答》6.21)
+
+\item (参见《解答》6.23)
+
+\item (参见《解答》6.22)
+
+%26
+\item (参见《解答》6.25)
+
+\noindent{\color{red}\textbf{讨论：}}不少同学没有论述清楚为什么对势场$V(\vec{x})>V_c(\vec{x})$，各自相应的第$i$能级始终有$E_i>E_{ci}$。《解答》中仅说根据HF定理可知，但这里显然应补充更多细节。
+
+构造$V_c(r) = -V_0 a/r$，则$V(\vec{x})>V_c(\vec{x})$在任意坐标点$\vec{x}$处成立。可以构造新的势能$V_{\lambda}(\vec{x}) = (1-\lambda) V_c(\vec{x}) + \lambda V(\vec{x})$随参数$\lambda$变化，$\lambda\in[0,\,1]$, 且$\lambda=0$和$1$时势能分别取$V_c(\vec{x})$和$V(\vec{x})$. 显然，对任意$\vec{x}$有
+\[\pdv{V_\lambda(\vec{x})}{\lambda} = V(\vec{x})-V_c(\vec{x})>0.\]
+于是，对于任意波函数$\Psi(\vec{x})$都有
+\[\left\langle \pdv{H_\lambda}{\lambda}\right\rangle = \left\langle \pdv{V_\lambda}{\lambda}\right\rangle = \iiint_\Omega \Psi^*(\vec{x})\qty(V(\vec{x})-V_c(\vec{x}))\Psi(\vec{x})\dd[3]{\vec{x}}>0.\]
+根据HF定理，对$H_\lambda$的第$i$个本征态及其本征值$E_{i,\lambda}$，有
+\[\left\langle \pdv{H_\lambda}{\lambda}\right\rangle = \pdv{E_{i,\lambda}}{\lambda},\]
+因此$\pdv*{E_{i,\lambda}}{\lambda}>0$，即$H_{\lambda}$的第$i$个本征值$E_{i,\lambda}$在$\lambda\in [0,\,1]$上为增函数。可知$\eval{E_{i,\lambda}}_{\lambda=1}>\eval{E_{i,\lambda}}_{\lambda=0}$, 即$E_i>E_{ci} $证毕。
+
+\item 束缚态波函数分离变量为$\psi(r,\theta,\varphi)=R_n(r)\Y_{lm}(\theta,\phi)$. $R_n(r)$满足的径向薛定谔方程:
+\[\frac{1}{r}\dv[2]{r}\qty(rR_n(r)) + \qty[\frac{2m}{\hbar^2}(E-V(r))-\frac{l(l+1)}{r^2}]R_n(r) = 0.\]
+记$R(r)=\chi(r)/r$，$\chi_n(r)$满足
+\[\dv[2]{\chi}{r}+\qty[\frac{2m}{\hbar^2}(E-V(r))-\frac{l(l+1)}{r^2}]\chi = 0\]
+考虑径向波函数的等效势为$V'=V+\frac{l(l+1)\hbar^2}{2mr^2}$，根据HF定理，将$l$升级为连续变量后选定其为参量，对径向量子数$n$的径向本征波函数，有
+\[\pdv{E}{l}=\jkh{\pdv{H}{l}} = (2l+1)\frac{\hbar^2}{2m}\jkh{\frac{1}{r^2}}>0,\] 可推知径向量子数相同的能级，能量随$l$的增大而增大，故本题需求解的基态波函数一定为$l=0$时径向波函数的基态。题目的势能函数为
+\[V(r) = \begin{cases}0, & R_1<r<R_2\\
++\infty, &\text{其他}
+\end{cases}\]
+因此$l=0$, $r\in(R_1,\,R_2)$区间内$\chi(r)$方程退化为谐振子方程，通解为
+\[\chi(r) = A\sin(kr-\phi),\quad k=\frac{\sqrt{2mE}}{\hbar}\]
+边界条件$\chi(R_1)=0$, $\chi(R_2)=0$。可解得$k(R_2-R_1)=n_r\pi$, $kR_1-\phi=n_r'\pi$。考虑到$n_r'$的取值只影响波函数的正负号，归一化后无影响，故取$n_r'=0$, 即$\phi=kR_1$。径向波函数写作
+\[R_n(r) = \frac{\chi_n(r)}{r} = \frac{1}{r}\sin\frac{n\pi (r-R_1)}{R_2-R_1}\]
+对径向归一化：
+\[\int_0^{+\infty} \abs{R(r)}^2r^2\dd{r} = 1\]
+得$A=\sqrt{\frac{2}{R_2-R_1}}$。又知
+角向波函数为$\Y_{00}(\theta,\varphi)=\frac{1}{\sqrt{4\pi}}$，故基态波函数为
+\[\phi_{100}=\sqrt{\frac{1}{2\pi(R_2-R_1)}}\,\frac{1}{r}\sin\frac{n\pi(r-R_1)}{R_2-R_1},\]
+本征能量为
+\[E_{100} = \frac{\pi^2\hbar^2}{2m(R_2-R_1)^2}\]
+
+\noindent{\color{red}\textbf{说明：}}不少同学没有进行归一化或归一化错误，还请留意。
+\item (5.28--30题及5.31 (4)问略，不要求)
+
+\setcounter{enumi}{30}
+\item (参见《解答》6.2)
+
+\noindent{\color{red}\textbf{讨论：}} 我们大致说明一下第（3）问用经典的相空间估算量子态数目的合理性。有一种近似求解大量子数薛定谔方程的方法称为WKB近似，它将波函数的振幅部分与相位部分以$\hbar$为小量展开，逐级进行求解。这种方法能反映出量子力学到经典哈密顿力学的过渡，由它是可以推导出本题使用的相空间体积公式的，虽然具体过程十分复杂。
+
+另外值得补充的是，在一维体系下，相空间体积变为$p-x$构成的相平面面积。（具体来说，是所有满足经典条件$E>V_0$的粒子运动状态在相平面上的点构成的面积。）而面积的计算可写作$\oint p\dd{x}=nh$, 可见这正是旧量子论中的索末菲量子化条件。
+
+
+\item 题中给出的势能是中子与质子的相互作用势$U$随它们之间距离$r$的关系。可引进质心坐标$\vec{R}$与相对坐标$\vec{r}$换元，即
+\[\vec{r}=\vec{r}_1-\vec{r}_2,\quad \vec{R}=\frac{m_1\vec{r}_1+m_2\vec{r}_2}{m_1+m_2}\]
+分离变量后可知$\vec{R}$符合自由粒子薛定谔方程，关于$\vec{r}$的方程为
+\[\qty(-\frac{\hbar^2}{2\mu}\laplacian + U(\vec{r}))\psi(\vec{r})=E\psi(\vec{r})\]
+正是中心势场下三维球方势阱的模型。由5.31题的结果，结合等效质量$\mu = \frac{m_N}{2}$可知出现第一个s态波函数的条件为
+\[U_0 = \frac{\pi^2\hbar^2}{4m_N r_0^2}.\]
+
+
+\item 核子数$Z$的类氢例子基态波函数为
+\[\varPsi_Z(\vec{r}) = \frac{2}{\sqrt{4\pi}}\qty(\frac{Z}{a_0})^{3/2}\ee{-Zr/a_0}\]
+其中$a_0$为玻尔半径。本题需求解$\varPsi_Z(\vec{r})$态到$\varPsi_{Z+1}(\vec{r})$态的跃迁概率。先求解跃迁振幅为
+\alg{\braket{\varPsi_{Z+1}}{\varPsi_Z} &= \intzif \frac{4Z^{3/2}(Z+1)^{3/2}}{a_0^3}\ee{-(2Z+1)r/a_0}\,r^2\dd{r}\int_0^{\pi}\frac{1}{4\pi}\sin^2{\theta}\dd{\theta}\int_0^{2\pi}\dd{\phi}\\
+&= \frac{Z^{3/2}(Z+1)^{3/2}}{(Z+\frac{1}{2})^3},}
+因此跃迁概率为
+\[P = \abs{\braket{\varPsi_{Z+1}}{\varPsi_Z}}^2 = \frac{Z^3(Z+1)^3}{(Z+\frac{1}{2})^6}.\]
+
+\noindent{\color{red}\textbf{注意：}}跃迁概率是跃迁振幅的模方，请大家留意。
+
+\end{enumerate}
+

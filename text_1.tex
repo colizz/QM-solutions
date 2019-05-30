@@ -1,0 +1,500 @@
+{\color{red}下为根据刘老师量子力学讲义第一章作业制作的习题解答。请大家尤其重点看一下1.4, 1.8, 1.13, 1.24, 1.31, 1.32, 1.38, 1.40, 1.41题及红字标注的部分，这是大家出错率较高的及我们认为有必要提醒大家的重点题目。周五习题课上我们会讲解部分习题。}
+
+常用物理量：$ \sigma=5.6704\ten{-8}\;\mathrm{J/(K^4\cdot s\cdot m^2)} $,
+$ h = 6.6261\ten{-34}\;\mathrm{kg\cdot m^2/s} $,
+$ hc=1240\;\mathrm{eV\cdot nm} $
+
+\begin{enumerate}[label=1.\arabic*]
+
+\item 
+黑色平板吸收与辐射平衡
+$ E_{in}=E_{a}= 1350\; \mathrm{J/(s\cdot m^2)}$。
+将平板视为黑体，由Stefan-Boltzmann定律有
+\[E_{in}=2\sigma T^4.\]
+{\color{red}注意到因平板有两面，所以要加一个因子\,2}。解得$ T=330\;\mathrm{K} = 57\ssd $。
+
+\item
+地球上$ S_0=1\cm^2 $的区域于$T_0=60\s$接受辐射能量$E_0=8.11\;\mathrm{J}$ ,
+太阳光的能流密度为\[E=\frac{4\_pi L^2}{4\pi(D/2)^2}\cdot \frac{E_0}{S_0T_0} \]
+太阳温度为5778 K，则由Stefan-Boltzmann定律可求得
+\[\sigma = \frac{4\pi L^2}{4\pi(D/2)^2}\cdot \frac{E_0}{S_0T_0}\cdot \frac{1}{T^4}=5.65\ten{-8}\;\mathrm{J/(K^4\cdot s\cdot m^2)}.\]
+
+\item
+波长在550 nm到551 nm内可认为辐射功率随波长变化很小，因此
+\[P\approx r_B(\lambda,\;T)\Delta \lambda\cdot S.\]
+由普朗克公式
+\[r_B(\lambda,\;T) = \frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{\frac{hc}{\lambda k_B T}-1}}.\]
+并代入$\lambda=1.0\nm$，$S=\pi(D/2)^2$，$T=5973\kai$得到$P=7.40\ten{-4}\;\mathrm{W}$。
+
+单位时间内光子发射数目为
+\[N = \frac{P}{hc/\lambda} = 2.05\ten{15}\;\text{个/s}.\]
+
+\item
+(1) 求辐射场温度。{\color{red}对光子场，能量密度$U$与能流密度$J$满足$J=\frac{1}{4}cU$}。现简要推导如下（详见热力学统计物理教材）：
+
+考虑辐射场中射向$\dd{A}$小面元的辐射能量。在$\dd{\Omega}$立体角内单位时间射向面元的能量为$cU\cos\theta\dd{A}\frac{\dd{\Omega}}{4\pi}$，$\theta$为辐射方向与面元法线夹角。对立体角在面元一侧的半空间积分得
+\[J\dd{A} = \int\frac{cU\dd{A}\cos\theta}{4\pi}\dd{\varOmega} = \frac{cU\dd{A}}{4\pi}\int_0^{\frac{\pi}{2}}\cos\theta\sin\theta\dd{\theta}\int_0^{2\pi}\dd{\varphi}=\frac{cU\dd{A}}{4}.\]
+考虑在该辐射场中的黑体，达到热平衡时温度为$T$，此时应有辐射能量等于吸收的场能，故
+\[J=\frac{1}{4}cU=\sigma T^4.\]
+得到$T = 2.82\kai$，此即微波背景辐射的温度。
+
+(2) 求光子数密度。辐射场的辐射能流$E(T)=\int_0^\infty r_B(\lambda,\;T )\dd{\lambda}$，其中$r_B(\lambda,\;T )$形式由普朗克公式给出。根据辐射能量与能流的关系，可知$\lambda$到$\lambda+\dd{\lambda}$区间内光子的能量密度为$u(\lambda,\;T)\dd{\lambda}= \frac 4c r_B(\lambda,\;T)\dd{\lambda}$，进一步可知光子数密度为
+$n(\lambda,\;T)\dd{\lambda} = \frac{1}{hc/\lambda}u(\lambda,\;T)\dd{\lambda}$。
+因此总光子数密度为
+\[N(T)=\int_0^{\infty}n(\lambda,\;T)\dd{\lambda}=\int_0^{\infty}\frac{4\lambda}{hc^2}r_B(\lambda,\,T)\dd{\lambda} = \int_0^{\infty}\frac{8\pi}{\lambda^4}\frac{1}{e^{\frac{hc}{\lambda k_B T}}-1}\dd{\lambda}\]
+换元$x=\frac{hc}{\lambda k_B T}$并作数值积分有
+\[N(T)=8\pi \left(\frac{k_B T}{hc}\right)^3\int_0^\infty \frac{x^2}{e^x -1}\dd{x} = 2.404\times8\pi\left(\frac{k_B T}{hc}\right)^3,\]
+代入温度$T$得到$N=4.5\ten{8}\;\mathrm{m^{-3}}$.
+
+（注：本题可直接由统计物理中的光子气体分布推出。由玻色-爱因斯坦分布可导出与上面完全一致的形式。详见统计学课本。）
+
+(3) 平均光子能量
+\[\bar{\epsilon}=\frac{\int_0^{\infty}u(\lambda,\;T)\dd{\lambda}}{\int_0^{\infty}\frac{u(\lambda,\;T)}{hc/\lambda}\dd{\lambda}}=\frac{8\pi\frac{k_B^4 T^4}{h^3 c^3}\frac{\pi^4}{15}}{8\pi\left(\frac{k_B T}{hc}\right)^3\times 2.404} = \frac{\pi^4}{15\times2.404}k_B T,\]
+代入温度得到$\bar\epsilon = 1.1\ten{-22}\;\mathrm{J}.$
+
+(4) 由维恩位移定律可知最大亮度对应波长为$\lambda_M = b/T= 1.0\mm$。
+
+
+\item
+蓝光波长$400\sim 450 \nm$。
+取$\lambda_M=400\nm$作为辐射峰值所在波长计算，由维恩位移定律$\lambda_M T=b=2.898\ten{-3}\;\mathrm{m\cdot K}$，得到$T=7.2\ten{3}\kai=7.0\ten{3}\ssd$
+
+\item
+考虑温度为$T = 1.0\ten{7}$，由维恩位移定律$\lambda_M T=b$
+可得$\lambda_M = 0.29\nm$，
+光子能量为$E=hc/\lambda_M=4.3\ten{3}\eV=6.9\ten{-16}\;\mathrm{J}$。
+
+\item
+将人视为高为$h=1.8$ m的圆柱形，截面周长以腰围估算，取
+$L=1.0$ m。
+故辐射面积为$S=hL$。
+人体体表温度$T = 33.5\ssd$，由Stefan-Boltzmann定律求得
+辐射功率为$P=S\sigma T^4= 9.0\ten{2}$ W。
+
+\item
+可以将能流密度各自在频率$\lambda$与波长$\nu$上写作积分形式：
+\[E(T) = \int_0^{\infty}r_B'(\nu,\,T)\dd{\nu} = \int_0^{\infty}r_B(\lambda,\,T)\dd{\lambda}. \]
+我们实际上要求的是$r_B'(\nu,\,T)$取极值时所对应的$\nu_m$的表达式。根据
+\eqa{\lvert r_B'(\nu,\,T)\mathrm{d}\nu\rvert=\lvert r_B(\lambda,\,T)\mathrm{d}\lambda\rvert}
+辐射强度随频率变化的关系为
+\eqa{r_B'(\nu,\,T)=r_B(\lambda,\,T)\Big\lvert\frac{\mathrm{d}\lambda}{\mathrm{d}\nu}\Big\rvert}
+波长和频率的关系为$\,\lambda=c/\nu$，故
+\eqa{\Abs{\drv{\lambda}{\nu}}=\frac{c}{\nu^2}}
+所以
+\alg{r_B'(\nu,\,T)=&r_B(\lambda,\,T)\cdot\frac{c}{\nu^2}\\
+=&\frac{2\pi h}{c^2}\frac{\nu^3}{\exp(\frac{h\nu}{\kb T})-1}}
+我们需要求$\,r_B'(\nu,\,T)\,$的极大值点$\,\nu_m$，令$\,\prv{r_B(\nu,\,T)}{\nu}=0$，得到方程
+\eqa{x\epow{x}-3\epow{x}+3=0}
+其中$\,x=\frac{h\nu_m}{\kb T}$。数值解为
+\eqa{x=2.82}
+则维恩位移定律的频率形式为
+\eqa{\nu_m=2.82\frac{\kb T}{h}}
+
+{\color{red}（注：绝大多数同学使用了$\nu_m = c/\lambda_m$，错误地直接由维恩位移定律的波长形式得到频率形式。事实上$\nu_m$与$\lambda_m$对应的是完全不同的函数取极值下的频率与波长，该极值点也并不在同一个波长/频率区间内取得。另外，上面过程中的$r_B'(\nu,\,T)$与$r_B(\lambda,\,T)$也是完全不同的函数，并不是简单地替换了自变量。请一定注意。）}
+
+\item
+(1)由维恩位移定律，最敏感波长应为$\lambda_M= b/T_0 = 9.27\mum$.
+
+(2)总频谱亮度可由Stefan-Boltzmann定律求得为$E=\sigma T^4$，故高出的百分比
+\[\frac{E'-E_0}{E_0} = \frac{T'^4-T_0^4}{T_0^4} = 8.1\%\]
+
+\item
+单个光子能量为$\epsilon = \frac{hc}{\lambda}$。
+设每秒进入眼睛光子数为$N$，则光强$\frac{N\epsilon}{S}>10^{-10}\;\mathrm{W/m^2}$。
+求得$N>3.67\ten{3}\;\mathrm{s^{-1}}$.
+
+\item
+单个光子能量为$\epsilon = \frac{hc}{\lambda}$，单位时间粒子数为$N$。功率为$P = N\epsilon = 3.61\ten{-17}\;\mathrm{W} = 225\;\mathrm{eV/s}$。
+
+\item
+$\Delta t$时间内，照到镜面单位面积上的光子数为$N\Delta t$，则照到单位面积上光子的原动量为
+\[p = N\Delta t\cdot \frac{h\nu}{c} = \frac{Nh\nu\Delta t}{c}.\]
+动量改变量
+$\Delta p = p-(-p) = 2p $.
+根据牛顿定律，$\Delta p = P_\text{压强}\Delta t$，则
+\[P_\text{压强} = \frac{2Nh\nu}{c}\]
+如果考虑光子不是正入射，设入射角为$\,\theta$，显然单个光子动量变化为$\,\Delta p_1=2\frac{h\nu}{c}\cos\theta$，单位面积上入射的光子数为$\,N\Delta t\cos\theta$，故光子总动量的改变为
+\eqa{\Delta p=\Delta p_1N\Delta t\cos\theta}
+根据牛顿定律，压强为
+\eqa{P_{压强}=\frac{2Nh\nu}{c}\cos^2\theta}
+
+\item
+考虑截面为$S$，长度为$L$的空间。单个光子能量$\epsilon = h\nu$，则单位时间内照在单位面积上的辐射能量
+\[E = \frac{N\epsilon SL}{S\cdot l/c} = N\epsilon c.\]
+已知$E=1\;\mathrm{J/(cm^2\cdot s)}$。
+
+(1) 对于$\nu=1\;\mathrm{MHz}$的无线电波，计算得粒子数密度为
+$N = 5.03\ten{22}\;\mathrm{m^{-3}}$。
+
+(2) 对于$E=h\nu=1\MeV$的光子，计算得粒子数密度为
+$N = 2.08\ten{7}\;\mathrm{m^{-3}}$。
+
+{\color{red}（注：本题中不能单纯地仿效1.4题得出$E = \frac{N\epsilon c}{4}$。这是因为题目中强调了考察对象是“一束”电磁波，这说明所有光子都是同方向的。这与1.4题中“各向同性”的光子场不同。）}
+
+\item%14
+假设自由电子可以发生光电效应。假定一个光子（动量为$\,\mathbf{p}_1$）与一个自由电子（动量为$\,\mathbf{p}_2$）碰撞，电子吸收光子，动量变为$\,\mathbf{p}_3$，$\mathbf{p}_1\,$与$\,\mathbf{p}_3\,$的夹角为$\,\theta$，则有动量守恒和能量守恒两个方程：
+\alg{p_3^2+p_1^2-2p_1p_3\cos\theta=&p_2^2\\
+p_1c+\sqrt{p_2^2c^2+E_0^2}=&\sqrt{p_3^2c^2+E_0^2}}
+其中$\,E_0\,$为电子的静质量能。整理可得
+\eqa{p_3^2c^2\sin^2\theta=-E_0^2}
+此式左边是非负数而右边是负数，显然不可能成立。故自由电子不可能完全吸收一个光子而产生光电效应。
+
+【另解】若一个光子与电子发生作用，末态只有一个电子，则我们可以考虑末态电子的静止系。根据能量守恒
+\[E_{e\text{初}} + E_\gamma = E_{e\text{末}} = m_e c^2.\]
+而显然初态电子具有非零动量，即$E_{e\text{初}}>m_e c^2$，故上式不可能成立。
+
+\item
+红限波长$\lambda_0 = 600\nm$，则逸出功为$W=\frac{hc}{\lambda_0}$。
+设某单色光波长$\lambda$，由光电效应原理
+\[\frac{hc}{\lambda}-W = eU_0.\]
+解得
+\[\lambda=\frac{hc}{eU_0+hc/\lambda_0} = 272\nm.\]
+
+\item
+根据$\frac{hc}{\lambda}-W = eU_0$，变形为
+\[U_0 = \frac{hc}{e}\cdot \frac{1}{\lambda}-\frac{W}{e}.\]
+因此可知$U_0$与$\frac{1}{\lambda}$呈线性关系。作最小二乘法拟合可得到斜率$\frac{hc}{e} = 1217\;\mathrm{V\cdot nm}$。由此求得普朗克常量$h=6.50\ten{-34}\;\mathrm{J\cdot m}$。
+
+\item
+截止波长$\lambda_0$满足$\frac{hc}{\lambda_0}=W$，解得$\lambda_0 = 539\nm$。若采用$\lambda=680\nm$的波长，则$\frac{hc}{\lambda}-W<0$，故不能发生光电效应。
+
+\item
+考虑红光波长$\lambda=760\nm$，其单个光子能量为$\epsilon = \frac{hc}{\lambda}=2.62\ten{-19}\;\mathrm{J}>10^{-19}\;\mathrm{J}$.
+故可以利用溴化银底版在红光下进行拍照。
+
+\item
+根据能守恒原理，反冲电子的动能来源于光子能量的损失，即$E_R = E_{\gamma,I}-E_{\gamma,R}$。
+考虑到康普顿散射效应中，出射光子波长与入射光子波长满足
+\[\lambda'-\lambda = \frac{h}{m_e c}(1-\cos\theta).\]
+而入射光子能量为$E_{\gamma,I}=\frac{hc}{\lambda}$已知，则可求得出射电子动能为
+\[E_R = \frac{hc}{\lambda}-\frac{hc}{\lambda'} = E_{\gamma,I} - \frac{E_{\gamma,I}}{1+\frac{E_{\gamma,I}}{m_e c^2}(1-\cos\theta)}.\]
+
+\item
+设出射电子动量大小为$p$，入射、出射光子频率为$\nu,\,\nu'$。根据过程前后竖直（垂直于入射光子速度方向）、水平动量守恒：
+\[
+\begin{cases}
+p\sin\phi = \frac{h\nu'}{c}\sin\theta \\
+p\cos\phi = \frac{h\nu}{c}-\frac{h\nu'}{c}\cos\theta
+\end{cases}
+\]
+二式作比得
+\[\cot\phi = \frac{\nu-\nu'\cos\theta}{\nu'\sin\theta}.\]
+由于$\frac{1-\cos\theta}{\sin\theta} = \tan\frac{\theta}{2}$，同时根据康普顿效应的波长差公式可得频率关系式
+\[\frac{\nu-\nu'}{\nu\nu'} = \frac{h}{m_e c^2}(1-\cos\theta),\]
+从而
+\[\cot\phi = \nu'\frac{1-\cos\theta}{\sin\theta}+\frac{\nu-\nu'}{\nu'\sin\theta} = \nu'\tan\frac{\theta}{2}+\frac{\nu\nu'(1-\cos\theta)\frac{h}{m_e c^2}}{\nu'\sin\theta} = (1+\frac{h\nu}{m_e c^2})\tan\frac{\theta}{2}.\]
+即为所求。
+
+\item
+散射前、后光子能量为$E_\nu,\,E_\nu'$，则根据康普顿散射公式：
+\[\Delta \lambda = \frac{hc}{E_\gamma'}-\frac{hc}{E_\gamma} = \frac{hc}{m_e c}(1-\cos\theta),\]
+求解得$\theta=41.9\du$。
+
+\item
+已知光子散射角$\theta = 90\du$。由康普顿散射公式可求得
+\[\lambda' = \lambda+\frac{h}{m_e c}(1+\cos\theta) = \frac{hc}{E_\nu}+\frac{h}{m_e c} = 2.53\;\mathrm{pm}.\]
+
+\item
+设题述$5.00\MeV$为入射电子的动能，记为$E_k$，出射光子能量记为$E_{\gamma_1},\,E_{\gamma_2}$，$E_{\gamma_1}$朝向入射电子方向，则有动量、能量守恒关系式：
+\[
+\begin{cases}
+p = \frac{1}{c}\sqrt{(m_e c^2 + E_k^2)-m_e^2 c^4} = \frac{1}{c}(E_{\gamma_1}-E_{\gamma_2})
+\\
+2m_e c^2 + E_k = E_{\gamma_1}+E_{\gamma_2}
+\end{cases}
+\]
+两式相加、相减得$E_{\gamma_{1,2}} = m_e c^2+\frac{E_k}{2} \pm \frac{1}{2}\sqrt{E_k(E_k+2m_e c^2)}$，计算得$E_{\gamma_1}=5.76\MeV$，$E_{\gamma_2}=0.268\MeV$。
+
+\item
+{\color{red}首先请注意，单个光子不可能湮灭为一对正负电子。}请同学们思考其中的原因（在近代物理知识范围内）。于是我们猜测题目本意为散射光子能量应至少大于两倍电子静质量，即$E_\gamma'>2m_e c^2$。
+根据康普顿散射公式，有
+\[\frac{h}{m_e c}(1-\cos\theta) = \frac{hc}{E_\gamma'}-\frac{hc}{E_\gamma} < \frac{hc}{E_\gamma'}<\frac{h}{2m_e c},\]
+从而$\cos\theta>\frac{1}{2}$，即$\theta<60\du$。
+
+\item
+光子垂直出射，$\theta=90\du$，根据康普顿散射公式，偏移量
+\[\Delta\lambda = \frac{h}{m_e c}(1-\cos\theta) = 2.42\;\mathrm{pm}.\]
+出射光子能量为$E_\gamma' = \frac{hc}{\lambda+\Delta\lambda}$，已知$\gamma$射线波长为$0.00188\nm$，则入射光损失的能量占总能量比为
+\[\frac{E_\gamma'-E_\gamma}{E_\gamma} - \frac{\frac{1}{\lambda}-\frac{1}{\lambda+\Delta\lambda}}{\frac{1}{\lambda}} = \frac{\Delta\lambda}{\lambda+\Delta\lambda} = 56.3\%.\]
+反冲动能等于光子能量损失，即
+\[E_R = E_\gamma-E_\gamma' = \frac{hc}{\lambda}-\frac{hc}{\lambda+\Delta\lambda} = 5.96\ten{-14}\J = 0.372\MeV.\]
+
+\item
+卢瑟福散射公式是对单一点状原子核散射粒子所形成的分布的描述。引入瞄准距离$b$为入射粒子到原子核的垂直距离，则$\theta \rightarrow 0$实际对应着$b \rightarrow \infty$，这表示入射在$b>b_0$无穷大横截面上的粒子理论上都可以被散射进$\theta < \theta_0$的区域内，这自然造成了$\dv{\sigma(\theta)}{\Omega}$在$\theta \rightarrow 0$的发散。然而实际中，散射粒子不仅受到一个原子核的散射作用，对于以某个原子核为参考的$b$较大的入射粒子定会受到其他原子核的影响。故处理实际问题中应对每个原子核加以作用域的限制，超出该作用域范围的粒子将由其它原子核主导其散射行为。
+
+\item
+（略）
+
+\item
+在质子最接近Au原子时，动能完全转化为电势能，则有
+\[\frac{1}{4\pi\epsilon_0}\frac{Ze^2}{r} = E_k.\]
+Au元素$Z=79$，求解得$r=56.8\fm$。考虑到质子与Au核的半径，我们有$r>r_p+r_\mathrm{Au} = 8.9\fm$，因此质子与Au核不能接触以发生核反应。
+
+\item
+产生该结果的主要原因是：质子实际具有质量，因此质子-电子体系应当作为两体模型计算。我们下面求解考虑质子质量的情况下对里德堡常量的修正。
+
+设质子质量$M$，电子质量$m$，二者绕共同质心作圆周运动，距离为$r$。由牛顿第二定律
+\[\frac{1}{4\pi\epsilon_0}\frac{e^2}{r^2} = \frac{mv^2}{\frac{rM}{M+m}}.\]
+角动量的量子化条件为
+\[L = mvr\frac{M}{M+m}+M\frac{vm}{M}\frac{rm}{M+m} = mvr = n\hbar.\]
+因此$r$只能取分立值：
+\[\frac{1}{r} = \frac{e^2 m}{4\pi\epsilon^2\hbar^2}\frac{M}{M+m}\]
+总能量为
+\[E = \frac{1}{2}mv^2+\frac{1}{2}M\frac{v^2m^2}{M^2}-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}, \]
+化简为
+\[E = -\frac{1}{2}\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]
+代入分立取值的$r$，对比玻尔理论可知里德堡常量的修正应为
+\[R' = R\frac{M}{M+m}.\]
+考虑到质子与电子质量比$M/m=1836$，可以计算出修正后的里德堡常量与观测值在较高精度内一致。
+
+（注：1.40题所讨论的相对论效应也会对里德伯常量产生修正，参考1.40题结论可知修正量$\frac{\Delta R}{R}\sim \alpha^2 
+\approx\frac{1}{137^2}<\frac{1}{1836}$，小于因质子质量带来的修正，故相对论效应并不是主要影响因素。）
+
+\item
+考虑到氢原子由基态向上激发，由于
+\[E_1(\frac{1}{1^2}-\frac{1}{3^2}) < 12.5\eV < E_1(\frac{1}{1^2}-\frac{1}{4^2}),\]
+可知$12.5\eV$的电子可将其激发至$n=2$或$n=3$态。因此受激发的氢原子向低能态跃迁可发出波长为：
+\alg{\lambda_{32} &= \frac{hc}{E_1}(\frac{1}{2^2} - \frac{1}{3^2})^{-1}=656.5\nm\\
+\lambda_{31} &= \frac{hc}{E_1}(\frac{1}{1^2} - \frac{1}{3^2})^{-1}=102.6\nm\\
+\lambda_{21} &= \frac{hc}{E_1}(\frac{1}{1^2} - \frac{1}{2^2})^{-1}=121.6\nm
+}
+
+\item
+假设电子做半径为$\,r\,$的圆周运动。电子的经典的运动方程为
+\eqa{\frac{mv^2}{r}=\frac{1}{4\pi\varepsilon_0r^2}\frac{Ze^2r^3}{R^3}}
+由此可得角动量
+\eqa{L=mvr=\sqrt{\frac{Ze^2m}{4\pi\varepsilon_0R^3}}r^2}
+玻尔理论方法令角动量量子化，有
+\eqa{L=\sqrt{\frac{Ze^2m}{4\pi\varepsilon_0R^3}}r^2=n\hbar}
+可得
+\eqa{r^2=n\hbar\sqrt{\frac{4\pi\varepsilon_0R^3}{Ze^2m}}}
+电子受力与距离成正比，其圆周运动可视为两个互相垂直的简谐运动的叠加，其能级应为
+\eqa{E_n=2\cdot\frac{1}{2}\frac{Ze^2}{4\pi\varepsilon_0R^3}r^2=n\hbar\sqrt{\frac{Ze^2}{4\pi\varepsilon_0R^3m}}}
+由于电子在球内运动，$r^2<R^2$，我们可以确定$\,n\,$的范围：
+\eqa{n<\frac{1}{\hbar}\sqrt{\frac{Ze^2mR}{4\pi\varepsilon_0}}}
+
+\item
+设$\,\beta=v/c$，由狭义相对论的速度变换可得两个氢原子的相对速度为
+\eqa{v_r=\frac{v-(-v)}{1-v(-v)/c^2}=\frac{2\beta c}{1+\beta^2}}
+在发出光子的氢原子的参考系中，光子频率为
+\eqa{\nu=cR\Brak{1-\frac{1}{2^2}}=\frac{3}{4}cR}
+由于多普勒效应，在接收光子的氢原子参考系中，光子频率为
+\eqa{\nu'=\sqrt{\frac{1+v_r/c}{1-v_r/c}}\nu=\frac{1+\beta}{1-\beta}\nu}
+另一方面，氢原子接收光子后跃迁到第二激发态，说明光子的频率为
+\eqa{\nu'=cR\Brak{1-\frac{1}{3^2}}=\frac{8}{9}cR=\frac{32}{27}\nu}
+可见
+\eqa{\frac{1+\beta}{1-\beta}=\frac{32}{27}}
+解之得
+\eqa{\beta=0.0862}
+即速率$\,v=0.0862c$。\\
+由于题目表述不清，也可将$\,v\,$理解为相对速度，此时有
+\eqa{\nu'=\sqrt{\frac{1+\beta}{1-\beta}}\nu}
+解得
+\eqa{\beta=0.168}
+
+\item
+首先估算可见光区光子能量的范围，长波端和短波端分别约为
+\alg{E_\mathrm{l}=&\frac{hc}{760\,\mathrm{nm}}=1.63\,\mathrm{eV}\\
+E_\mathrm{s}=&\frac{hc}{380\,\mathrm{nm}}=3.26\,\mathrm{eV}}
+莱曼系光子最低能量为
+\eqa{E_\mathrm{ll}^\mathrm{L}=hcR\Brak{\frac{1}{1^2}-\frac{1}{2^2}}=10.2\,\mathrm{eV}>E_\mathrm{s}}
+帕邢系光子最高能量为
+\eqa{E_\mathrm{sl}^\mathrm{P}=hcR\Brak{\frac{1}{3^2}-\frac{1}{\infty^2}}=1.51\,\mathrm{eV}<E_\mathrm{l}}
+可见氢原子光谱中位于可见光区的谱线均出自巴尔末系，$1/\lambda=R\Brak{\frac{1}{2^2}-\frac{1}{m^2}}$，计算出各可见光谱线波长如下表所示
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c}
+    \hline
+        \rule{0pt}{13pt}$m$ & $\lambda/\mathrm{nm}$\\
+        \hline
+        \rule{0pt}{13pt}3 & 656.3 \\
+        \rule{0pt}{13pt}4 & 486.1 \\
+        \rule{0pt}{13pt}5 & 434.1 \\
+        \rule{0pt}{13pt}6 & 410.2 \\
+        \rule{0pt}{13pt}7 & 397.0 \\
+        \rule{0pt}{13pt}8 & 388.9 \\
+    \hline
+    \end{tabular}
+    \caption{题\,1.33\,表}
+\end{table}
+
+\item
+各谱系的长波极限波长为$\,n+1\,$态跃迁到$\,n\,$态对应的波长，各谱系的短波极限波长为$\,\infty\,$态跃迁到$\,n\,$态的波长。莱曼系对应$\,n=1$，巴尔末系对应$\,n=2$，帕邢系为$\,n=3$。计算出结果如下表所示：
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    \hline
+        \rule{0pt}{13pt}谱线系 & $\lambda_\mathrm{ll}/\mathrm{nm}$ & $\lambda_\mathrm{sl}/\mathrm{nm}$ \\
+        \hline
+        \rule{0pt}{13pt}莱曼系 & 121.6 & 91.15 \\
+        \rule{0pt}{13pt}巴尔末系 & 656.3 & 364.6 \\
+        \rule{0pt}{13pt}帕邢系 & 1876 & 820.4 \\
+    \hline
+    \end{tabular}
+    \caption{题\,1.34\,表}
+\end{table}
+
+\item
+氢原子光谱的巴尔末系的最短波长对应氢原子从$\,n=\infty\,$向$\,n=2\,$态跃迁，故
+\eqa{\frac{hc}{\lambda}=E_1\Brak{\frac{1}{2^2}-\frac{1}{\infty^2}}}
+解得电离能$\,E_1=13.6\,\mathrm{eV}$
+
+\item
+发出的光子能量为
+\eqa{\frac{hc}{\lambda}=2.54\,\mathrm{eV}}
+故初态的激发能为
+\eqa{E_i=2.54\,\mathrm{eV}+10.19\,\mathrm{eV}=12.73\,\mathrm{eV}}
+结合能为
+\eqa{E_b=E_1-E_i=0.87\,\mathrm{eV}}
+
+\item
+光子的动量为
+\eqa{p=hR\Brak{1-\frac{1}{2^2}}=10.2\,\mathrm{eV}/c}
+本题能量远小于氢原子静质量能，故可作经典近似$\,p=m_0v$，则反冲速度为
+\eqa{v=\frac{p}{m_0}=3.26\,\mathrm{m/s}}
+反冲能为
+\eqa{E_k=\frac{1}{2}m_0v^2=55.4\,\mathrm{neV}}
+故反冲能与光子能量比值为
+\eqa{\frac{E_k}{E_\gamma}=\frac{E_k}{pc}=5.44\et{-9}}
+
+\item
+$\mathrm{H}_\alpha\,$线是氢原子由$\,n=3\,$态跃迁到$\,n=2\,$态发出的，则入射电子将氢原子由基态激发到了$\,n=3\,$态，入射电子的最小动能应为氢原子基态与$\,n=3\,$激发态的能量差
+\eqa{E_k\leq hcR\Brak{1-\frac{1}{3^2}}=12.1\,\mathrm{eV}}
+
+\item
+光子能量在几个$\,\mathrm{eV}\,$量级，远小于质子的静质量能，故可进行经典近似。设质子的质量为$\,m$，初速度为$\,v$，其碰撞损失的动能为质心系中的动能
+\eqa{\Delta E=2\cdot\frac{1}{2}m\Brak{\frac{v}{2}}^2=\frac{1}{4}mv^2}
+这里忽略了电子的质量。这些能量至少要使氢原子跃迁到第一激发态，即
+\eqa{\Delta E=\frac{1}{4}mv^2\geq hcR\Brak{1-\frac{1}{2^2}}=10.2\,\mathrm{eV}}
+代入数据可解出
+\eqa{v\geq62.5\mathrm{km/s}}
+
+\item 
+考虑相对论效应，动量
+\[p = \frac{m_0v}{\sqrt{1-v^2/c^2}}.\]
+因此角动量量子化条件要求
+\[L= \frac{m_0vr}{\sqrt{1-v^2/c^2} }= n\hbar.\]
+相对论情形下，电磁力
+\[F = \frac{1}{4\pi\epsilon_0}\frac{Ze^2}{r^2} = \abs{\dv{\mathbf{p}}{t}} = \frac{m_0v}{\sqrt{1-v^2/c^2}}\frac{v}{r}.\]
+由以上两式消去$r$可得
+\[v = \frac{1}{4\pi\epsilon_0}\frac{Ze^2}{n\hbar} = \frac{Z\alpha c}{n}.\]
+考虑到系统在相对论情形下总能量 
+\alg{E & = \frac{m_0 c^2}{\sqrt{1-v^2/c^2}} - m_0c^2 - \frac{1}{4\pi\epsilon_0}\frac{Ze^2}{r}\\
+& = \frac{m_0 c^2}{\sqrt{1-v^2/c^2}} - m_0c^2 -\frac{m_0v^2}{\sqrt{1-v^2/c^2}}\\
+& = m_0c^2(\sqrt{1-\frac{v^2}{c^2}}-1).
+}
+展开到$o(\frac{v^4}{c^4})$项有
+\[E \approx m_0c^2\left(-\frac{v^2}{c^2}-\frac{v^4}{8c^4}\right)
+= -\frac{1}{2}m_0c^2\left(\frac{Z\alpha}{n}\right)^2\left[1+\frac{1}{4}\left(\frac{Z\alpha}{n}\right)^2\right]\]
+【另解】亦可对动能和势能分别计算，但需始终牢记应计算到$o(\frac{v^4}{c^4})$项：
+\[E_k = \frac{m_0 c^2}{\sqrt{1-v^2/c^2}}-m_0c^2 
+=m_0c^2\left(1+\frac{v^2}{2c^2}+\frac{(-\frac{1}{2})(-\frac{3}{2})v^4}{2c^4}+o(\frac{v^6}{c^6})\right),\]
+\[E_p = -\frac{m_0v^2}{\sqrt{1-v^2/c^2}} = -m_0v^2\left(1+\frac{v^2}{2c^2}+o(\frac{v^4}{c^4})\right).\]
+相加得
+\[E = m_0c^2\left(-\frac{v^2}{c^2}-\frac{v^4}{8c^4}+o(\frac{v^6}{c^6})\right)\]
+亦可得证。
+
+\item 同\,1.45。
+
+\item
+由于$\,\lambda=h/p$，故波长相同的粒子动量相同，$p_\gamma/p_{\mathrm{e}}=1$。\par
+光子的动能为
+\eqa{E_{k\gamma}=\frac{hc}{\lambda}=3.10\,\mathrm{keV}}
+电子的动能为
+\eqa{E_{k\mathrm{e}}=E_{\mathrm{e}}-E_0=\sqrt{E_0^2+p_{\mathrm{e}}^2c^2}-E_0=\sqrt{E_0^2+\Brak{\dfrac{h}{\lambda}}^2c^2}-E_0=9.40\,\mathrm{eV}}
+故二者动能的比值为
+\eqa{\frac{E_{k\gamma}}{E_{k\mathrm{e}}}=330}
+
+\item
+相对论粒子总能量为
+\eqa{E=\frac{m_0c^2}{\sqrt{1-\frac{v^2}{c^2}}}}
+电子的动能等于其静质量能，即其总能量等于静质量能的二倍，也就是
+\eqa{\frac{m_0c^2}{\sqrt{1-\frac{v^2}{c^2}}}=2m_0c^2}
+从中可解出电子速度为
+\eqa{v=\frac{\sqrt{3}}{2}c}
+依定义，德布罗意波长为
+\eqa{\lambda=\frac{h}{p}=\frac{h}{m_0v}\sqrt{1-\frac{v^2}{c^2}}}
+其中$\,p=m_0v/\sqrt{1-\frac{v^2}{c^2}}\,$为相对论粒子的动量。代入数据，得
+\eqa{\lambda=1.40\,\mathrm{pm}}
+
+\item
+由于中子的动能远小于其静质量能$\,E_0=940\,\mathrm{MeV}$，故可以采用经典近似$\,p=\sqrt{2m_0E_k}$，其德布罗意波长为
+\eqa{\lambda=\frac{h}{\sqrt{2m_0E_k}}}
+代入数据，分别算出两种情况下中子的德布罗意波长
+\alg{\lambda_1=&20.2\,\mathrm{pm}\\
+\lambda_2=&9.05\,\mathrm{pm}}
+由布拉格衍射条件$\,n\lambda=2d\sin\theta$，知
+\eqa{\sin\theta=\frac{n\lambda}{2d}}
+对于两束中子，其布拉格角分别由下两式给出
+\alg{\sin\theta_1=&0.0632n,\quad n=1,\,2,\,\dotsc,\,16;\\
+\sin\theta_2=&0.0283n,\quad n=1,\,2,\,\dotsc,\,35}
+其中$\,n\,$的范围由$\,\sin\theta<1\,$的条件限定。
+
+\item
+按定义，德布罗意频率为
+\eqa{\nu=\frac{E}{h}=\frac{E_k+E_0}{h}}
+其中$\,E_0\,$为电子的静能。德布罗意波长为
+\eqa{\lambda=\frac{h}{p}=\frac{hc}{\sqrt{(E_k+E_0)^2-E_0^2}}}
+这里用到了相对论能动量关系
+\eqa{pc=\sqrt{E^2-E_0^2}=\sqrt{(E_k+E_0)^2-E_0^2}}
+对于动能为$\,1\,\mathrm{eV}$、$100\,\mathrm{eV}\,$及$\,1\,\mathrm{keV}\,$的电子来说，由于$\,E_k\ll E_0=511\,\mathrm{keV}$，这三种情况下可以采用经典近似$\,p=\sqrt{2m_0E_k}$，从而
+\eqa{\lambda=\frac{h}{\sqrt{2m_0E_k}}}
+代入数据，得到结果如下表
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c}
+    \hline
+        \rule{0pt}{13pt}动能 & $\lambda/\mathrm{m}$ & $\nu/\mathrm{Hz}$ \\
+        \hline
+        \rule{0pt}{13pt}$1\,\mathrm{eV}$ & $1.23\et{-9}$ & $1.23\et{20}$ \\
+        $100\,\mathrm{eV}$ & $1.23\et{-10}$ & $1.23\et{20}$ \\
+        $1\,\mathrm{keV}$ & $3.88\et{-11}$ & $1.24\et{20}$ \\
+        $1\,\mathrm{MeV}$ & $8.73\et{-13}$ & $3.65\et{20}$ \\
+        $12\,\mathrm{GeV}$ & $1.03\et{-16}$ & $2.90\et{24}$ \\
+    \hline
+    \end{tabular}
+    \caption{题\,1.45\,表}
+\end{table}\par
+根据布拉格衍射条件
+\eqa{n\lambda=2d\sin\theta}
+可知发生衍射的条件为
+\eqa{\lambda<2d=4.30\et{-10}\,\mathrm{m}}
+故能量为$\,1\,\mathrm{eV}\,$的电子不会发生衍射。（但若$\lambda \ll d$会导致条纹过密，衍射也不明显。故定性来讲衍射最为显著的应是动能为$100\eV$与$1\keV$的电子。）
+
+对$30\du$的布拉格角，需满足$n\lambda = d$。此时按上述五种电子计算，$n$值分别为 0.174, 1.74, 5.54, 246.2, $2.08\ten{6}$。故并不能期望在$30\du$角附近观察到上述五种电子产生的显著衍射条纹。
+
+\item
+单缝衍射中央主极大的角展宽为
+\eqa{2\theta=2\frac{\lambda}{d}}
+其中$\,\lambda\,$为波长，对于电子则是其德布罗意波长，$d\,$为缝宽。代数数据，可得
+\eqa{2\theta=0.2\,\mathrm{rad}}
+
+\item
+按照定义，粒子的康普顿波长为
+\eqa{\lambda_{\mathrm{c}}=\frac{h}{m_0c}}
+其中$\,m_0\,$为粒子的静质量。\par
+粒子的德布罗意波长为
+\eqa{\lambda_{\mathrm{d}}=\frac{h}{p}=\frac{h}{m_0v}\sqrt{1-\dfrac{v^2}{c^2}}}
+这里用到了相对论动量
+\eqa{p=\frac{m_0v}{\sqrt{1-v^2/c^2}}}
+故康普顿波长与德布罗意波长的比值为
+\eqa{\frac{\lambda_{\mathrm{c}}}{\lambda_{\mathrm{d}}}=\frac{1}{\sqrt{\dfrac{c^2}{v^2}-1}}}
+狭义相对论中，粒子的总能量与静能比值为
+\eqa{\frac{E}{E_0}=\frac{1}{\sqrt{1-\dfrac{v^2}{c^2}}}}
+容易看出
+\eqa{\sqrt{\Brak{\dfrac{E}{E_0}}^2-1}=\sqrt{\dfrac{v^2/c^2}{1-v^2/c^2}}=\dfrac{1}{\sqrt{\Brak{\dfrac{c}{v}}^2-1}}}
+显然，当$\,E=\sqrt{2}E_0\,$时，粒子的德布罗意波长等于其康普顿波长。对于电子，此时动能为
+\eqa{E_k=E-E_0=(\sqrt{2}-1)E_0=212\,\mathrm{keV}}
+
+\item
+由德布罗意波长的定义：
+\eqa{\lambda=\frac{h}{p}}
+由相对论能动量关系：
+\eqa{p=\frac{\sqrt{(E_0+eV)^2-E_0^2}}{c}=\frac{\sqrt{2E_0e}\sqrt{V(1+\frac{e}{2E_0}V)}}{c}=\frac{\sqrt{2E_0e}\sqrt{V_r}}{c}}
+其中$\,E_0=511\mathrm{keV}\,$为电子的静能。故
+\eqa{\lambda=\frac{hc}{\sqrt{2E_0e}}\frac{1}{V_r}}
+代入数据得
+\eqa{\lambda=\frac{1.226}{\sqrt{V_r}}\,\mathrm{nm}\cdot\mathrm{V}^{1/2}}
+\eqa{V_r=V(1+9.78\et{-7}\,\mathrm{V}^{-1}\,V)}
+
+\end{enumerate}

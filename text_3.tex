@@ -1,0 +1,220 @@
+角动量算符的对易关系：$\zkh{q_i,\,l_j}=\ihb\eijk q_k\quad\zkh{\vec{q}^2,\,l_i}=0$，其中$q$可以代表$r$，$p$或$l$。
+
+常用恒等式：$\ee{\alpha\hA}\hB\ee{-\alpha\hA}=\sum_{n=0}^\infty\frac{\alpha^n}{n!}(\mathcal{L}_{\hA})^n(\hB)$，其中$\mathcal{L}_{\hA}(\hX)=\zkh{\hA,\,\hX}$。
+
+\begin{enumerate}[label=\textbf{3.\arabic*}]
+
+\item
+（参见《解答》2.1）
+
+波函数是$\hat{p}$的本征态，同时也为哈密顿量$\hat{H}=\frac{\hat{p}^2}{2m}$的本征态，故【解法二】最为直接。【解法一】使用了更具一般性的“传播子”来求解，但需注意这里的
+\[G(x,t;\,x',t') = \sqrt{\frac{m}{2\pi\im\hbar (t-t')}}\exp(\frac{\im m}{2\hbar}\frac{(x-x')^2}{t-t'})\]
+仅适用于一维自由粒子哈密顿量的情形（注意《解答》中该式分母$t-t'$错了）。
+
+不妨练习推导下一般的“传播子”$G(x,t;\,x',t')$的公式：
+对不显含$t$的$\hat{H}$，由薛定谔方程可知从$\ket{\psi,t'}$态演化到态$\ket{\psi,t}$满足
+\[\ket{\psi,t} = \ee{-\im\frac{\hat{H}(t-t')}{\hbar}}\ket{\psi,t'}\]
+在$x$表象上的波函数为
+\alg{\psi(x,t) = \braket{x}{\psi,t} &= \bra{x}\ee{-\im\frac{\hat{H}(t-t')}{\hbar}}\ket{\psi,t'} = \intif \bra{x}\ee{-\im\frac{\hat{H}(t-t')}{\hbar}}\ket{x'}\braket{x'}{\psi,t'}\dd{x'}\\
+&= \intif \bra{x}\ee{-\im\frac{\hat{H}(t-t')}{\hbar}}\ket{x'}\, \psi(x',t')\dd{x'}
+}
+因此传播子为
+\[G(x,t;\,x',t') = \bra{x}\ee{-\im\frac{\hat{H}(t-t')}{\hbar}}\ket{x'}\]
+对本题$\hH$为自由粒子哈密顿量的情形，才有
+\alg{G(x,t;\,x',t') = \bra{x}\exp(-\im\frac{\hat{p}^2(t-t')}{2m \hbar})\ket{x'} = \sqrt{\frac{m}{2\pi\im\hbar (t-t')}}\exp(\frac{\im m}{2\hbar}\frac{(x-x')^2}{t-t'})
+}
+方法是插入完备组$\ketbra{p}$进行化简，请大家尝试推导一下。
+
+【解法三】比较巧妙，直接把本题的时间演化算符$\exp(-\im\frac{\hat{p}^2(t-t')}{2m \hbar})$中$\hat{p}$替换为$-\im\hbar\nabla$。其合理性可通过将$\exp(\;)$函数作级数展开看出。
+% 经检验，该波函数在$t=0$时是一维自由粒子定态薛定谔方程的解，即
+% \[\hat{H}\psi(x,0) = -\frac{\hbar^2}{2m}\nabla^2\psi(x,0) = \frac{p_0^2}{2m}\psi(x,0) = E\psi(x,0),\]
+% 即能量为$E=\frac{p_0^2}{2m}$。因此该波函数随时间演化为
+% \[\psi(x,t)=\psi(x,0)\exp(\frac{\im Et}\hbar) = \frac{1}{(2\pi\hbar)^{1/2}}\exp(\frac{\im(p_0x-Et)}{\hbar}).\]
+
+\textbf{注意：}本题的波函数不是模方可积的，不能进行一般意义的归一化。详见3.2下的讨论。
+
+\item （参见《解答》2.2）
+
+% 一维自由粒子的能量本征态即为动量本征态$\ket{p}$。记量子态$\ket{\psi, t}$，有$\braket{x}{\psi, 0}=\psi(x,t)=\delta(x)$，它在动量本征态上的投影（也即$p$表象波函数）为
+% \[\braket{p}{\psi,0} = \intif \braket{p}{x}\braket{x}{\psi,0} \dd{x}=\intif \frac{1}{\sqrt{2\pi\hbar}} \ee{-\im px/\hbar}\,\delta(x)\dd{x} = \frac{1}{\sqrt{2\pi\hbar}}. \]
+
+% 可见是一个常数。任意时刻$t$，能量本征态$\ket{p}$转化为$\ee{\im Et/\hbar}\ket{p} = \ee{\im \frac{p^2t}{2m\hbar}}\ket{p}$。因此
+% \alg{\psi(x,t)=\braket{x}{\psi,t} &= \intif\bra{x}\exp(-\im\frac{p^2t}{2m\hbar})\ket{p} \braket{p}{\psi,0} \\
+% &= \intif\frac{1}{\sqrt{2\pi\hbar}}\exp(\frac{\im(p_0x-Et)}{\hbar})
+% }
+
+对自由粒子的态函数演化求解，通常方法都是写出波函数$\psi(x,t)$在$p$表象下的波函数$\varphi_p(p,t)$。这是因为$\hat{p}$本征态同时也是$\hat{H}$本征态，故$p$表象波函数随时间演化直接为
+\[\varphi_p(p,t) = \exp(-\im\frac{p^2(t-t')}{2m\hbar})\,\varphi_p(p,t')\]
+解完后再转化为$x$表象波函数即可。
+
+【另解三】亦可利用3.1中的“传播子”求解，$t$时间后波函数演化为
+\[\psi(x,t) = \intif G(x,t;\,x',0)\,\psi(x',0) \dd{x'} = \intif G(x,t;\,x',0)\,\delta(x') \dd{x'} = G(x,t;\,0,0), \]
+更快速地得到本题答案。
+
+\textbf{注意：}本题只能形式上写出解，$\delta(x)$这一波函数量纲不合且不是平方(模方)可积的。结合3.1来看，$\hat{x}$和$\hat{p}$的本征态都无法实现一般意义上的归一化，这是因为其本征态为连续谱，正交性关系为$\braket{\psi_{\lambda}}{\psi_{\lambda'}}=\delta(\lambda-\lambda')$，$\lambda$为该连续谱本征态对应的本征值。可见在$\lambda=\lambda'$时内积为无穷大，无法找到一般意义的归一化系数。
+
+\item （参见《解答》2.3）
+
+题目有误，需将$\psi(x,t)$分母改为$\frac{1}{\qty(a^2+\frac{\im\hbar t}{2m})^{1/2}}$，$|\psi(x,t)|^2$的$\frac{1}{\sqrt{2\pi}}a(t)$改为$\frac{1}{\sqrt{2\pi }a(t)}$.
+
+【证法三】与【证法二】比较常规，本质都是换到$p$表象作时间演化后再换回来；【证法一】用到了时间演化算符$U(t,\,0)=\exp(-\frac{\im Ht}{\hbar})$，也是一种比较常规的方法，其计算过程涉及一些算符运算的技巧，可以观赏学习。
+
+%4
+\item (请将e的幂指数改为$-x^2/4\langle x^2\rangle$.)
+
+本题模型与上题相仿。假设$\langle x^2 \rangle = a^2$，可求出动量表象中任意时刻$t$的波函数为
+\[\varphi_p(p,\,t) = \qty(\frac{2a^2}{\pi\hbar^2})^{1/4} \exp(-p^2\qty(-\frac{a^2}{\hbar^2}+\frac{\im t}{2m\hbar})).\]
+
+(1) 可以求得$\langle p\rangle = \intif p|\varphi_p(p,\,t)|^2\dd{p} = 0$, $\langle p^2\rangle = \intif p^2|\varphi_p(p,\,t)|^2\dd{p} = \frac{\hbar^2}{4a^2}$, 从而$\langle(\Delta p)^2\rangle = \frac{\hbar^2}{4a^2}$.
+
+(2) 请参照3.3解答.
+
+(3) 初始时刻的波函数为高斯波包。高斯波包满足最小不确定关系，即$\Delta x \,\Delta p= \frac{\hbar}{2}$，遂有第(1)问结果。若高斯波包以自由粒子的哈密顿量进行演化，则在$t>0$会偏离高斯波包的形式。但容易发现其各动量本征态组分的概率密度不随时间变化，只是相位发生变化（初始时为同相位），可推知$\langle p^2\rangle$是不变的，从而$t>0$时一定有$\langle x^2\rangle>a^2$。计算表明此后波函数在$x$表象的波包随时间展宽，$\langle x^2\rangle$随时间增大。
+
+%5
+\item（参见《解答》2.5）
+
+这里再提一个问题：如在《解答》(2.29)式时直接对$\ee{-\im\frac{\hbar t}{2m}k^2}$使用
+\[\lim_{t\rightarrow \infty} \ee{-\im\frac{\hbar t}{2m}k^2} = \sqrt{\frac{2\pi m}{\im \hbar t}} \,\delta(k),\]
+则按相同的方式可推导出$\psi(x,\,t)=\sqrt{\frac{m}{\im\hbar t}}\phi(0)$，显然与原题不符。请问哪里出错了？
+
+%6
+\item（参见《解答》2.6）
+
+%7
+\item（参见《解答》2.7）
+
+%8
+\item（参见《解答》2.8）
+
+%9
+\item（参见《解答》2.9）
+
+%10
+\item（参见《解答》2.12）
+
+(1) 请见解答。
+
+(2) 根据Virial定理，对于能量本征态有
+\[\frac{1}{m}\overline{\hp^2}=\overline{\hr\cdot \nabla \hat{V}(\vec{r})}
+=\overline{\hat{r}\cdot V_0\hat{r}^{-1}} = V_0,\]
+可见为常数，故该定态的方均根速率$\sqrt{\overline{\vec{v}^2}}=\sqrt{\frac{1}{m^2}\overline{\hp^2}}=\sqrt{V_0/m}$，与能量本征值无关。
+
+%11
+\item（参考《解答》5.1）
+
+注：本题仅在哈密顿量$\hat{H}$不随时间变化，或者说薛定谔表象下的势能$V_0$不显含$t$的条件下才成立。无论用薛定谔表象还是海森堡表象求解，在计算到$\dv[2]{t}$这一步时均需用到上述潜在条件，请留意。另外，如无特别说明一般都认为$H$是不显含时的。
+
+%12
+\item（参考《解答》5.2。本题表述有误，应为“物理量的平均值对$t$的导数”，或者改为“海森堡表象下的物理量关于$t$的导数的平均值”。）
+
+
+%13
+\item
+（参见《解答》$5.3$）
+
+%14
+\item
+（参见《解答》$5.4$。讲义及曾书上符号混乱，以《解答》上为准。也可参阅曾书提供的文献\cite{14}）
+
+%15
+\item 事实上本题需要论证的表述即为守恒量的一种定义方式。我们在此可采用另一等价的定义作为出发点，即：不显含时且与哈密顿量$\hat{H}$对易的物理量为守恒量。由此可知，对任意量子态，有
+\[\dv{t} \overline{\hQ} = \overline{\pdv{\hQ}{t}} + \frac{1}{\im\hbar}\overline{[\hQ,\,\hH]} = 0.\]
+即可得证。
+
+%16
+\item 考虑体系有不对易的守恒量$\hA$, $\hB$, 它们都与哈密顿量对易。
+由于$[\hA,\,\hH]=0$，设$\ket{\psi_a}$为$\hA$, $\hH$的共同本征态，有$\hA\ket{\psi_a}=a\ket{\psi_a}$，$\hH\ket{\psi_a} = E\ket{\psi_a}$。由于$[\hB,\,\hH]=0$, 有
+$\hH(\hB\ket{\psi_a})=\hB\hH\ket{\psi_a} = E(\hB\ket{\psi})$，因此$\hB\ket{\psi}$也为哈密顿量$\hH$的本征态，本征值为$E$。 假设体系没有能量简并态，则$\hB\ket{\psi_a}$与$\ket{\psi_a}$线性相关，记为$\hB\ket{\psi_a}=\lambda\ket{\psi_a}$，则有$[\hA,\,\hB]\ket{\psi_a} = \hA\hB\ket{\psi_a}-\hB\hA\ket{\psi_a} = a \lambda \ket{\psi_a}-\lambda a \ket{\psi_a} = 0$。这里的$\ket{\psi_a}$实际上可选为$\hA$, $\hH$的任意本征态，他们构成一组希尔伯特空间的完备基，因此对希尔伯特空间上的任意态$\ket{\Phi}$有$[\hA,\,\hB]\ket{\Phi}=0$，从而$[\hA,\,\hB]=0$，与题设相矛盾。
+
+%17
+\item
+（参见《解答》$5.5$）
+
+%18
+\item
+（参见《解答》$5.6$）\\
+作为练习，同学们可以将《解答》$5.5$的方法套用到本题上推导一遍。
+
+%19
+\item
+（参见《解答》$5.7$）
+
+%20
+\item
+（参见《解答》$5.8$）
+
+%21
+\item
+（参见《解答》$5.9$）
+
+%22
+\item
+（参见《解答》$5.10$）\\
+推荐证法一。证法二可帮助记忆。\\
+\textbf{补充：}算符$\exp(-\im\theta\vec{n}\cdot\vec{l})$对应绕$\vec{n}$方向旋转$\theta$角的操作（$\vec{n}$为单位向量）。
+
+%23
+\item
+（参见《解答》$5.11$）\\
+Heisenberg绘景中，物理量算符$Q_\mathrm{H}(t)$随时间的演化关系为
+\alg{\drv{Q_\mathrm{H}(t)}{t}=\frac{1}{\ihb}\zkh{Q_\mathrm{H}(t),\,H}}
+
+%24
+\item
+（参见《解答》$5.12$）\\
+哈密顿量可以写成
+\alg{H=\frac{\vec{l}^2}{2J_1}+\frac{l_z^2}{2}\xkh{\frac{1}{J_3}-\frac{1}{J_1}}-a_3z}
+容易看出$l_z$为守恒量。
+
+%25
+\item
+（参见《解答》$5.13$）\\
+物理量$Q$随时间的变化率为
+\alg{\drv{Q}{t}=\prv{Q}{t}+\frac{1}{\ihb}\zkh{Q,\,H}}
+物理量$Q$的平均值随时间的变化率为
+\alg{\drv{\jkh{Q}}{t}=\jkh{\prv{Q}{t}}+\frac{1}{\ihb}\jkh{\zkh{Q,\,H}}}
+
+%26
+\item
+（本题和$3.27$均参见《解答》$5.14$）\\
+\textbf{注意：}此两题中$H$仅为厄米矩阵，不是哈密顿量，不能以薛定谔方程等作为前提。
+
+%27 gdtql
+\item
+将等式左边展开，
+\alg{\im\hbar\drv{}{t}(UU\hcj)&=\im\hbar\drv{U}{t}U\hcj+\im\hbar U\drv{U\hcj}{t}\\
+&=\im\hbar\drv{U}{t}U\hcj-U\Brak{\im\hbar\drv{U}{t}}\hcj\\
+&=HUU\hcj-U\Brak{HU}\hcj\\
+&=HUU\hcj-UU\hcj H\\
+&=[H,\,UU\hcj]}
+其中用到了$\im\hbar\drv{U}{t}=HU$及$H\hcj=H$。\\
+下面强行给出一个引理：
+\begin{lemma}
+对于$\forall n>0$，$UU\hcj$对$t$的$n$阶导数一定可表示成如下形式：
+\alg{\drv{^n}{t^n}(UU\hcj)=\sum_{i=0}^n\sum_{jk}f_{ij}\left[\drv{^iH}{t^i},\,UU\hcj\right]g_{ik}}
+其中$f_{ij}$和$g_{ik}$均可用$H$对$t$的各阶导表示。
+\end{lemma}
+证明：若对于$\forall n<l$命题成立，则对于$n=l$有
+\alg{\drv{^l}{t^l}(UU\hcj)=&\,\drv{}{t}\drv{^{l-1}}{t^{l-1}}(UU\hcj)\\
+=&\,\drv{}{t}\sum_{i=0}^{l-1}\sum_{jk}f_{ij}\left[\drv{^iH}{t^i},\,UU\hcj\right]g_{ik}\\
+=&\,\sum_{i=0}^{l-1}\sum_{jk}\drv{f_{ij}}{t}\left[\drv{^iH}{t^i},\,UU\hcj\right]g_{ik}+f_{ij}\left[\drv{^{i+1}H}{t^{i+1}},\,UU\hcj\right]g_{ik}\\
+&\,+\frac{1}{\im\hbar}f_{ij}\left[\drv{^iH}{t^i},\,\zkh{H,\,UU\hcj}\right]g_{ik}+f_{ij}\left[\drv{^iH}{t^i},\,UU\hcj\right]\drv{g_{ik}}{t}
+}
+这一结果显然还是引理中的形式。对于$n=1$，有
+\alg{\drv{}{t}\Brak{UU\hcj}=\frac{1}{\im\hbar}[H,\,UU\hcj]}
+是引理中的形式。故引理得证。\\
+若$t=t_0$时$U$为幺正的，则$U(t_0)U\hcj(t_0)=I$，所以$\fuz{\zkh{\drv{^iH}{t^i},\,UU\hcj}}{t=t_0}=0$。根据引理，有
+\alg{\fuz{\drv{^n}{t^n}(UU\hcj)}{t=t_0}=0}
+因此，对于任意时刻$t$，有
+\alg{U(t)U\hcj(t)=U(t_0)U\hcj(t_0)+\sum_{n=1}^\infty\frac{(t-t_0)^n}{n!}\fuz{\drv{^n}{t^n}(UU\hcj)}{t=t_0}=I}
+故在任意时刻$U(t)$仍为幺正算符。
+
+%28
+\item
+（参见《解答》$5.16$）
+
+\end{enumerate}
+
+\bibliographystyle{unsrt}
+\bibliography{1.bib}b

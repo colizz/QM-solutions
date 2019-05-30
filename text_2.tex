@@ -1,0 +1,894 @@
+以下为第二章习题解答。作业中涉及到很多计算细节，{\color{red}如角动量算符处理技巧、算符对易的运算与纯算符类问题（线性代数题）等}，在课堂讲授中并未充分练习到，建议大家课后多进行巩固学习，增加熟练度。我们就这些问题的解答写的都很详细，有需要的同学请仔细看一下。
+
+另外，{\color{red}要争取所有题目都要做到逻辑crystal clear (主要针对11题以后的题目，尤其是算符对易运算部分)。} 很多同学写过程含糊其词，只凭直觉，可能自己也没太想明白。如有感觉逻辑不畅之处一定要刨根问底。
+
+常用物理量：
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+        \hline
+        物理量 & \multicolumn{2}{|c|}{值} \\
+        \hline
+        $h$ & $6.6261\ten{-34}\;\mathrm{kg\cdot m^2/s}$ & $1240\;\mathrm{eV\cdot nm}/c$ \\
+        $m_e$ & $9.109\ten{-31}\kg$ & $0.5110\MeV/c^2$ \\
+        $m_p$ & $1.673\ten{-31}\kg$ & $938.3\MeV/c^2$ \\
+        $m_n$ & $1.675\ten{-27}\kg$ & $939.6\MeV/c^2$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+高斯型积分：$\intif \ee{-ax^2}\dd{x} = \sqrt{\frac{\pi}{a}}$, \quad
+$\intif x^2\ee{-ax^2}\dd{x} = \frac{1}{2a}\sqrt{\frac{\pi}{a}}$.
+
+爱因斯坦求和约定：相同的下标表示求和，$a_ib_i\equiv\sum_ia_ib_i$
+
+矢量点乘用爱因斯坦约定表示：$\vec{A}\cdot\vec{B}=A_iB_i$；特别地，$\vec{A}^2=A_iA_i$
+
+矢量叉乘用爱因斯坦约定表示：$\vec{A}\times\vec{B}=\vec{e}_i\eijk A_jB_k$，$\vec{e}_i\,$为$\,i\,$方向的单位向量。这里$\,\eijk\,$是三阶反对称张量（Levi-Civita\,符号），在下标为$\,xyz\,$的偶排列时取\,1，奇排列时取$\,-1$，有重复时取\,0。
+
+常用恒等式：$\eijk=\exb{jki}=\exb{kij}=-\exb{ikj}=-\exb{jik}=-\exb{kji}$，$\eijk\exb{ilm}=\dxb{jl}\dxb{km}-\dxb{jm}\dxb{kl}$
+
+
+\begin{enumerate}[label=2.\arabic*]
+
+\item
+按题目要求，探测粒子的德布罗意波长需小于待测原子核的$\frac{1}{10}$，即$\lambda = 1\fm$。根据
+\[\lambda = \frac{h}{p} = \frac{hc}{\sqrt{E^2-m_0c^4}}\]
+可计算出粒子的总能量与动能为
+\[E = \sqrt{m_0^2c^4+\qty(\frac{hc}{\lambda})^2},\quad E_k = E-m_0c^2\]
+代入光子、电子、质子、中子的静质量：$m_\gamma=0$, $m_e=0.511\MeV/c^2$, $m_p=938\MeV/c^2$, $m_n=940\MeV/c^2$，可得
+
+(1) 光子总能量$E_\gamma=1.24\GeV=1.99\ten{-10}\J$, 动能与总能量相同；
+
+(2) 电子总能量$E_e = 1.24\GeV = 1.99\ten{-10}\J$, 动能$E_{ek} = 1.24\GeV = 1.99\ten{-10}\J$；
+
+(3) 质子总能量$E_p = 1.56\GeV = 2.49\ten{-10}\J$, 动能$E_{pk} = 0.62\GeV = 0.99\ten{-10}\J$；
+(4) 中子总能量$E_n = 1.56\GeV = 2.49\ten{-10}\J$, 动能$E_{nk} = 0.62\GeV = 0.99\ten{-10}\J$.
+
+\item
+出于估计的便利不考虑相对论效应。已知$x$方向上速度测量精度有$\Delta v_x=10^{-7}\;\mathrm{m/s}$，则动量不确定度为$\Delta p_x=m\Delta v_x$。利用不确定关系估计同时测量$x$方向位置的精度：
+\[\Delta x = \frac{\hbar}{2\Delta p_x} = \frac{\hbar}{2m\Delta v_x}.\]
+分别代入质子与电子的质量，可得
+
+(1) 对质子$\Delta x=0.32\;\mathrm{m}$； (2) 对电子$\Delta x=5.8\ten{2}\;\mathrm{m}$。两问中$y$方向测量的精度无法确定，因为没有给出$y$方向速度的不确定度的信息。
+
+\item
+粒子能量为$E=\sqrt{p^2c^2+m_0^2c^4}$，因此能量不确定度
+\[\Delta E = \frac{2pc^2\Delta p}{2\sqrt{p^2c^2+m_0^2c^4}} = \frac{\sqrt{E^2-m_0^2c^4} c\Delta p}{E}.\]
+再利用不确定关系可估计粒子动量的不确定度$\Delta p = \frac{\hbar}{2\Delta x}$，则：
+
+(1) 电子位置不确定度$0.01\nm$，动能$1\keV$，代入电子质量可得$\Delta E =9.9\ten{-14}\J = 0.62\keV$；
+
+(2) 质子位置不确定度认为是$\Delta x\sim 5\fm$，动能$2\MeV$，代入质子质量于上式得$\Delta E=2.1\ten{-13}\J=1.3\MeV$。
+
+\item
+不确定关系$\Delta E\Delta t\geq \frac{\hbar}{2}$。由于光子能量$E=\frac{hc}{\lambda}$，则能量不确定度$\Delta E$与波长不确定度$\Delta \lambda$满足$\frac{|\Delta E|}{E} =\frac{|\Delta\lambda|}{\lambda}=10^{-7} $，可得
+\[\Delta t = \frac{\hbar}{2E\cdot 10^{-7}} = \frac{\lambda}{4\pi c\cdot10^{-7}}=1.6\ns.\]
+
+\item
+为避免量子效应的影响，当粒子与靶子足够近时，需使得其特征距离显著大于粒子德布罗意波长。以正碰的最近距离$r$来估计该特征距离，先暂时忽略相对论效应，则有动能定理
+\[\Delta E_k=\frac{Z_1Z_2e^2}{4\pi\epsilon_0r}=\frac{1}{2}m
+_0v^2,\]
+解得$r=\frac{Z_1Z_2 e^2}{2\pi\epsilon_0 m_0v^2}$。又德布罗意波长为$\lambda = \frac{h}{m_0v}$，
+令$r\gg\lambda$，可计算得
+\[v\ll\frac{Z_1Z_2 e^2}{2\pi\epsilon_0 h}.\]
+
+\item
+根据不确定关系$\Delta E\Delta t\geq\frac{\hbar}{2}$，可对改量子态寿命做一估计：$\Delta t=\frac{\hbar}{2\Delta E}=1.0\ten{-20}\,\mathrm{s}.$
+
+\item
+(本题探讨的是Bremermann极限，感谢大家的博学多识。) 将计算机整体视为量子体系，不妨认为每进行一次运算花费时间$\Delta t$后，量子体系能量将发生变化，由不确定关系估算为$\Delta E=\frac{\hbar}{2\Delta t}$。一个很弱的要求是该能量变化需小于计算机总能量$\Delta E < m_0c^2$，因此单位时间运算次数$f=\frac{1}{\Delta t}<\frac{2m_0 c^2}{\hbar}=1.7\ten{-51}\,\mathrm{s^{-1}}$.
+
+\item
+能量为$E$的电子，德布罗意波长为$\lambda=\frac{hc}{\sqrt{E^2-m_e^2c^4}}$。如果想用其研究中子电荷分布，不妨估计其德布罗意波长需小于中子尺度的$\frac{1}{10}$，即$\lambda<\frac{1}{10}R$。因此电子动能估计值至少为
+\[E_k = E-m_ec^2 = \sqrt{m_e^2c^4+\qty(\frac{hc}{R/10})^2}-m_ec^2 = 2.5\ten{-9}\J=15\GeV.\]
+
+\item
+（补全条件：温度为$T$, 数密度为$n$）
+
+\begin{enumerate}[label=(\arabic*)]
+\item 非相对论性气体，且已知平均能量为$\overline{\epsilon}=\frac{3}{2}k_B T$。考虑粒子在$x$方向上的运动，设粒子沿$x$的平均动量$\overline{p_x}$，因为
+\[\frac{\overline{p_x^2}}{2m}
+=\frac{1}{3}\cdot\frac{\overline{p_x^2+p_y^2+p_z^2}}{2m}
+=\frac{1}{3} \overline{\epsilon}=\frac{1}{2}k_B T.\]
+可以由此估计$\overline{p_x}\approx \sqrt{mk_B T}$，因此利用不确定关系估计$x$方向位置的不确定度为
+$\Delta x = \frac{\hbar}{2\overline{p_x}}\approx\frac{\hbar}{2\sqrt{mk_B T}}$。
+对粒子数密度为$n=\frac{N}{V}$的粒子，考虑其$x$线度约为$l=\qty(\frac{V}{N})^{1/3}=n^{-1/3}$，简并状态要求$l<\Delta x$，代入计算得
+\[T<T_{\text{简并}}\approx\frac{\hbar^2 n^{2/3}}{4 k_B m}.\]
+
+\item 相对论气体，且已知平均能量为$\overline{\epsilon}=3k_B T$。可知平均动量$\overline{p}=\overline{\epsilon}/c$。
+出于简便直接用$\overline{p}$作为$x$方向的动量不确定度，由不确定关系估计$x$方向位置不确定度为$\Delta x\approx \frac{\hbar}{2\overline{p}}=\frac{\hbar c}{6k_B T}$。同理粒子在$x$方向的线度$l=n^{-1/3}$，需满足$l<\Delta x $，则有
+\[T<T_{\text{简并}}\approx\frac{\hbar c n^{1/3}}{6k_B}.\]
+\end{enumerate}
+
+\item
+Li核中的质子和中子被核力限制在很小的空间范围（$R\sim 1\fm$）内，根据不确定关系，每个核子的动量的不确定度估计为$\Delta p = \frac{\hbar}{2R} \approx 100\MeV/c$，这就是撞击后产生的碎片普遍具有很大的垂直动量$p_T$的原因。从图中看，$^{11}\mathrm{Li}$的$p_T$不确定度显著小于$^9\mathrm{Li}$，因此$^{11}\mathrm{Li}$核的半径应当比$^9\mathrm{Li}$大很多。然而$^{11}\mathrm{Li}$仅比$^9\mathrm{Li}$多出两个中子，推测$^{11}\mathrm{Li}$的核结构可能发生了显著的变化，值得进一步研究。
+
+\item
+由波函数归一性
+\[\intif \psi^*(x)\psi(x)\dd{x} = A^2 \intif \ee{-ax^2}\dd{x} = A^2\cdot \frac{\pi}{a} = 1,\]
+可得
+\[A=\Big(\frac{a}{\pi}\Big)^{1/4}.\]
+$x^2$的测量平均值为
+\[\overline{\hat{x}^2} = \intif \psi^*(x)x^2\psi(x)\dd{x} = A^2\intif x^2 \ee{-ax^2}\dd{x}= A^2\cdot\frac{1}{2a}\sqrt{\frac{\pi}{a}}= \frac{1}{2a}.\]
+
+\item
+（将题目中波函数分母上的$(\pi a)^{1/4}$改为$(\pi/a)^{1/4}$）
+
+(1) 求波函数$\psi(x)$在动量表象中的波函数$\varphi_p(p)$：
+\alg{\varphi_p(p) &= \intif \frac{1}{\sqrt{2\pi\hbar}} \psi(x)\ee{-\frac{\im px}{\hbar}}\dd{x} \\
+&= \intif \frac{1}{(\pi/a)^{1/4}\sqrt{2\pi\hbar}} \ee{-\frac{ax^2}{2}+ \frac{\im(p_0-p)x}{\hbar}} \dd{x} }
+将e指数进行配方得
+\[\varphi_p(p)= \frac{1}{(\pi/a)^{1/4}\sqrt{2\pi\hbar}}\ee{-\frac{(p-p_0)^2}{2a\hbar^2}}  \intif  \exp[-\frac{a}{2}\qty(x - \frac{\im(p_0-p)}{a\hbar})^2] \dd{x}
+\]
+因此我们需要计算形如$\intif \ee{-a(x+b\im)^2}\dd{x}$的高斯型积分。事实上它与$\intif \ee{-ax^2}\dd{x}$相等，求解方法是在复平面$(z=x+yi)$上构造由$y=0$, $y=b$ , $x=R$, $x=-R\;(R\rightarrow \infty)$四条边构成的矩形积分围道，利用围道积分为0，及在两无穷远处的短边上$\int_{\infty}^{\infty+b\im} \ee{-az^2}\dd{z}\rightarrow 0$可以证得$\intif \ee{-a(x+b\im)^2}\dd{x} = \intif \ee{-ax^2}\dd{x}$。
+
+从而我们有
+\[\varphi_p(p) = \frac{1}{(\pi/a)^{1/4}\sqrt{2\pi\hbar}}\ee{-\frac{(p-p_0)^2}{2a\hbar^2}}\sqrt{\frac{2\pi}{a}} =\frac{1}{(\pi a \hbar^2)^{1/4}}\ee{-\frac{(p-p_0)^2}{2a\hbar^2}}\]
+
+(2) 首先在坐标表象中计算$\overline{\hat{x}^2}$与$\overline{(\hat{p}-p_0)^2}$：
+\[\overline{\hat{x}^2} = \intif \psi^*(x)x^2\psi(x)\dd{x} = \sqrt{\frac{a}{\pi}}\intif \ee{-ax^2}\dd{x} = \frac{1}{2a}\]
+对于$\overline{(\hat{p}-p_0)^2}$，首先求解$\overline{\hat{p}^2}$：
+\alg{\overline{\hat{p}^2} &= \intif \psi^*(x)\Big(-\hbar^2\dv[2]{x}\Big)\psi(x)\dd{x} \\
+&=\sqrt{\frac{a}{\pi}} (-\hbar^2)\intif \ee{-\frac{ax^2}{2}-\frac{\im p_0 x}{\hbar}} \Big(-a+(-ax+\frac{\im p_0}{\hbar})^2\Big) \ee{-\frac{ax^2}{2}+\frac{\im p_0 x}{\hbar}} \dd{x} \\
+&=\sqrt{\frac{a}{\pi}} \left( \qty(a\hbar^2+p_0^2)\intif \ee{-ax^2}\dd{x}+
+2\im a p_0\hbar \intif x \ee{-ax^2}\dd{x} -
+a^2\hbar^2 \intif x^2 \ee{-ax^2}\dd{x}\right) \\
+& = \qty(a\hbar^2 + p_0^2)+0-a^2\hbar^2\frac{1}{2a} \\
+&= \frac{a\hbar^2}{2}+p_0^2
+}
+其次
+\alg{\overline{\hat{p}} &= \intif \psi^*(x)\Big(-\im\hbar\dv{x}\Big)\psi(x)\dd{x} \\
+&=\sqrt{\frac{a}{\pi}} (-\im\hbar)\intif \ee{-\frac{ax^2}{2}-\frac{\im p_0 x}{\hbar}} \Big(-ax+\frac{\im p_0}{\hbar}\Big) \ee{-\frac{ax^2}{2}+\frac{\im p_0 x}{\hbar}} \dd{x} \\
+& = p_0
+}
+因此
+\[\overline{(\hat{p}-\overline{\hat{p}})^2} = \overline{\hat{p}^2} - \overline{\hat{p}}^2 = \frac{a\hbar^2}{2}\]
+不确定关系为
+\[\sqrt{\overline{\hat{x}^2}\cdot\overline{(\hat{p}-p_0)^2}} = \sqrt{ \frac{1}{2a}\cdot\frac{a\hbar^2}{2}} = \frac{\hbar}{2} \geq \frac{\hbar}{2}\]
+得以证实。
+
+我们再在动量表象求解一遍。动量表象中$\hat{x}$写为$\im\hbar\dv{p}$，则有
+\alg{\overline{\hat{x}^2} &= \intif \varphi_p^*(p)\Big(-\hbar^2\dv[2]{p}\Big)\varphi_p(p)\dd{p} \\
+&=\frac{1}{\sqrt{\pi a \hbar^2}}(-\hbar^2)\intif \ee{-\frac{(p-p_0)^2}{2a\hbar^2}} \Big(-\frac{1}{a\hbar^2}+\frac{(p-p_0)^2}{a^2 \hbar^4}\Big) \ee{-\frac{(p-p_0)^2}{2a\hbar^2}}\\
+&=\frac{1}{\sqrt{\pi a \hbar^2}}\left(\frac{1}{a}\intif \ee{-\frac{(p-p_0)^2}{a\hbar^2}} - 
+\frac{1}{a^2\hbar^2}\intif (p-p_0)^2 \ee{-\frac{(p-p_0)^2}{a\hbar^2}}\right)\\
+&= \frac{1}{a}-\frac{1}{a^2\hbar^2}\frac{a\hbar^2}{2} = \frac{1}{2a}
+}
+\[\overline{(\hat{p}-p_0)^2} = \intif \varphi_p^*(p) (p-p_0)^2 \varphi_p(p)\dd{p} 
+=\frac{1}{\sqrt{\pi a \hbar^2}}\intif (p-p_0)^2  \ee{-\frac{(p-p_0)^2}{a\hbar^2}}
+= \frac{a\hbar^2}{2}\]
+可见与空间表象中的求解结果完全一致。
+
+（评注：事实上，本题所示的高斯型波函数恰好是能使不确定关系$\Delta x\cdot\Delta p\geq\frac{\hbar}{2}$取等号的特例。由以上推导也可看到一个有趣的结论，在空间表象上呈现“高斯波包”的波函数，其在动量表象上也呈现高斯波包的形态。）
+
+\item
+（注：本题可能意在求解$\overline{(\Delta x)^2}\cdot\overline{(\Delta p)^2}$，因为其物理意义更明显。下面我们就此式与原题中的$\overline{(\Delta x)^2(\Delta p)^2}$分别进行求解以巩固练习。）
+
+首先求归一化系数：
+\[\intif \psi^*(x)\psi(x)\dd{x} = \intzif A^2 x^2 \ee{-2\lambda x}\dd{x} = A^2\cdot \frac{1}{8\lambda^3}.\]
+得到$A = \sqrt{8\lambda^3}$。再分别求$\overline{(\Delta x)^2}$与$\overline{(\Delta p)^2}$。为得到$\overline{(\Delta x)^2}$，求解$\overline{x}$及$\overline{x^2}$如下：
+\[\overline{x} = \intif \psi^*(x)x\psi(x)\dd{x} = \intzif A^2 x^3 \ee{-2\lambda x}\dd{x} = \frac{3}{2\lambda}. \]
+\[\overline{x^2} = \intif \psi^*(x)x^2\psi(x)\dd{x} = \intzif A^2 x^4 \ee{-2\lambda x}\dd{x} = \frac{3}{\lambda^2}. \]
+因此
+\[\overline{(\Delta x)^2} = \overline{x^2}-\overline{x}^2 = \frac{3}{4\lambda^2}.\]
+再求解$\overline{p}$及$\overline{p^2}$：
+\[\overline{p} = \intif \psi^*(x)\Big(-\im\hbar \dv{x}\Big)\psi(x)\dd{x} = \intzif A^2 (-\im\hbar)(x-\lambda x^2)\ee{-2\lambda x}\dd{x} = 0. \]
+\[\overline{p^2} = \intif \psi^*(x)\Big(-\hbar^2 \dv[2]{x}\Big)\psi(x)\dd{x} = \intzif A^2 (-\hbar^2)(-2\lambda x+\lambda^2 x^2)\ee{-2\lambda x}\dd{x} = \lambda^2\hbar^2. \]
+因此
+\[\overline{(\Delta p)^2} = \overline{p^2}-\overline{p}^2 = \lambda^2 \hbar^2.\]
+于是我们有
+\[\overline{(\Delta x)^2}\cdot\overline{(\Delta p)^2} = \frac{3}{4}\hbar^2.\]
+易见不确定性关系$\sqrt{\overline{(\Delta x)^2}\cdot\overline{(\Delta p)^2}} \geq \frac{\hbar}{2}$成立。
+
+我们再求解稍微复杂的$\overline{(\Delta x)^2(\Delta p)^2}$作为练习。以下将给出主要步骤，请大家一定要亲自计算一遍，提升熟练度。
+\alg{\overline{(\Delta x)^2(\Delta p)^2} &= \intif \psi^*(x)\qty(-\hbar^2\qty(x-\frac{3}{2\lambda})^2 \dv[2]{x})\psi(x)\dd{x} \\
+&= \intzif A^2 (-\hbar^2)\qty(\lambda^2x^4 - 5\lambda x^3 + \frac{33}{4}x^2 - \frac{9}{2\lambda}x) \ee{-2\lambda x}\dd{x} \\
+&=\frac{3}{4}\hbar^2.
+}
+
+\item
+本题在坐标表象下求解$\overline{U(\vec{r})}$。容易发现波函数$\psi(r,\theta,\varphi)$只与$r$有关，因此有：
+\alg{\overline{U(\vec{r})} &= \iiint \psi^*(r,\theta,\varphi)U(\vec{r})\psi(r,\theta,\varphi)\dd{^3\vr} \\
+&= \int_0^\infty \frac{1}{\pi a_B^3} \ee{-2r/a_B}\qty(-\frac{e^2}{4\pi\epsilon_0}\frac{1}{r}) 4\pi r^2\dd{r}\\
+&=-\frac{1}{\pi a_B^3}\frac{e^2}{4\pi\epsilon_0}\cdot 4\pi \intzif \ee{-2r/a_B}r \dd{r} \\
+&= -\frac{e^2}{4\pi\epsilon_0 a_B}
+}
+
+\item
+(1) 求$\overline{l_x}$, $\overline{l_y}$：记两个波函数的内积为$(\varphi, \psi) = \intif \varphi^*(\vec{r})\psi(\vec{r}) \dd[3]{\vec{r}}$。
+因此$l_x$在$Y_{lm}$态上的平均值为
+\[\overline{l_x} = (Y_{lm},\,\hat{l_x}Y_{lm})\]
+考虑到$\hat{l_x}$可用角动量升降算符$\hat{l_\pm}$表示为$\hat{l_x}=\frac{1}{2}(\hat{l_+}+\hat{l_-})$，且利用升降算符的性质：
+\[\begin{cases}
+\hat{l_+}Y_{lm} = C_{l,m}Y_{l,m+1}\quad&\text{($m\neq l$, 否则右式为0)}\\
+\hat{l_-}Y_{lm} = D_{l,m}Y_{l,m-1}\quad&\text{($m\neq -l$, 否则右式为0)}
+\end{cases}
+\]
+因此由球谐函数的正交性；
+\[(Y_{lm},\,\hat{l_x}Y_{lm}) = \frac{1}{2}C_{l,m}(Y_{lm},\,Y_{l,m+1})+\frac{1}{2} D_{l,m}(Y_{lm},\,Y_{l,m-1})=0\]
+即$\overline{l_x}=0$。同理可得$\overline{l_y}=0$。
+
+【另解】
+
+考虑角动量对易关系：$[\hat{l_y},\hat{l_z}]=\im\hbar \hat{l_x}$，可得
+\[(Y_{lm},\,\hat{l_x}Y_{lm}) =\frac{1}{\im\hbar}\qty((Y_{lm},\,\hat{l_y}\hat{l_z}Y_{lm})-(Y_{lm},\,\hat{l_z}\hat{l_y}Y_{lm}))\]
+考虑到$\hat{l_y}$, $\hat{l_z}$都是厄米算符，厄米算符$\hA$满足$(\varphi,\,\hA\psi)=(\hA\varphi,\,\psi)$，因此上式有
+\alg{(Y_{lm},\,\hat{l_x}Y_{lm}) &=\frac{1}{\im\hbar}\qty((Y_{lm},\,\hat{l_y}\hat{l_z}Y_{lm})-(\hat{l_z}Y_{lm},\,\hat{l_y}Y_{lm})) \\
+&= \frac{1}{\im\hbar}\qty(m\hbar(Y_{lm},\,\hat{l_y}Y_{lm})-m\hbar(Y_{lm},\,\hat{l_y}Y_{lm}))\\
+&=0}
+亦可得证。
+
+（评注：用狄拉克记号书写起来写会更加简洁直观：用$\ket{l,m}$代表波函数为$Y_{lm}$的量子态，则上面的式子相当于：
+\alg{\mel{l,m}{\hat{l_x}}{l,m} &= \frac{1}{\im\hbar}\qty(\mel{l,m}{\hat{l_y}\hat{l_z}}{l,m} - \mel{l,m}{\hat{l_z}\hat{l_y}}{l,m})\\
+&= \frac{1}{\im\hbar}\qty(\bra{l,m}\hat{l_y}\qty(\hat{l_z}\ket{l,m}) - \qty(\bra{l,m}\hat{l_z})\hat{l_y}\ket{l,m})\\
+&= \frac{1}{\im\hbar}\qty(m\hbar\bra{l,m}\hat{l_y}\ket{l,m} - m\hbar\bra{l,m}\hat{l_y}\ket{l,m})\\
+&= 0
+}
+）
+
+(2) 求$\overline{(\Delta l_x)^2}$, $\overline{(\Delta l_y)^2}$。根据上一问，可知$\overline{(\Delta l_x)^2}=\overline{l_x^2}$。
+利用$\hat{l_x}=\frac{1}{2}(\hat{l_+}+\hat{l_-})$代入展开为
+\alg{\hat{l_x}^2 = \frac{1}{4}\qty(\hat{l_+}^2+\hat{l_-}^2+(\hat{l_+}\hat{l_-}+\hat{l_-}\hat{l_+}))
+}
+再用$\hat{l_\pm}=\hat{l_x}\pm \im\hat{l_y}$可得这样一组常用的关系式：（可以背下来）
+{\color{red}\[\begin{cases}
+\hat{l_+}\hat{l_-}=\hat{l_x}^2+\hat{l_y}^2-\im[\hat{l_x},\hat{l_y}] =  \hat{\vec{l}}^2-\hat{l_z}^2+\hbar \hat{l_z}\\
+\hat{l_-}\hat{l_+}=\hat{l_x}^2+\hat{l_y}^2+\im[\hat{l_x},\hat{l_y}] =  \hat{\vec{l}}^2-\hat{l_z}^2-\hbar \hat{l_z}
+\end{cases}\]}
+因此我们有
+\alg{\hat{l_x}^2 = \frac{1}{4}\hat{l_+}^2+\frac{1}{4}\hat{l_-}^2+\frac{1}{2}(\hat{\vec{l}}^2-\hat{l_z}^2)
+}
+我们将它作用于$Y_{lm}$态。很显然，由球谐函数正交性可知
+\[(Y_{lm},\,\hat{l_\pm}^2 Y_{lm}) = 0\]
+故前两项在$Y_{lm}$上的平均为0，因此
+\[(Y_{lm},\,\hat{l_x}^2 Y_{lm}) = (Y_{lm},\,\frac{1}{2}(\hat{\vec{l}^2}-\hat{l_z}^2) Y_{lm}) = \frac{1}{2}(l(l+1)-m^2)\hbar^2\]
+
+对于$\hat{l_y}^2$，亦可写作类似的形式：
+\alg{\hat{l_y}^2 = -\frac{1}{4}\hat{l_+}^2-\frac{1}{4}\hat{l_-}^2+\frac{1}{2}(\hat{\vec{l}}^2-\hat{l_z}^2)
+}
+故同样有
+\[(Y_{lm},\,\hat{l_y}^2 Y_{lm}) = (Y_{lm},\,\frac{1}{2}(\hat{\vec{l}^2}-\hat{l_z}^2) Y_{lm}) = \frac{1}{2}\qty(l(l+1)-m^2)\hbar^2\]
+因$\,\overline{\hat{l_x}}=\overline{\hat{l_y}}=0$，可得
+\alg{\overline{\Delta\hat{l_x}^2}&=\overline{\hat{l_x^2}}-\overline{\hat{l_x}}^2=\frac{1}{2}\qty(l(l+1)-m^2)\hbar^2\\
+\overline{\Delta\hat{l_y}^2}&=\overline{\hat{l_y^2}}-\overline{\hat{l_y}}^2=\frac{1}{2}\qty(l(l+1)-m^2)\hbar^2\\
+}
+
+\item
+波函数是$\hll$的本征态，量子数$l=1$。并且，它是由$(\hll,\hat{l_z})$共同确定的本征态波函数$Y_{10}$, $Y_{11}$的叠加。因此：
+
+(1) $\hat{l_z}$的测量值只能为$0$和$\hbar$；
+
+(2) $\hll$的本征值为$\vec{l}^2 = l(l+1)\hbar^2=2\hbar^2$，其可能测量值只能为$2\hbar^2$；
+
+(3) 求$\hat{l_x}$与$\hat{l_y}$的可能测量值。根据$\hat{l_x}$, $\hat{l_y}$与$\hat{l_z}$的对称性，可知$\hat{l_x}$与$\hat{l_y}$的可能取值只能为0, $\pm\hbar$三种情形。由于$C_1$, $C_2$没有确定，显然每一种可能都会出现。不过在此\textbf{作为练习}，我们希望具体地写出该波函数分别在$\hat{l_x}$与$\hat{l_y}$的本征态波函数上的展开形式。
+
+首先我们需形成这样的物理图像：$l=1$的态函数空间可理解为由三个$\hat{l_z}$的本征态函数（即$Y_{1-1}$, $Y_{10}$, $Y_{11}$）所张成的线性空间，也可以理解为由三个$\hat{l_x}$的本征态函数张成的空间。其差别仅在于换了一组基底。因此，我们的目标是把$Y_{1m}$写作三个$\hat{l_x}$的本征态的叠加形式，找出所有的叠加系数，即可以将波函数$\psi$化作三个$\hat{l_x}$的本征态的线性叠加。为此，我们提供两种做法。
+
+【法一】矩阵方法
+
+我们在$(\hll,\hat{l_z})$表象描述态函数与算符，选$(Y_{11},Y_{10},Y_{1-1})$为基底，则原量子态可写作$(C_1,C_2,0)^T$。$\hat{l_z}$算符可以写作（遵循曾谨言书与樱井书的写法，我们以$m$倒序的方式排列本征态，特做修正）
+\[l_z = \hbar\mqty(\dmat{1,0,-1})\]
+下面求$\hat{l_x}$与$\hat{l_y}$的矩阵形式。{\color{red}一种常规做法是利用升降算符$\hat{l_\pm}=\hat{l_x}+\im\hat{l_y}$的性质来构造$\hat{l_x}$与$\hat{l_y}$}。首先，需要知道升降算符作用于相应本征态波函数$Y_{lm}$后生成新本征态波函数$Y_{l,m\pm1}$的系数（也即2.15中提过但未求解的$C_{l,m}$, $D_{l,m}$）。{\color{red}这里我们提供一个标准做法，请牢记过程与结论。}
+
+显然，求解该系数等价于求解内积$(\hat{l_+}Y_{lm},\;\hat{l_+}Y_{lm})$，利用算符的厄米共轭$\hat{l_+}^\dagger = \hat{l_-}$，及厄米共轭的定义$(\varphi,\,\hA\psi) = (\hA^\dagger\varphi,\,\psi)$，可得
+\[(\hat{l_+}Y_{lm},\;\hat{l_+}Y_{lm}) = (Y_{lm},\;\hat{l_-}\hat{l_+}Y_{lm})\]
+根据2.15题中的推导，$\hat{l_-}\hat{l_+}$实际可用$\hll$, $\hat{l_z}$表出：
+\[\hat{l_-}\hat{l_+}=  \hat{\vec{l}}^2-\hat{l_z}^2-\hbar \hat{l_z}\]
+这说明$Y_{lm}$是$\hat{l_-}\hat{l_+}$的本征波函数。于是上式写作
+\[(\hat{l_+}Y_{lm},\;\hat{l_+}Y_{lm}) = \qty(l(l+1)-m^2-m)\hbar^2\cdot(Y_{lm},\;Y_{lm}) = \qty(l(l+1)-m(m+1))\hbar^2\]
+即可以得到$\hat{l_+}Y_{lm} = \ee{\im \alpha}\sqrt{l(l+1)-m(m+1)}\hbar\;Y_{l,m+1}$。这里的相因子$\ee{\im\alpha}$具有任意性，我们可不失一般性地规定为1。同样地也对$\hat{l_-}$进行分析，可最终得到（{\color{red}请牢记}，嗷）
+{\color{red}\[\begin{cases}
+\hat{l_+} Y_{lm} = \sqrt{l(l+1)-m(m+1)}\hbar\; Y_{l,m+1}\quad & m=-l,\,-l+1,\cdots,\,l-1\\
+\hat{l_-} Y_{lm} = \sqrt{l(l+1)-m(m-1)}\hbar\; Y_{l,m-1}\quad & m=-l+1,\cdots,\,l-1,\,l
+\end{cases}\]}
+由此，很容易将$\hat{l_+}$, $\hat{l_-}$写成矩阵形式，升降算符的特征一目了然：
+\[\hat{l_+} = \hbar\mqty(0&\sqrt{2}&0\\0&0&\sqrt{2}\\0&0&0),\qquad
+\hat{l_-} = \hbar\mqty(0&0&0\\\sqrt{2}&0&0\\0&\sqrt{2}&0)
+\]
+利用$\hat{l_x}=\frac{1}{2}(\hat{l_+}+\hat{l_-})$, $\hat{l_y}=\frac{1}{2\im}(\hat{l_+}-\hat{l_-})$可得
+\[\hat{l_x} = \hbar\mqty(0&\frac{\sqrt{2}}{2}&0\\\frac{\sqrt{2}}{2}&0&\frac{\sqrt{2}}{2}\\
+0&\frac{\sqrt{2}}{2}&0),\qquad
+\hat{l_y} = \hbar\mqty(0&-\frac{\sqrt{2}}{2}\im&0\\\frac{\sqrt{2}}{2}\im&0&-\frac{\sqrt{2}}{2}\im\\
+0&\frac{\sqrt{2}}{2}\im&0)
+\]
+这就是$\hat{l_x}$, $\hat{l_y}$在$l=1$的子空间内，以$\hat{l_z}$的本征态为基底的矩阵表示。我们接下来想找到$\hat{l_x}$的本征态在当前基底下的坐标，它是一个$3\times1$的向量，对本征值为$m_{l_x}$的本征态我们记为$\ket{m_{l_x}}$，显然它满足
+\[\hat{l_x}\ket{m_{l_x}} = 
+\hbar\mqty(0&\frac{\sqrt{2}}{2}&0\\\frac{\sqrt{2}}{2}&0&\frac{\sqrt{2}}{2}\\
+0&\frac{\sqrt{2}}{2}&0)\ket{m_{l_x}} = m_{l_x}\ket{m_{l_x}}\]
+于是问题转化成数学上求解本征向量的问题。求解本征方程$\qty|\hat{l_x}-m_{l_x} I|=0$，可以得到三个本征值为$\{1,0,-1\}$，显然这是意料之中的。代入即可求得本征向量，再进行归一化后可得到（请大家自己计算）：
+\[
+\ket{m_{l_x}=1}=\qty(\frac{1}{2},\frac{\sqrt{2}}{2},\frac{1}{2})^T\!\!\!\!,\;
+\ket{m_{l_x}=0}=\qty(\frac{\sqrt{2}}{2},0,\frac{-\sqrt{2}}{2})^T\!\!\!\!,\;
+\ket{m_{l_x}=-1}=\qty(\frac{1}{2},-\frac{\sqrt{2}}{2},\frac{1}{2})^T.
+\]
+记$\ket{m_{l_x}=m}$的波函数为$\psi^{(x)}_{1m}$（形式上对应$\hat{l_z}$本征波函数：球谐函数$Y_{1m}$），可以写出从老基底$(Y_{1-1},Y_{10},Y_{11})$到新基底$(\psi^{(x)}_{1-1},\psi^{(x)}_{10},\psi^{(x)}_{11})$的变换为：
+\[\mqty(\psi^{(x)}_{11}\\\psi^{(x)}_{10}\\\psi^{(x)}_{1-1}) = U \mqty(Y_{11}\\Y_{10}\\Y_{1-1}) =
+\mqty(\frac{1}{2}&\frac{\sqrt{2}}{2}&\frac{1}{2}\\
+\frac{\sqrt{2}}{2}&0&-\frac{\sqrt{2}}{2}\\
+\frac{1}{2}&-\frac{\sqrt{2}}{2}&\frac{1}{2})
+\mqty(Y_{11}\\Y_{10}\\Y_{1-1})\]
+很显然该变换$U$为幺正（酉）变换（从单位正交基到单位正交基的变换），满足$U^{-1}=U^\dagger$。
+题目所给波函数可经由$U$变换从老基底表示转为新基底下的表示，即
+\alg{\psi=\mqty(Y_{11}&Y_{10}&Y_{1-1})\mqty(C_1\\C_2\\0)
+&=\mqty(\psi^{(x)}_{11}&\psi^{(x)}_{10}&\psi^{(x)}_{1-1})\qty(U^\dagger)^{T}\mqty(C_1\\C_2\\0)\\
+&=\mqty(\psi^{(x)}_{11}&\psi^{(x)}_{10}&\psi^{(x)}_{1-1})\mqty(\frac{1}{2}C_1+\frac{\sqrt{2}}{2}C_2\\-\frac{\sqrt{2}}{2}C_1\\\frac{1}{2}C_1-\frac{\sqrt{2}}{2}C_2)
+}
+最后的等式就是我们想要的表达式。
+
+对$\hat{l_y}$可以如法炮制，我们只给出结果，希望大家自己计算一下加深印象：
+\[\mqty(\psi^{(y)}_{11}\\\psi^{(y)}_{10}\\\psi^{(y)}_{1-1}) = V \mqty(Y_{11}\\Y_{10}\\Y_{1-1}) =
+\mqty(\frac{1}{2}&\frac{\sqrt{2}}{2}\im&-\frac{1}{2}\\
+\frac{\sqrt{2}}{2}&0&\frac{\sqrt{2}}{2}\\
+\frac{1}{2}&-\frac{\sqrt{2}}{2}\im&-\frac{1}{2})
+\mqty(Y_{11}\\Y_{10}\\Y_{1-1})\]
+\alg{\psi=\mqty(Y_{11}&Y_{10}&Y_{1-1})\mqty(C_1\\C_2\\0)
+&=\mqty(\psi^{(y)}_{11}&\psi^{(y)}_{10}&\psi^{(y)}_{1-1})\qty(V^\dagger)^{T}\mqty(C_1\\C_2\\0)\\
+&=\mqty(\psi^{(y)}_{11}&\psi^{(y)}_{10}&\psi^{(y)}_{1-1})\mqty(\frac{1}{2}C_1-\frac{\sqrt{2}}{2}\im  C_2\\\frac{\sqrt{2}}{2}C_1\\\frac{1}{2}C_1+\frac{\sqrt{2}}{2}\im C_2)
+}
+由此，可最终分析得知，一般情形下$\hat{l_x}$, $\hat{l_y}$的测量值可取0, $\pm\hbar$，但存在如下例外：
+
+(i) $C_1=0$时，$\hat{l_x}$, $\hat{l_y}$测量值均不可能为0；
+(ii) $C_1=-\sqrt{2}C_2$时，$\hat{l_x}$测量值不可能为$\hbar$；
+(iii) $C_1=\sqrt{2}C_2$时，$\hat{l_x}$测量值不可能为$-\hbar$；
+(iv) $C_1=\sqrt{2}\im C_2$时，$\hat{l_y}$测量值不可能为$\hbar$；
+(v) $C_1=-\sqrt{2}\im C_2$时，$\hat{l_y}$测量值不可能为$-\hbar$。
+
+【法二】球谐函数猜测法（仅对$l$较小时的有效，但不排除有视力超群的人士）
+
+可通过查阅资料写出$l=1$时$\hat{l_z}$的本征态函数，即球谐函数$Y_{1m}$的具体形式：
+\[Y_{10} = \frac{1}{2}\sqrt{\frac{3}{\pi}}\frac{z}{r},\quad
+Y_{1,\pm1} = \mp\frac{1}{2}\sqrt{\frac{3}{\pi}}\frac{x\pm \im y}{\sqrt{2}r}.\]
+虽然它们是用$x,y,z,r$表出的，但可以将其化简为$\theta,\psi$的函数。由于$x,y,z$坐标的轮换对称性，容易得出，欲求$\hat{l_x}$的本征态函数只需进行$z\rightarrow x$, $x\rightarrow y$, $y\rightarrow z$的轮换即可，应为
+\[\psi^{(x)}_{10} = \frac{1}{2}\sqrt{\frac{3}{\pi}}\frac{x}{r},\quad
+\psi^{(x)}_{1,\pm1} = \mp\frac{1}{2}\sqrt{\frac{3}{\pi}}\frac{y\pm \im z}{\sqrt{2}r}.\]
+我们已知它们可分别作为两组基张成相同的子空间，于是可用$(Y_{11},Y_{10},Y_{1-1})$来表出$(\psi^{(x)}_{11},\psi^{(x)}_{10},\psi^{(x)}_{1-1})$，通过猜测系数不难得到（请自行\sout{计算}猜测一遍）：
+\[\mqty(\psi^{(x)}_{11}\\\psi^{(x)}_{10}\\\psi^{(x)}_{1-1})  =
+\mqty(-\frac{1}{2}\im&-\frac{\sqrt{2}}{2}\im&-\frac{1}{2}\im\\
+-\frac{\sqrt{2}}{2}&0&\frac{\sqrt{2}}{2}\\
+\frac{1}{2}\im&-\frac{\sqrt{2}}{2}\im&\frac{1}{2}\im)
+\mqty(Y_{11}\\Y_{10}\\Y_{1-1})\]
+可见变换矩阵形式与“法一”所得矩阵基本相同，只是每一行额外会差一个相位$\ee{\im\alpha}$。事实上，{\color{red}对任意构成新基底的每个态函数做任意相位的变化：$\psi^{(x)}_{1m}\rightarrow \ee{\im\alpha_m}\psi^{(x)}_{1m}$都不改变物理实质}。容易验证最终结果与“法一”给出的一致。
+
+对$\hat{l_y}$的讨论类似，首先做轮换$z\rightarrow y$, $y\rightarrow x$, $x\rightarrow z$得到$(\psi^{(y)}_{-1},\psi^{(y)}_0,\psi^{(y)}_1)$的表达式，而后可猜测系数：
+\[\mqty(\psi^{(y)}_{11}\\\psi^{(y)}_{10}\\\psi^{(y)}_{1-1})  =
+\mqty(\frac{1}{2}\im&-\frac{\sqrt{2}}{2}&-\frac{1}{2}\im\\
+\frac{\sqrt{2}}{2}\im&0&\frac{\sqrt{2}}{2}\im\\
+\frac{1}{2}\im&\frac{\sqrt{2}}{2}&-\frac{1}{2}\im)
+\mqty(Y_{11}\\Y_{10}\\Y_{1-1})\]
+最终与“法一”给出答案也相同。
+
+\item
+可知系统处于$l=2$, $m=-1$的$(\hll,\hat{l_z})$的共同本征态$Y_{2-1}$上。与本题与2.16类似，我们需要将$Y_{2-1}$展开为$(\hll,\hat{l_x})$在$l=2$的共同本征态组底\{$\psi^{(x)}_{22}$, $\psi^{(x)}_{21}$, $\psi^{(x)}_{20}$, $\psi^{(x)}_{2-1}$, $\psi^{(x)}_{2-2}$\}的线性叠加，与$(\hll,\hat{l_y})$在$l=2$的共同本征态组底\{$\psi^{(y)}_{22}$, $\psi^{(y)}_{21}$, $\psi^{(y)}_{20}$, $\psi^{(y)}_{2-1}$, $\psi^{(y)}_{2-2}$\}的线性叠加。为此，我们仍用矩阵法求解。在$(\hll,\hat{l_z})$上表象上$\hat{l_z}$的矩阵显然有对角化形式：
+\[\hat{l_z}=\hbar\mqty(\dmat{2,1,0,-1,-2})\]
+利用升降算符$\hat{l_\pm}=\hat{l_x}\pm \im\hat{l_y}$及2.15中标红的重要公式，可以求出$\hat{l_x}$, $\hat{l_y}$的矩阵形式
+\[\hat{l_x}=\hbar\mqty(&1&&&\\1&&\frac{\sqrt{6}}{2}&&\\&\frac{\sqrt{6}}{2}&&\frac{\sqrt{6}}{2}&\\&&\frac{\sqrt{6}}{2}&&1\\&&&1&),\qquad
+\hat{l_y}=\hbar\mqty(&-\im&&&\\\im&&-\frac{\sqrt{6}}{2}\im&&\\&\frac{\sqrt{6}}{2}\im&&-\frac{\sqrt{6}}{2}\im&\\&&\frac{\sqrt{6}}{2}\im&&-\im\\&&&\im&).\]
+可先验地知道$\hat{l_x}$, $\hat{l_y}$的本征值都为\{$-2$, $-1$, 0, 1, 2\}，故可以直接求解归一化的本征向量——此即将$\{\psi^{(x)}_{2m}\}$（与$\{\psi^{(y)}_{2m}\}$）用老基底
+$\{Y_{2m}\}$表出的系数。因此可以得到：
+\alg{&\mqty(\psi^{(x)}_{22}\\\psi^{(x)}_{21}\\\psi^{(x)}_{20}\\\psi^{(x)}_{2-1}\\\psi^{(x)}_{2-2})  =
+\frac{1}{4}
+\mqty(1&2&\sqrt{6}&2&1\\
+2&2& 0 & -2 & -2\\
+\sqrt{6} & 0 & -2 & 0 & \sqrt{6}\\
+2& -2& 0 & 2 & -2\\
+1&-2&\sqrt{6}&-2&1
+)
+\mqty(Y_{22}\\Y_{21}\\Y_{20}\\Y_{2-1}\\Y_{2-2}),\\
+&\mqty(\psi^{(y)}_{22}\\\psi^{(y)}_{21}\\\psi^{(y)}_{20}\\\psi^{(y)}_{2-1}\\\psi^{(y)}_{2-2})  =
+\frac{1}{4}
+\mqty(1&2\im&-\sqrt{6}&-2\im&1\\
+2&2\im& 0 & 2\im & -2\\
+\sqrt{6} & 0 & 2 & 0 & \sqrt{6}\\
+2& -2\im& 0 & -2\im & -2\\
+1&-2\im&-\sqrt{6}&2\im&1
+)
+\mqty(Y_{22}\\Y_{21}\\Y_{20}\\Y_{2-1}\\Y_{2-2}).}
+由上述变换可以看出，只有$\psi^{(x)}_{20}$, $\psi^{(y)}_{20}$的线性展开中不含$Y_{2-1}$项。该事实可用内积表述为$\qty(\psi^{(x)}_{20},\,Y_{2-1})=0$, $\qty(\psi^{(y)}_{20},\,Y_{2-1})=0$，
+因此从$Y_{2-1}$态中不可能坍缩到$\psi^{(x)}_{20}$,或$\psi^{(y)}_{20}$态。$l_x$可能测出的值为$-2\hbar$, $-\hbar$, $\hbar$, $2\hbar$；$l_y$可能测出的值也为$-2\hbar$, $-\hbar$, $\hbar$, $2\hbar$。
+
+另一种说明方法是对上述变换矩阵求厄米共轭（等价于求逆，因为是幺正（酉）矩阵），就得到了将老基底$\{Y_{22},Y_{21},Y_{20},Y_{2-1},Y_{2-2}\}$由新基底\{$\psi^{(x)}_{22}$, $\psi^{(x)}_{21}$, $\psi^{(x)}_{20}$, $\psi^{(x)}_{2-1}$, $\psi^{(x)}_{2-2}$\}或\{$\psi^{(y)}_{22}$, $\psi^{(y)}_{21}$, $\psi^{(y)}_{20}$, $\psi^{(y)}_{2-1}$, $\psi^{(y)}_{2-2}$\}表出的式子。可以求得
+\alg{Y_{2-1} &= \frac{1}{4}\qty(2\psi^{(x)}_{22} -2 \psi^{(x)}_{21} +2 \psi^{(x)}_{2-1} -2\psi^{(x)}_{2-2})\\
+Y_{2-1} &= \frac{1}{4}\qty(2\im\psi^{(y)}_{22} -2\im \psi^{(y)}_{21} +2\im \psi^{(y)}_{2-1} -2\im\psi^{(y)}_{2-2})}
+从中能够更明显地看出$Y_{2-1}$中不含$\psi^{(x)}_{20}$或$\psi^{(y)}_{20}$的组分，故不可能测出$l_x=0$或$l_y=0$。
+
+\item
+考虑角动量矢量算符$\hl$（在坐标表象中它写作$\hl=-\im\hbar\vec{r}\times\nabla$），可以得出任意单位向量$\vec{n}$所确定方向的角动量算符为$\hat{l_n}=\hl\cdot \vec{n}$。对于与$z$轴成$\theta$角的方向矢量，可不失一般性地设为$\vec{n}=\vec{k}\cos\theta + \vec{i}\sin\theta$，其中$\vec{i}$, $\vec{k}$是沿$x$与$z$方向的单位向量。可以得到
+\[\hat{l_n} = \hl\cdot\vec{k}\cos\theta + \hl\cdot\vec{i}\sin\theta = \hat{l_z}\cos\theta+\hat{l_x}\sin\theta.\]
+对于$\hat{l_z}$的本征态$\ket{l,m}$，有$l_z=m\hbar$，再根据2.15题结论$\overline{\hat{l_x}}=0$，可得
+\[\overline{\hat{l_n}}= \overline{\hat{l_z}}\cos\theta + \overline{\hat{l_x}}\sin\theta = m\hbar\cos\theta.\]
+
+\item 
+（本题建立在2.20的基础之上，请先参考2.20题的解答过程）
+
+(1) 求$\widehat{\frac{1}{p_x}}$在$x$表象的形式，这里提供猜想构造与体系化计算两种求解办法。
+
+【法一】构造法
+
+已知$\widehat{\frac{1}{p_x}}$算符满足$\widehat{\frac{1}{p_x}}\widehat{p_x}=\hat{I}$，其中$\hat{I}$为希尔伯特空间中的单位算符。现考虑它们在$x$表象中的表示。对任意量子态，$x$表象中波函数为$\psi(x)$，有$\widehat{p_x}\,\psi(x) = -\im\hbar\psi'(x)$。
+\[\widehat{\frac{1}{p_x}}\widehat{p_x}\,\psi(x) = \widehat{\frac{1}{p_x}}(-\im\hbar)\dv{\psi(x)}{x}=\psi(x).\]
+容易构造$\widehat{\frac{1}{p_x}}=\frac{\im}{\hbar}\int_{-\infty}^x \dd{x'}$（作用在自变量$x'$的波函数上），则有
+\[\widehat{\frac{1}{p_x}}\widehat{p_x}\,\psi(x) = \widehat{\frac{1}{p_x}}\qty(-\im\hbar\psi'(x))=\psi(x)-\psi(-\infty).\]
+正常的波函数$\lim_{x\rightarrow \pm\infty}\psi(x)=0$，因此$\widehat{\frac{1}{p_x}}\widehat{p_x}\,\psi(x)=\psi(x)$对“所有正常”波函数成立，满足要求。（若要更严谨地论证，只需找一组满足$\lim_{x\rightarrow \pm\infty}\psi(x)=0$的完备基，如一维谐振子波函数解$\{\varphi_n(x)|n=0,1,2,\cdots\}$，有$\widehat{\frac{1}{p_x}}\widehat{p_x}\,\varphi_n(x)=\varphi_n(x)$对所有$n$成立，即可说明$\widehat{\frac{1}{p_x}}\widehat{p_x}=\hat{I}$.）
+
+{\color{red}然而，如果我们起初构造的是$\widehat{\frac{1}{p_x}}=-\frac{\im}{\hbar}\int_{x}^{+\infty} \dd{x'}$，会发现上式也成立，那么$\hat{\frac{1}{p_x}}$在$x$表象中的表示就不唯一了，这该如何解释？}事实上，上述两种算符作用在任意波函数上$\psi(x)$都可写作
+\[\widehat{\frac{1}{p_x}}\,\psi(x) = \frac{\im}{\hbar} \Psi(x)+C,\quad\text{这里$\Psi(x)=\int_{-\infty}^x \psi(x') \dd{x'}$, $C$为任意复数 }\]
+我们说满足上式要求$\widehat{\frac{1}{p_x}}$都是符合条件的，这是因为多出的波函数$C$（其量子态记为$\ket{C}$）向$\widehat{p_x}$的本征态$\{\ket{p_x}\}$作投影会发现只有$\ket{p_x=0}$态的系数不为0：
+\[\braket{p_x}{C} = \intif \frac{1}{\sqrt{2\pi\hbar}}\ee{-\im p_x x/\hbar}C\dd{x}=\sqrt{2\pi\hbar}C\,\delta(p_x).\]
+即波函数$\ket{C}=C_0\ket{p_x=0}$。而算符$\widehat{\frac{1}{p_x}}$本身在$p_x=0$处是奇异的，也即：将它作用的量子态在$\{\ket{p_x}\}$完备组下分解后，有
+\[\widehat{\frac{1}{p_x}}\ket{\psi}
+= \intif \widehat{\frac{1}{p_x}} \varphi_p(p_x)\ket{p_x}
+= \intif \frac{\varphi_p(p_x)}{p_x}\ket{p_x}.
+\]
+在$p_x=0$处的系数是发散的，故我们等号右侧再加上任意的$C_0\ket{p_x=0}$后上式仍然成立。
+
+【法二】计算法
+
+我们用2.20中的方法成体系地计算出$\widehat{\frac{1}{p_x}}$。对任意量子态$\ket{\psi}$，计算$\widehat{\frac{1}{p_x}}$作用后在$x$表象的波函数，有
+\[\mel{x}{\widehat{\frac{1}{p_x}}}{\psi} = \intif \mel{x}{\widehat{\frac{1}{p_x}}}{x'} \braket{x'}{\psi}\dd{x'} 
+= \intif \mel{x}{\widehat{\frac{1}{p_x}}}{x'}\psi(x')\dd{x'}\]
+$\psi(x)$为$\ket{\psi}$在$x$表象下波函数，$\mel{x}{\widehat{\frac{1}{p_x}}}{x'}$为$\widehat{\frac{1}{p_x}}$在$x$表象下矩阵元。仿照2.20继续求解之：
+\alg{\mel{x}{\widehat{\frac{1}{p_x}}}{x'}
+&= \intif \mel{x}{\widehat{\frac{1}{p_x}}}{p_x}\braket{p_x}{x}\dd{p_x}\\
+&= \intif \frac{1}{p_x}\braket{x}{p_x}\braket{p_x}{x'}\dd{p_x}\\
+&= \frac{1}{2\pi\hbar} \intif \frac{1}{p_x}\ee{\im p(x-x')/\hbar} \dd{p_x}}
+该积分显然在$p_x=0$处发散，这是算符本身性质导致的，和我们在“法一”中遇到的问题本质上一样。处理方法是计算其主值积分，构造复平面上的半圆形围道；由主值区$z\in(-\infty,-\delta]\cup[\delta,\infty)$, 小半圆$C_\delta$: $z=\delta\ee{\im\theta}$，大半圆$C_R$: $z=R\ee{\im\theta}$三部分构成，围道积分形式如下：
+\[\oint_{\text{围道}}\frac{\ee{\im az}}{z} \dd{z}
+= \mathrm{v.p.}\intif \frac{\ee{\im ax}}{x}\dd{x} + \int_{C_\delta}\frac{\ee{\im az}}{z} \dd{z} + \int_{C_R}\frac{\ee{\im az}}{z} \dd{z}.\]
+注意当$p_x'-p_x<0$时大半圆应位于下半平面（$\theta$从0到$-\pi$），当$p_x'-p_x>0$时大半圆应位于上半平面（$\theta$从0到$\pi$），这样才可用约当引理说明$C_R$上积分为0。因此需分两种情况构造围道，最后计算得（请自行补充过程）
+\[\mel{x}{\widehat{\frac{1}{p_x}}}{x'}=\frac{1}{2\pi\hbar}\intif \frac{1}{p_x}\ee{\im p(x-x')/\hbar} \dd{p_x} = 
+\begin{cases}
+-\frac{\pi\im}{2\pi\hbar},\quad &x-x'<0\\
+\frac{\pi\im}{2\pi\hbar},\quad &x-x'>0\\
+\end{cases}\]
+可以发现它是$x-x'$的阶跃函数，本质上是$\delta(x-x')$的积分。果然，这与$\mel{x}{\widehat{p}}{x'}=-\im\hbar\dv{x}\delta(x-x')$在形式上恰好“相反”。代回到最开始的$\mel{x}{\widehat{\frac{1}{p_x}}}{\psi}$，可得
+\[\mel{x}{\widehat{\frac{1}{p_x}}}{\psi}=\frac{\im}{2\hbar}\qty(\int_{\infty}^x\psi(x')\dd{x'}-\int_x^\infty\psi(x')\dd{x'}) = \frac{\im}{\hbar}\Psi(x) - \frac{\im}{2\hbar}\Psi(+\infty)\]
+其中$\Psi(x)=\int_{-\infty}^x \psi(x')\dd{x'}$。最后一项即为“法一”中的常数$C$，可见结果完全相同，而本方法也给出了$\widehat{\frac{1}{p_x}}$的另一合理形式。
+
+(2) 求$\widehat{\frac{1}{x}}$在$p_x$表象的形式。与上面类似，可构造$\widehat{\frac{1}{x}}=-\frac{\im}{\hbar}\int_{\infty}^{p_x}\dd{p_x'}$，作用在自变量$p_x'$的动量表象波函数上。事实上其构造也不唯一，如上问所述，所有满足
+\[\widehat{\frac{1}{x}}\,\varphi_p(p_x) = -\frac{\im}{\hbar} \Phi_p(p_x)+C,\quad\text{这里$\Phi_p(p_x)=\int_{-\infty}^{p_x} \varphi_p(p_x') \dd{p_x'}$, $C$为任意复数 }\]
+的$\widehat{\frac{1}{x}}$算符都是成立的。
+
+\item
+考虑任意态函数$\ket{\psi}$，将$\hr$作用后在动量表象中写出波函数可写作$\mel{\vec{p}}{\hr}{\psi}$，利用$\hp$本征态完备性$\int \ketbra{\vec{p}}\dd[3]{\vec{p}}=1$可展开为
+\[\mel{\vec{p}}{\hr}{\psi} = 
+\int \mel{\vec{p}}{\hr}{\vec{p}'}\braket{\vec{p}'}{\psi}\dd[3]{\vec{p}'} = 
+\int \mel{\vec{p}}{\hr}{\vec{p}'}\psi_p(\vec{p'})\dd[3]{\vec{p}'}
+\]
+其中$\psi_p(\vec{p})$为$\ket{\psi}$在动量表象的波函数，我们需要求出$\hr$在动量表象中的矩阵元$\mel{\vec{p}}{\hr}{\vec{p}'}$。考虑到我们目前已知$\hr\ket{\vec{r}} = \vec{r}\ket{\vec{r}}$，且知道$\hp$本征态在坐标表象中波函数的形式
+\[\braket{\vec{r}}{\vec{p}} = \frac{1}{(2\pi\hbar)^{3/2}}\ee{\im \vec{p}\cdot\vec{r}/\hbar}.\]
+因此可以插入完备基$\ketbra{\vec{r}}$，将矩阵元写作
+\alg{\mel{\vec{p}}{\hr}{\vec{p}'} 
+= \int \mel{\vec{p}}{\hr}{\vec{r}}\braket{\vec{r}}{\vec{p}'}\dd[3]{\vec{r}}
+= \int \vec{r}\braket{\vec{p}}{\vec{r}}\braket{\vec{r}}{\vec{p}'}\dd[3]{\vec{r}}
+= \frac{1}{(2\pi\hbar)^3}\int \vec{r} \ee{\im(\vec{p}'-\vec{p})\cdot\vec{r}/\hbar}\dd[3]{\vec{r}}}
+这里我们采用惯用伎俩，把$\vec{r}$替换掉：
+\[\mel{\vec{p}}{\hr}{\vec{p}'} = \frac{1}{(2\pi\hbar)^3}\int\qty(\im\hbar\nabla_{\vec{p}})
+\ee{\im(\vec{p}'-\vec{p})\cdot\vec{r}/\hbar}\dd[3]{\vec{r}}\]
+故可将与积分变量无关的$\nabla_{\vec{p}}$拿出积分外。此后变成了一个量子力学中常见的积分求解：
+\alg{\int \ee{\im(\vec{p}'-\vec{p})\cdot\vec{r}/\hbar}\dd[3]{\vec{r}}
+&= \qty(\intif \ee{\im(p_x'-p_x)x/\hbar}\dd{x}) \qty(\intif \ee{\im(p_y'-p_y)y/\hbar}\dd{y})\qty(\intif \ee{\im(p_z'-p_z)z/\hbar}\dd{z})\\
+&= \qty(2\pi\hbar\,\delta(p_x'-p_x))\qty(2\pi\hbar\,\delta(p_y'-p_y))\qty(2\pi\hbar\,\delta(p_z'-p_z))\\
+&= (2\pi\hbar)^3\, \delta^3(\vec{p}'-\vec{p})
+}
+（如对为何得出$\delta$函数不熟悉，请参考这里的简要过程：
+\alg{\intif \ee{\im(p_x'-p_x)x/\hbar}\dd{x} 
+&= \frac{1}{\im(p_x'-p_x)/\hbar}\lim_{R\rightarrow \infty}\eval{\ee{\im(p_x'-p_x)x/\hbar}}_{-R}^R \\
+&= \frac{1}{\im} \,2\im \lim_{R\rightarrow \infty} \qty(\frac{\sin\frac{(p_x'-p_x)R}{\hbar}}{\frac{p_x'-p_x}{\hbar}})\\
+&= 2\pi\,\delta\qty(\frac{p_x'-p_x}{\hbar})\\
+&= 2\pi\hbar\,\delta(p_x'-p_x).
+}
+或者用另一种方法求解，引入小量$\im\epsilon$使无穷积分收敛，有：
+\alg{\intif \ee{\im(p_x'-p_x)x/\hbar}\dd{x} 
+&= \lim_{\epsilon\rightarrow0} \qty(\int_{-\infty}^{0} \ee{\im(p_x'-p_x-\im\epsilon)x/\hbar}\dd{x} + \int_0^{\infty} \ee{\im(p_x'-p_x+\im\epsilon)x/\hbar}\dd{x}) \\
+&= \lim_{\epsilon\rightarrow0} \qty(\frac{\hbar}{\im(p_x'-p_x)+\epsilon} - \frac{\hbar}{\im(p_x'-p_x)-\epsilon}) \\
+&= \lim_{\epsilon\rightarrow0}\,\frac{2\hbar\epsilon}{(p_x'-p_x)^2+\epsilon^2}\\
+&= 2 \pi \hbar\, \delta(p_x'-p_x )
+}
+)
+
+于是回到矩阵元，我们有
+\[\mel{\vec{p}}{\hr}{\vec{p}'} = \im\hbar\nabla_{\vec{p}}\,\delta^3(\vec{p}'-\vec{p})\]
+{\color{red}发现$\hr$在动量表象中矩阵元是$\delta$函数的导数}。再回到最开始的式子，即$\hr$作用在任意量子态后在动量表象中的波函数。发现$\nabla_{\vec{p}}$仍与积分变量无关，可拿出积分，则有
+\[\mel{\vec{p}}{\hr}{\psi} = \int \im\hbar\nabla_{\vec{p}}\,\delta^3(\vec{p}'-\vec{p}) \psi_p(\vec{p}')\dd[3]{\vec{p}'} = \im\hbar\nabla_{\vec{p}} \qty( \int \delta^3(\vec{p}'-\vec{p}) \psi_p(\vec{p}')\dd[3]{\vec{p}'}) = \im\hbar\nabla_{\vec{p}}\, \psi_p(\vec{p})\]
+故可以清楚地看出力学量$\hr$在动量表象下的表述为$\im\hbar\nabla_{\vec{p}}$. 证毕.
+
+\item
+（题目有误，需补充条件$A_{n,m}$为实数，并将算符$\hO$分子上的$x^n\hat{p}^m$改为$x^m\hat{p}^n$）
+
+直接对算符$\hO$求厄米共轭，得到
+\[\hO^\dagger = \sum_{n,m=0}^\infty A^*_{n,m}\frac{(\hat{p}^{\dagger})^n (x^{\dagger})^m +(x^{\dagger})^m (\hat{p}^{\dagger})^n}{2} 
+= \sum_{n,m=0}^\infty A_{n,m}\frac{\hat{p}^{n}x^{m} +x^{m}\hat{p}^{n}}{2} = \hO.\]
+说明$\hO$为厄米算符，证毕。
+
+{\color{red}注：本题只需用“抽象的”算符即可证明，不需要借用量子态来辅助计算，更不必使用$x$, $\hat{p}$在具体表象（如空间表象）的形式。}
+
+\item
+(1) 对线性空间$V$中两个任意向量$\psi$, $\varphi$，任意实数$a$, $b$，线性算符$\hO$满足
+\[\hO(a\psi+b\varphi) = a\hO\psi + b\hO\varphi.\]
+对两个线性算符$\hOA$, $\hOB$满足上式，定义算符的加法为
+\[(\hOA+\hOB)\psi = \hOA\psi + \hOB\psi,\qquad \forall \psi \in V.\]
+则有
+\[(\hOA+\hOB)(a\psi+b\varphi) = \hOA(a\psi+b\varphi) + \hOB(a\psi+b\varphi) = a(\hOA+\hOB)\psi + b(\hOA+\hOB)\varphi\]
+因此$(\hOA+\hOB)$也是线性算符。
+
+(2) 厄米算符的定义需建立在内积的基础上。对给定线性空间$V$，及建立在$V$上的内积$(V,\,V)\rightarrow \mathbb{C}$，对任意的$\psi$, $\varphi\in V$，厄米算符$\hO$满足
+\[(\psi,\,\hO\varphi) = (\hO\psi,\,\varphi)\]
+对两个厄米算符$\hOA$, $\hOB$满足上式，有
+\alg{\qty(\psi,\,(\hOA+\hOB)\varphi) &= \qty(\psi,\,\hOA\varphi + \hOB\varphi) \\
+&= \qty(\psi,\,\hOA\varphi) + \qty(\psi,\,\hOB\varphi)\quad\text{(注意这里用到了内积的性质)}\\
+&= \qty(\hOA\psi,\,\varphi) + \qty(\hOB\psi,\,\varphi)\\
+&= \qty((\hOA\psi +\hOB\psi) ,\,\varphi) = \qty((\hOA+\hOB)\psi,\,\varphi)}
+因此$(\hOA+\hOB)$也是厄米算符。
+
+(3)考虑两个厄米算符$\hOA$, $\hOB$的积$\hOA\hOB$，有
+\[\qty(\psi,\,\hOA\hOB\varphi) = \qty(\hOA\psi,\,\hOB\varphi)
+= \qty(\hOB\hOA\psi,\,\varphi)\]
+即$(\hOA\hOB)^\dagger = \hOB\hOA$，可见$\hOA\hOB$不一定是厄米算符。
+
+\item
+(i) 对算符$\hOA$, $\hOB$, $\hOC$：
+\alg{\qty[\hOA,\,\hOB\pm\hOC] &= \hOA\qty(\hOB\pm\hOC) - \qty(\hOB\pm\hOC)\hOA \\
+&= \qty(\hOA\hOB-\hOB\hOA) \pm \qty(\hOA\hOC-\hOC\hOA) = \qty[\hOA,\,\hOB]\pm\qty[\hOA,\,\hOC]}
+
+(ii)
+\alg{\qty[\hOA,\,\hOB\hOC] &= \hOA\hOB\hOC - \hOB\hOC\hOA \\
+&= \hOA\hOB\hOC - \hOB\hOA\hOC + \hOB\hOA\hOC - \hOB\hOC\hOA\\
+&= \qty[\hOA,\,\hOB]\hOC - \hOB\qty[\hOA,\,\hOC]}
+
+(iii)
+\alg{\qty[\hOA\hOB,\,\hOC] &= \hOA\hOB\hOC - \hOC\hOA\hOB \\
+&= \hOA\hOB\hOC - \hOA\hOC\hOB + \hOA\hOC\hOB - \hOC\hOA\hOB\\
+&= \hOA\qty[\hOB,\,\hOC] - \qty[\hOA,\,\hOC]\hOB}
+
+\item
+对线性空间$V$，任意$\psi\in V$，可逆算符$\hO$的逆定义为
+\[\hO^{-1}\qty(\hO\psi) = \psi\]
+因此对两个可逆算符$\hOA$, $\hOB$，由于
+\[\qty(\hOB^{-1}\hOA^{-1})\qty(\hOA\hOB)\psi = \hOB^{-1}\hOA^{-1}\hOA\hOB\psi = \psi\quad\text{(第一步用到算符结合律)}\]
+因此有$\qty(\hOA\hOB)^{-1} = \qty(\hOB^{-1}\hOA^{-1})$。
+
+\item
+由于算符$f(\hat{x})$仅为$\hat{x}$的函数，显然$\qty[\hat{x},\,f(\hat{x})]=0$。参考2.26题解答，可计算出
+\[\qty[\hat{p},\,f(\hat{x})] = -\im\hbar f'(\hat{x})\]
+这在(4), (5)小问会用到。因此：
+
+(1) 
+$\qty[\hat{x},\,\hat{p}^2f(\hat{x})] = \qty[\hat{x},\,\hat{p}^2]f(\hat{x}) + \hat{p}^2\qty[\hat{x},\,f(\hat{x})] = \qty(\hat{p}\qty[\hat{x},\,\hat{p}]+\qty[\hat{x},\,\hat{p}]\hat{p})\,f(\hat{x}) +0 = 2\im\hbar\hat{p}f(\hat{x})$
+
+(2)
+$\qty[\hat{x},\,\hat{p}f(\hat{x})\hat{p}] 
+= \qty[\hat{x},\,\hat{p}]f(\hat{x})\hat{p} + \hat{p}\qty[\hat{x},\,f(\hat{x})]\hat{p} + \hat{p}f(\hat{x})\qty[\hat{x},\,\hat{p}] 
+= \im\hbar\,\qty(f(\hat{x})\hat{p}+\hat{p}f(\hat{x}))$
+
+(3)
+$\qty[\hat{x},\,f(\hat{x})\hat{p}^2] = f(\hat{x})\qty[\hat{x},\,\hat{p}^2] + \qty[\hat{x},\,f(\hat{x})]\hat{p}^2 = f(\hat{x})\,\qty(\hat{p}\qty[\hat{x},\,\hat{p}] +\qty[\hat{x},\,\hat{p}]\hat{p})+0 = 2\im\hbar\hat{p}f(\hat{x})$
+
+(4)
+$\qty[\hat{p},\,\hat{p}^2f(\hat{x})] = \qty[\hat{p},\,\hat{p}^2]f(\hat{x}) + \hat{p}^2\qty[\hat{p},\,f(\hat{x})] = 0 + \hat{p}^2(-\im\hbar f'(\hat{x})) = -\im\hbar\hat{p}^2f'(\hat{x})$
+
+(5)
+$\qty[\hat{p},\,\hat{p}f(\hat{x})\hat{p}] 
+= \qty[\hat{p},\,\hat{p}]f(\hat{x})\hat{p} + \hat{p}\qty[\hat{p},\,f(\hat{x})]\hat{p} + \hat{p}f(\hat{x})\qty[\hat{p},\,\hat{p}] = -\im\hbar\hat{p}f'(\hat{x})\hat{p}$
+
+(6)
+$\qty[\hat{p},\,f(\hat{x})\hat{p}^2] = f(\hat{x})\qty[\hat{p},\,\hat{p}^2] + \qty[\hat{p},\,f(\hat{x})]\hat{p}^2 = -\im\hbar f'(\hat{x})\hat{p}^2$
+
+%26
+\item
+将这个对易子作用到波函数$\,\psi(\vec{r})\,$上，有
+\alg{[\hp,\,F(\hr)]\psi(\vec{r})&=\hp\big(F(\hr)\psi(\vec{r})\big)-F(\hr)\hp\psi(\vec{r})\\
+&=-\im\hbar\nabla_r\big(F(\hr)\psi(\vec{r})\big)+\im\hbar F(\hr)\nabla_r\psi(\vec{r})\\
+&=-\im\hbar\big(\nabla_rF(\hr)\big)\psi(\vec{r})-\im\hbar F(\hr)\nabla_r\psi(\vec{r})+\im\hbar F(\hr)\nabla_r\psi(\vec{r})\\
+&=-\im\hbar\big(\nabla_rF(\hr)\big)\psi(\vec{r})}
+故
+\alg{[\hp,\,F(\hr)]=-\im\hbar\big(\nabla_rF(\hr)\big)}
+
+%27
+\item
+与上一题类似，将对易子作用到波函数$\,\varphi(\vec{p})\,$上：
+\alg{[\hr,\,F(\hp)]\varphi(\vec{p})&=\hr\big(F(\hp)\varphi(\vec{p})\big)-F(\hp)\hr\varphi(\vec{p})\\
+&=\im\hbar\nabla_p\big(F(\hp)\varphi(\vec{p})\big)-\im\hbar F(\hp)\nabla_p\varphi(\vec{p})\\
+&=\im\hbar\big(\nabla_pF(\hp)\big)\varphi(\vec{p})+\im\hbar F(\hp)\nabla_p\varphi(\vec{p})-\im\hbar F(\hp)\nabla_p\varphi(\vec{p})\\
+&=\im\hbar\big(\nabla_pF(\hp)\big)\varphi(\vec{p})}
+故
+\alg{[\hr,\,F(\hp)]=\im\hbar\big(\nabla_pF(\hp)\big)}
+具体地，
+\alg{[\hr,\,\hpp]=\im\hbar(\nabla_p\hpp)=2\im\hbar\hp}
+
+\textbf{另解：}以上解法依赖于表象的选择，当$\,\hF\,$中既包含$\,\hr\,$又包含$\,\hp\,$时不容易解释清楚。下面提供另一种解法。\\
+首先证明一个引理：对于任意正整数$\,n$，都有
+\alg{[r_i,\,p_i^n]=\im\hbar np_i^{n-1}=\im\hbar\big(\partial_{p_i}(p_i^n)\big)}
+用数学归纳法：假设对于$\,\forall k\leq n-1\,$该式均成立，那么对于$\,k=n\,$有
+\alg{[r_i,\,p_i^n]=[r_i,\,p_i^{n-1}]p_i+p_i^{n-1}[r_i,\,p_i]=\im\hbar(n-1)p_i^{n-2}p_i+\im\hbar p_i^{n-1}=\im\hbar np_i^{n-1}=\im\hbar\big(\partial_{p_i}(p_i^n)\big)}
+又对于$\,n=1\,$显然成立，故引理得证。\\
+物理量$\,\hF(\hp)\,$总可以用幂级数定义：
+\alg{\hF(\hp)=\sum_{\alpha,\,\beta,\,\gamma}C_{\alpha\beta\gamma}p_x^\alpha p_y^\beta p_z^\gamma}
+接下来求以下对易子
+\alg{[x,\,\hF(\hp)]=\sum_{\alpha,\,\beta,\,\gamma}C_{\alpha\beta\gamma}[x,\,p_x^\alpha] p_y^\beta p_z^\gamma=\im\hbar\sum_{\alpha,\,\beta,\,\gamma}C_{\alpha\beta\gamma}\alpha p_x^{(\alpha-1)} p_y^\beta p_z^\gamma=\im\hbar\big(\partial_{p_x}\hF(\hp)\big)}
+类似地，有
+\alg{[y,\,\hF(\hp)]&=\im\hbar\big(\partial_{p_y}\hF(\hp)\big)\\
+[z,\,\hF(\hp)]&=\im\hbar\big(\partial_{p_z}\hF(\hp)\big)}
+于是易得
+\alg{[\hr,\,\hF(\hp)]=\im\hbar\big(\nabla_p\hF(\hp)\big)}
+2.26题也可以用此方法证明。
+
+\textbf{推广：}对于$\,\hr\,$和$\,\hp\,$的函数$\,F(\hr,\,\hp)$，仍有
+\alg{[\hp,\,F(\hr,\,\hp)]&=-\im\hbar\big(\nabla_rF(\hr,\,\hp)\big)\\
+[\hr,\,F(\hr,\,\hp)]&=\im\hbar\big(\nabla_pF(\hr,\,\hp)\big)}
+同学们可利用上面提供的方法自行证明。
+
+%28
+\item
+由\,2.26\,的结论，令$\,F(\vr)=\frac{\vr}{r}$，可知
+\alg{\vp\cdot\frac{\vr}{r}-\frac{\vr}{r}\cdot\vp=-\im\hbar\Big(\nabla_r\cdot\frac{\vr}{r}\Big)=-\im\hbar\frac{2}{r}}
+故$\,\hat{p}_r\,$的具体表达式为
+\alg{\hat{p}_r=\frac{1}{2}\Big(\frac{\vr}{r}\cdot\vp-\im\hbar\frac{2}{r}+\frac{\vr}{r}\cdot\vp\Big)=\frac{\vr}{r}\cdot\vp-\im\hbar\frac{1}{r}}
+其与$\,\hat{r}\,$的对易子也很容易求得，因第二项是$\,\vr\,$的函数，显然与$\,\hat{r}\,$对易，故只需要考虑第一项的对易子：
+\alg{[\hat{p}_r,\,\hat{r}]=\Big[\frac{\vr}{r}\cdot\vp,\,\hat{r}\Big]=\frac{\vr}{r}\cdot\Big[\vp,\,\hat{r}\Big]}
+根据\,2.26\,的结论，进而有
+\alg{[\hat{p}_r,\,\hat{r}]=\frac{\vr}{r}\cdot(-\im\hbar\nabla_r\hat{r})=-\im\hbar\frac{\vr}{r}\cdot\frac{\vr}{r}=-\im\hbar}
+
+%29
+\item
+采用爱因斯坦约定，角动量可以写为
+\eqa{\hat{\vec{l}}=\vec{e}_i\varepsilon_{ijk}r_jp_k}
+注意，由于坐标和动量的各分量有对易关系$\,[r_i,\,r_j]=0$、$[p_i,\,p_j]=0$，有$\,\eijk r_ir_j=0$、$\eijk p_ip_j=0$。
+\begin{enumerate}[label=(\arabic*)]
+\item
+本解答认为所求式为$\,\Big[\hl,\,\frac{1}{r}\Big]$。先看左式，写出所求式的$\,i\,$分量，为
+\alg{\Big[\hl,\,\frac{1}{r}\Big]_i=\Big[\eijk r_jp_k,\,\frac{1}{r}\Big]
+=\eijk r_j\Big[p_k,\,\frac{1}{r}\Big]}
+根据\,2.26\,的结果，有
+\alg{\Big[\hl,\,\frac{1}{r}\Big]_i&=-\im\hbar\eijk r_j\prv{}{r_k}\Brak{\frac{1}{r}}\\
+&=\im\hbar\eijk\frac{r_jr_k}{r^3}\\
+&=0}
+也可写为矢量形式
+\alg{\Big[\hl,\,\frac{1}{r}\Big]=\im\hbar\frac{\hat{\vec{r}}\times\hat{\vec{r}}}{r^3}=0}\\
+类似地，右式的分量式为
+\eqa{[\hl,\,\hat{\vec{p}^2}]_i=[\eijk r_jp_k,\,\hat{\vec{p}^2}]=\eijk[r_j,\,\hat{\vec{p}^2}]p_k}
+根据\,2.27\,的结果，有
+\alg{[\hl,\,\hat{\vec{p}^2}]_i&=\eijk\im\hbar\prv{\hat{\vec{p}^2}}{p_j}p_k\\
+&=2\im\hbar\eijk p_jp_k\\
+&=0}
+写成矢量形式为
+\alg{[\hl,\,\hat{\vec{p}^2}]=2\im\hbar\,\hat{\vec{p}}\times\hat{\vec{p}}=0}
+\textbf{推广：}设$\,U(r)\,$是$\,r=\abs{\vec{r}}\,$的函数，则$\,[\hl,\,U(r)]=0$。同学们可自行证明。这一性质体现了角动量算符的对称性。
+\item
+先证$\,\hr\cdot\hl=0$，$\hl\cdot\hp=0$。将其展开为求和形式，即得
+\alg{&\hr\cdot\hl=r_il_i=\eijk r_ir_jp_k=0\\
+&\hl\cdot\hp=l_ip_i=\eijk r_jp_kp_i=0}
+再证$\,\hl\cdot\hr=0$，$\hp\cdot\hl=0$：
+\alg{&\hl\cdot\hr=l_ir_i=\eijk r_jp_kr_i\\
+&\hp\cdot\hl=p_il_i=\eijk p_ir_jp_k}
+注意到$\,i,\,j,\,k\,$有两者相等时$\,\eijk=0$，只有当三者两两不同时$\,\eijk\,$才非零。根据$\,j\neq k\,$时$\,[r_j,\,p_k]=0$，上面求和式中可以认为$\,r_j\,$和$\,p_k\,$对易而不改变求和结果，故有
+\alg{\hl\cdot\hr&=\eijk p_kr_jr_i=0\\
+\hp\cdot\hl&=\eijk p_ip_kr_j=0}
+\item
+首先我们可以计算出坐标和动量的分量与角动量分量的对易子：
+\alg{&[r_i,\,l_j]=[r_i,\,\exb{jkm} r_kp_m]
+=\exb{jkm}r_k[r_i,\,p_m]
+=\im\hbar\exb{jkm}\dxb{im}r_k
+=\im\hbar\exb{ijk}r_k\\
+&[p_i,\,l_j]=[p_i,\,\exb{jkm} r_kp_m]
+=\exb{jkm}[p_i,\,r_k]p_m
+=-\im\hbar\exb{jkm}\dxb{ik}p_m
+=\im\hbar\exb{ijk}p_k}
+注意本题求证的式子中虽为加号，但是交换第二项的叉乘顺序其系数要反号，容易看出其中隐含一个对易子的形式。先证左式，写出分量式为
+\alg{(\hr\times\hl+\hl\times\hr)_i=\eijk(r_jl_k+l_jr_k)
+=\eijk(r_jl_k-l_kr_j)
+=\eijk[r_j,\,l_k]}
+再利用上面的结论，以及$\,\exb{ijk}\exb{jkm}=\dxb{kk}\dxb{im}-\dxb{km}\dxb{ik}=2\dxb{im}$（注意$\,\sum_k\dxb{kk}=3$），可得
+\alg{(\hr\times\hl+\hl\times\hr)_i=\im\hbar\eijk\exb{jkm}r_m=2\im\hbar\dxb{im}r_m=2\im\hbar r_i}
+写成矢量式即为
+\eqa{\hr\times\hl+\hl\times\hr=2\im\hbar\hr}
+类似地，有
+\alg{(\hp\times\hl+\hl\times\hp)_i=\eijk[p_j,\,l_k]=\im\hbar\eijk\exb{jkm}p_m=2\im\hbar p_i}
+矢量形式为
+\alg{\hp\times\hl+\hl\times\hp=2\im\hbar\hp}
+\item
+利用\,(3)\,中的结论$\,[F_i,\,l_j]=\im\hbar\exb{ijk}F_k$（其中$\,F\,$代表$\,r\,$或$\,p$）可得
+\alg{[\hat{x},\,\hll]&=l_i[\hat{x},\,l_i]+[\hat{x},\,l_i]l_i\\
+&=\im\hbar\exb{xij}(l_ir_j+r_jl_i)\\
+&=\im\hbar\exb{xij}(l_ir_j-r_il_j)\\
+&=\im\hbar(\hl\times\hr-\hr\times\hl)_x}
+类似地，有
+\alg{[\hat{p_x},\,\hll]&=l_i[\hat{p_x},\,l_i]+[\hat{p_x},\,l_i]l_i\\
+&=\im\hbar\exb{xij}(l_ip_j+p_jl_i)\\
+&=\im\hbar\exb{xij}(l_ip_j-p_il_j)\\
+&=\im\hbar(\hl\times\hp-\hp\times\hl)_x}
+\end{enumerate}
+
+%30
+\item
+（补充条件（其实不用补充，题目里的$\,\hat{Q}\,$换为$\,\hF\,$即可）：$\hat{F}$是$\hr$和$\hp$的函数）
+
+采用爱因斯坦约定，$\,[\hat{\vec{l}},\,\hat{F}]\,$的$\,i\,$分量可写为
+\eqa{[\hl,\,\hF]_i=\varepsilon_{ijk}(r_jp_k\hF-\hF r_jp_k)}
+根据\,2.26\,及\,2.27\,的推广结果，有
+\alg{[r_j,\,\hF]&=\im\hbar(\partial_{p_j}\hF)\\
+[p_k,\,\hF]&=-\im\hbar(\partial_{r_k}\hF)}
+所以
+\alg{r_jp_k\hF&=r_j\hF p_k-\im\hbar r_j(\partial_{r_k}\hF)\\
+\hF r_jp_k&=r_j\hF p_k-\im\hbar(\partial_{p_j}\hF)p_k}
+进而可以得到最终结果：
+\alg{[\hl,\,\hF]_i&=\varepsilon_{ijk}\big(r_j\hF p_k-\im\hbar r_j(\partial_{r_k}\hF)-r_j\hF p_k+\im\hbar(\partial_{p_j}\hF)p_k\big)\\
+&=-\im\hbar\eijk\big(r_j(\partial_{r_k}\hF)-(\partial_{p_j}\hF)p_k\big)}
+写成矢量形式即为
+\eqa{[\hl,\,\hF]=-\im\hbar\big(\hat{\vec{r}}\times(\nabla_{r}\hF)-(\nabla_p\hF)\times\hat{\vec{p}}\big)}
+另解：
+\alg{[\hl,\,\hat{F}]&=[\hr\times\hp,\,\hat{F}]\\
+&=\hr\times[\hp,\,\hat{F}]+[\hr,\,\hat{F}]\times\hp\\
+&=-\im\hbar\big(\hat{\vec{r}}\times(\nabla_{r}\hF)-(\nabla_p\hF)\times\hat{\vec{p}}\big)}
+{\color{red}\textbf{注意}：本题中$\,\hF\,$是$\,\hat{\vec{r}}\,$和$\,\hat{\vec{p}}\,$的函数，$\nabla_{r}\hF\,$是一个整体，意为$\,\hF\,$对$\,\hat{\vec{r}}\,$求导得到的算符，后面接波函数时表示$\,(\nabla_{r}\hF)\,$这个算符作用在波函数上，而不是先将$\,\hF\,$作用在波函数上、再作用$\,\nabla_{r}$}。$\nabla_{p}\hF\,$同理。
+
+%31
+\item
+利用\,2.23\,中证明的恒等式：
+\alg{[\hOA,\,\hOB\hOC]=[\hOA,\,\hOB]\hOC+\hOB[\hOA,\,\hOC]}
+容易得到：
+\begin{enumerate}[label=(\arabic*)]
+\item
+\eqa{[\hA,\,\hB^2]=[\hA,\,\hB]\hB+\hB[\hA,\,\hB]=\hI\hB+\hB\hI=2\hB}
+\item
+\eqa{[\hA,\,\hB^3]=[\hA,\,\hB]\hB^2+\hB[\hA,\,\hB^2]=\hI\hB^2+2\hB\hB=3\hB^2}
+\item
+$n=1\,$时，等式显然成立。假设对于任意正整数$\,k<n\,$都有$\,[\hA,\,\hB^k]=k\hB^{k-1}$，则
+\alg{[\hA,\,\hB^n]=[\hA,\,\hB]\hB^{n-1}+\hB[\hA,\,\hB^{n-1}]=\hI\hB^{n-1}+(n-1)\hB\hB^{n-2}=n\hB^{n-1}}
+而$\,n=1\,$的情况下等式成立，故对于任意正整数$\,n\,$等式成立。
+\end{enumerate}
+
+%32, 33
+\item 和\,2.33\,将放在一起给出证明。
+\item
+\begin{enumerate}[label=(\arabic*)]
+\item
+【法一】（一个启发性的证明）可设
+\eqa{F(\alpha)=\ee{-\alpha\hA}\hB\ee{\alpha\hA}}
+我们可以计算其各阶导数，例如：
+\alg{F'(\alpha)&=\ee{-\alpha\hA}(-\hA)\hB\ee{\alpha\hA}+\ee{-\alpha\hA}\hB\hA\ee{\alpha\hA}=-\ee{-\alpha\hA}[\hA,\,\hB]\ee{\alpha\hA}\\
+F''(\alpha)&=-\ee{-\alpha\hA}(-\hA)[\hA,\,\hB]\ee{\alpha\hA}-\ee{-\alpha\hA}[\hA,\,\hB]\hA\ee{\alpha\hA}=\ee{-\alpha\hA}[\hA,\,[\hA,\,\hB]]\ee{\alpha\hA}}
+下面用数学归纳法证明：如果记$\,\mathcal{L}_{\hX}(\hY)\equiv[\hX,\,\hY]$，则有
+\eqa{F^{(n)}(\alpha)=(-1)^n\ee{-\alpha\hA}(\mathcal{L}_{\hA})^n(\hB)\ee{\alpha\hA}}
+其中$\,n\,$是非负整数。假设对于$\,\forall n\leq k-1\,$上式都成立，则对于$\,n=k$，有
+\alg{F^{(k)}(\alpha)&=(-1)^{k-1}\ee{-\alpha\hA}(-\hA)(\mathcal{L}_{\hA})^{k-1}(\hB)\ee{\alpha\hA}+(-1)^{k-1}\ee{-\alpha\hA}(\mathcal{L}_{\hA})^{k-1}(\hB)\hA\ee{\alpha\hA}\\
+&=(-1)^{k-1}\ee{-\alpha\hA}[\hA,\,(\mathcal{L}_{\hA})^{k-1}(\hB)]\ee{\alpha\hA}\\
+&=(-1)^k\ee{-\alpha\hA}(\mathcal{L}_{\hA})^{k}(\hB)\ee{\alpha\hA}}
+故对于$\,\forall n\geq0\,$该结论都成立。代入$\,\alpha=0\,$可得
+\eqa{F^{(n)}(0)=(-1)^n(\mathcal{L}_{\hA})^n(\hB)}
+将$\,F(\alpha)\,$在$\,\alpha=0\,$处展开，得
+\alg{F(\alpha)=\sum_{n=0}^\infty\frac{\alpha^n}{n!}F^{(n)}(0)=\sum_{n=0}^\infty\frac{\alpha^n}{n!}(-1)^n(\mathcal{L}_{\hA})^n(\hB)}
+取其前三项即得\,2.33\,中的式子。
+
+【法二】（一个枯燥的证明）%tql
+记号同上，则右式第$n$项写作$(-1)^n(\mathcal{L}_{\hA})^n(\hB)$。先展开前几项找规律，猜出其一般形式可用组合数表示：
+\[(\mathcal{L}_{\hA})^n(\hB) = \sum_{k=0}^{n}(-1)^k \,\mathrm{C}_n^k\, \hA^{n-k}\hB\hA^{k}.\]
+用数学归纳法容易证明（请同学们自己补充）。因此，等式左边$\ee{-\alpha\hA}\hB\ee{\alpha\hA}$可将e指数泰勒展开为
+\[\ee{-\alpha\hA}\hB\ee{\alpha\hA} = \qty(\sum_{k=0}^{\infty}\frac{(-\alpha)^k}{k!}\hA^k)\hB \qty(\sum_{\ell=0}^{\infty}\frac{\alpha^\ell}{\ell!}\hA^\ell).\]
+其$\alpha^n$项可为
+\alg{\alpha^n \sum_{k=0}^{n}\frac{(-1)^{n-k}\hA^{n-k}}{(n-k)!}\hB\frac{A^k}{k!}
+&= \alpha^n\frac{(-1)^n}{n!}  \sum_{k=0}^{n}(-1)^k \,\mathrm{C}_n^k\, \hA^{n-k}\hB\hA^{k} \\
+&= \alpha^n\frac{(-1)^n}{n!}(\mathcal{L}_{\hA})^n(\hB)}
+与右边第$n$项相等。等式证毕。
+\item
+若$\,[\hA,\,\hB]=\hC$，$[\hC,\,\hA]=[\hC,\,\hB]=0$，上面展开式只有前两项非零，若取$\,\alpha=-t$，有：
+\eqa{\ee{\hA t}\hB\ee{-\hA t}=\hB+t\hC}
+定义函数
+\eqa{G(t)=\ee{\hA t}\ee{\hB t}}
+求导，得
+\alg{G'(t)&=\hA\ee{\hA t}\ee{\hB t}+\ee{\hA t}\hB\ee{\hB t}\\
+&=\hA G(t)+\ee{\hA t}\hB\ee{-\hA t}G(t)\\
+&=(\hA+\hB+t\hC)G(t)}
+这一微分方程的解为
+\eqa{G(t)=\exp(\hA t+\hB t+\frac{1}{2}\hC t^2)G(0)}
+令$\,t=1$，得
+\eqa{\ee{\hA}\ee{\hB}=\ee{\hA+\hB+\frac{1}{2}\hC}=\ee{\hA+\hB}\ee{\frac{1}{2}\hC}}
+上式中第二个等号成立是因为$\,\hC\,$与$\,\hA\,$和$\,\hB\,$都对易。两边右乘$\,\ee{-\hC/2}\,$即得\,2.32\,中公式的前一半：
+\eqa{\ee{\hA+\hB}=\ee{\hA}\ee{\hB}\ee{-\frac{1}{2}\hC}}
+将$\,\hA\,$与$\,\hB\,$互换位置，此式左边不变，右边$\,\hC\,$要变为$\,-\hC$，即得到
+\eqa{\ee{\hA+\hB}=\ee{\hB}\ee{\hA}\ee{\frac{1}{2}\hC}}
+\end{enumerate}
+
+%34
+\item
+首先，$\lambda\,$为小量，这说明$\,(\hA-\lambda\hB)\,$是可逆的。设$\,(\hA-\lambda\hB)\inv=\hX$。直观上，做如下变形
+\alg{\hX=((\hI-\lambda\hB\hA\inv)\hA)\inv=\hA\inv(\hI-\lambda\hB\hA\inv)\inv}
+再将$\,(\hI-\lambda\hB\hA^{-1})^{-1}\,$展开即得所求：
+\alg{\hX=\hA\inv\sum_{n=0}^\infty\lambda^n(\hB\hA\inv)^n}
+下面我们证明上述$\,\hX\,$确实等于$\,(\hA-\lambda\hB)\inv$。令$\,\hX\,$左乘$\,(\hA-\lambda\hB)$，得
+\alg{\hX(\hA-\lambda\hB)&=\hA\inv\sum_{n=0}^\infty\lambda^n(\hB\hA\inv)^n(\hA-\lambda\hB)\\
+&=\sum_{n=0}^\infty\lambda^n(\hA\inv\hB)^n-\lambda^{n+1}(\hA\inv\hB)^{n+1}\\
+&=\sum_{n=0}^\infty\lambda^n(\hA\inv\hB)^n-\sum_{n=1}^\infty\lambda^n(\hA\inv\hB)^n\\
+&=\hI}
+可见$\,\hX=(\hA-\lambda\hB)\inv$。类似地，也可证$\,\hX\,$右乘$\,(\hA-\lambda\hB)\,$得到恒等算符$\,\hI$，此处从略。\\
+{\color{red}\textbf{注意}：本题中$\,\hA\,$与$\,\hB\,$不对易，不可简单地将形如$\,\hA\inv\hB\hA\inv\,$的项写成$\,\hB\hA^{-2}$；更不能写出$\,\frac{\hB}{\hA^{2}}\,$这种未定义的式子。}
+
+%35
+\item
+\begin{enumerate}[label=(\arabic*)]
+    \item 先证必要性。假设两个厄密矩阵$\,A\,$和$\,B\,$可以利用同一个幺正变换进行对角化，即$\,U\hcj AU\,$和$\,U\hcj BU\,$在矩阵形式下均为对角矩阵。显然，对角矩阵之间互相对易，即$\,[U\hcj AU,\,U\hcj BU]=0$。又因为$\,[U\hcj AU,\,U\hcj BU]=U\hcj[A,\,B]U$，所以$\,U\hcj[A,\,B]U=0$，即$\,[A,\,B]=U0U\hcj=0$
+    \item 再证充分性。假设两个厄密矩阵$\,A\,$和$\,B\,$对易，不妨设$\,A\,$有本征值$\,A_1,\,A_2,\,\cdots$，本征值$\,A_i\,$对应的不变子空间记为$\,\varOmega_i$。任取$\,\vec{a}\in\varOmega_i$，考察$\,B\vec{a}\,$这一向量，由于$\,[A,\,B]=0$，有
+    \alg{AB\vec{a}=BA\vec{a}=A_iB\vec{a}}
+    这说明$\,B\vec{a}\in\varOmega_i$，也就是说$\,\varOmega_i\,$也是$\,B\,$的一个不变子空间，故$\,B\,$在每个$\,\varOmega_i\,$上都可以对角化，从而对于每个$\,\varOmega_i\,$我们可以找到一组完备的正交基$\,\vec{b}_{i1},\,\vec{b}_{i2},\,\cdots$，它们是$\,B\,$的本征向量（自然也是$\,A\,$的本征向量）。因此，由$\,\vec{b}_{ij}\,$这组本征向量确定的幺正变换$\,U\,$使得$\,U\hcj AU\,$和$\,U\hcj BU\,$均为对角矩阵。
+\end{enumerate}
+{\color{red}\textbf{注意}：需要讨论有简并的情况。}
+
+%36
+\item
+因$\,\hA^2=\hB^2=\hI$，且$\,\hA\,$与$\,\hB\,$均为厄密算符，本征值是实数，故它们的本征值为\,1\,或$\,-1$。
+\begin{enumerate}[label=(\arabic*)]
+\item 
+不妨设$\,\hA\,$表象下
+\alg{A=\MAa}
+根据$\,\{\hA,\,\hB\}=0$，可知
+\alg{A_{ii}B_{ij}+B_{ij}A_{jj}=0}
+也就是说，当$\,A_{ii}=A_{jj}\,$时$\,B_{ij}=0$。所以$\,\hA\,$表象中$\,B\,$的矩阵形式为
+\alg{B=\MBa}
+又由于$\,\hB\,$的本征值只有$\,\pm1$，$B\,$一定是可逆的，故$\,\rank(B)=m+n$；另一方面，$\rank(B)=2\rank(C)\leq2\min(m,\,n)$，这说明必有$\,m=n$。最后，根据
+\alg{B^2=\MBB=I_{2n\times2n}}
+可知$\,C\inv=C\hcj$，即$\,C\,$是酉矩阵。\\
+综上，$\hA\,$表象中$\,\hA\,$和$\,\hB\,$的矩阵形式分别为
+\eqa{A_A=\MA\quad B_A=\MB}
+其中$\,C\,$为酉矩阵。由于条件不足，不能确定$\,C\,$的具体形式。
+\setcounter{enumii}{2}
+\item
+算符$\,\hB\,$的本征值情况自然与$\,\hA\,$相同，是$\,n\,$重简并的$\,1\,$和$\,n\,$重简并的$\,-1$，这与表象无关。\\
+在$\,\hA\,$表象中，$\hB\,$的本征值为$\,\pm1\,$的第$\,j\,$个归一化的本征向量分别为
+\alg{\vec{b}_{j+}&=\isB(0,\,\cdots,\,1_j,\,\cdots,\,0,\,\,C\hcj_{1j},\,\cdots,\,C\hcj_{nj})^T=\isB\MBp\\
+\vec{b}_{j-}&=\isB(C_{1j},\,\cdots,\,C_{nj},\,0,\,\cdots,\,-1_{j+n},\,\cdots,\,0)^T=\isB\MBm}
+其中$\,1_j\,$表示仅第$\,j\,$个分量为\,1，$X_j\,$表示矩阵$\,X\,$的第$\,j\,$列。下面证明它们是本征向量：
+\alg{B\vec{b}_{j+}&=\isB\begin{pmatrix} CC\hcj_j\\C\hcj I_j\end{pmatrix}=\isB\begin{pmatrix} I_j\\C\hcj_j\end{pmatrix}=\vec{b}_{j+}\\
+B\vec{b}_{j-}&=\isB\begin{pmatrix} -CI_j\\C\hcj C_j\end{pmatrix}=\isB\begin{pmatrix} -C_j\\I_j\end{pmatrix}=-\vec{b}_{j-}}
+\setcounter{enumii}{4}
+\item
+幺正变换矩阵$\,S\,$的各列即为$\,\hA\,$表象中$\,B\,$的各本征向量，将上述本征向量合起来就构成了变换矩阵$\,S$，即$\,S=(\vec{b}_{1+},\,\cdots,\,\vec{b}_{n+},\,\vec{b}_{1-},\,\cdots,\,\vec{b}_{n-})$，或写成：
+\alg{S=\MS}
+其中$\,P=\frac{1}{\sqrt{2}}I_{n\times n}$，$Q=-\frac{1}{\sqrt{2}}I_{n\times n}$，$R=\frac{1}{\sqrt{2}}C$。\\
+\textbf{补充：}本小问到此已经搞定，不过我们可以再验证一下。首先，$S\,$是酉矩阵，因为 
+\alg{S\hcj S=S^2=\MSS=I}
+下面我们验证$\,S\hcj B_AS=\mathrm{diag}(I_{n\times n},\,-I_{n\times n})$：
+\alg{S\hcj B_AS&=\MSBS\\&=B_B}
+\setcounter{enumii}{1}
+\item
+$\hB\,$表象中，$\hA\,$的矩阵形式为
+\alg{A_B=S\hcj A_AS=\MSAS}
+$\hB\,$的矩阵形式为
+\alg{B_B=\begin{pmatrix} I&0\\0&-I\end{pmatrix}}
+\setcounter{enumii}{3}
+\item
+由于$\,\hB\,$表象下$\,\hA\,$的矩阵形式$\,A_B\,$与$\,B_A\,$相同，故可以直接写出其本征向量：
+\alg{\vec{a}_{j+}&=\isB(0,\,\cdots,\,1_j,\,\cdots,\,0,\,\,C\hcj_{1j},\,\cdots,\,C\hcj_{nj})^T=\isB\MBp\\
+\vec{a}_{j-}&=\isB(C_{1j},\,\cdots,\,C_{nj},\,0,\,\cdots,\,-1_{j+n},\,\cdots,\,0)^T=\isB\MBm}
+\end{enumerate}
+\textbf{补充：}具体到无简并的二维空间的情况，$C\,$退化为一个复数$\,c=\ee{\im\delta}$，同学们自行做出对应。
+
+%37
+\item
+依题意，两个算符的具体表达式为$\,\hA=\frac{1}{2}(\hU+\hU\hcj)$，$\hB=\frac{1}{2\im}(\hU-\hU\hcj)$。
+\begin{enumerate}[label=(\arabic*)]
+    \item 对$\,\hA\,$和$\,\hB\,$取厄密共轭得
+    \alg{\hA\hcj&=\frac{1}{2}(\hU\hcj+\hU)=\hA\\
+    \hB\hcj&=-\frac{\hU\hcj-\hU}{2\im}=\frac{\hU-\hU\hcj}{2\im}=\hB}
+    故$\,\hA\,$和$\,\hB\,$均为厄密算符。\\
+    计算$\,\hA^2+\hB^2\,$可得
+    \alg{\hA^2+\hB^2&=\frac{1}{4}(\hU^2+\hU\hU\hcj+\hU\hcj\hU+\hU^{\dagger2})-\frac{1}{4}(\hU^2-\hU\hU\hcj-\hU\hcj\hU+\hU^{\dagger2})\\
+    &=\frac{1}{2}(\hU\hU\hcj+\hU\hcj\hU)\\
+    &=\hI}
+    其中利用了幺正算符$\,\hU\,$的性质$\,\hU\hU\hcj=\hU\hcj\hU=\hI$。
+    \item 
+    首先，因为$\,\hU\,$是幺正算符，所以$\,[\hU,\,\hU\hcj]=\hU\hU\hcj-\hU\hcj\hU=\hI-\hI=0$，同理$\,[\hU\hcj,\,\hU]=0$。故
+    \alg{[\hA,\,\hB]=\frac{1}{4\im}([\hU\hcj,\,\hU]-[\hU,\,\hU\hcj])=0}
+    从而$\,\hA\,$和$\,\hB\,$可同时对角化，有共同的本征函数。
+    \setcounter{enumii}{4}
+    \item
+    定义算符$\,\hH\,$如下：
+    \alg{\hH=\sum_{A',\,B'}H'\ket{A',\,B'}\bAB}
+    其中$\,\kAB\,$为(3)中定义的本征函数，实数$\,H'\,$由$\,\cos H'=A',\,\sin H'=B'\,$定义。首先要证明$\,\hH\,$的厄密性：
+    \alg{\hH\hcj=\sum_{\ApBp}H'^*\kAB\bAB=\sum_{\ApBp}H'\kAB\bAB=\hH}
+    故$\,\hH\,$是厄密算符。进而可以写出算符$\,\ee{\im\hH}\,$的表达式：
+    \alg{\ee{\im\hH}&=\sum_{\ApBp}\ee{\im H'}\kAB\bAB\\
+    &=\sum_{\ApBp}U'\kAB\bAB}
+    而这正是算符$\,\hU\,$按本征函数$\,\kAB\,$展开的表达式。故$\,\hU=\ee{\im\hH}$。
+\end{enumerate}
+
+\end{enumerate}

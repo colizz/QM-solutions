@@ -1,0 +1,234 @@
+\begin{center}
+    \Large{\textbf{第三、四、五章小测解答}}
+\end{center}
+
+角动量算符的对易关系：$\zkh{q_i,\,l_j}=\ihb\eijk q_k\quad\zkh{\vec{q}^2,\,l_i}=0$，其中$q$可以代表$r$，$p$或$l$。
+
+常用恒等式：
+
+$\ee{\alpha\hA}\hB\ee{-\alpha\hA}=\sum_{n=0}^\infty\frac{\alpha^n}{n!}(\mathcal{L}_{\hA})^n(\hB)$，其中$\mathcal{L}_{\hA}(\hX)=\zkh{\hA,\,\hX}$
+
+$\ee{\hA+\hB}=\ee{\hA}\ee{\hB}\ee{-\frac{1}{2}\hC}$，其中$\hC=\zkh{\hA,\,\hB}$，且$\hC$与$\hA$和$\hB$均对易
+
+\begin{enumerate}[label=\textbf{3.\Alph*}, listparindent=\parindent]
+
+\setcounter{enumi}{5}
+\item \emph{题目：定义产生消灭算符
+\alg{\ha^\dagger = \sqrt{\frac{1}{2}}\qty(\sqrt{\frac{m\omega}{\hbar}}\hat{x} - \im\sqrt{\frac{1}{m\hbar\omega}}\hat{p})\\
+\ha = \sqrt{\frac{1}{2}}\qty(\sqrt{\frac{m\omega}{\hbar}}\hat{x}+ \im\sqrt{\frac{1}{m\hbar\omega}}\hat{p})}
+证明：
+\begin{enumerate}
+    \item 相干态
+    \alg{\ket{c}=\ee{c\ha\hcj-c\cj \ha}\ket{0}}是$\ha$的归一化的本征态，本征值为$c$，其中$c$是$\ha^\dagger\ha$的本征态，本征值为$0$.
+    \item 相干态$\ket{c}$中坐标和动量满足
+    \alg{\sqrt{\jkh{\Delta x^2}\jkh{\Delta p^2}}=\frac{\hbar}{2}.}
+\end{enumerate}
+}
+\noindent【解答】
+
+\begin{enumerate}
+    \item 由于$\zkh{\ha,\,\ha\hcj}=1$为常数，可利用恒等式$\ee{\hA+\hB}=\ee{\hA}\ee{\hB}\ee{-\frac{1}{2}\hC}$得到
+    \alg{\ee{c\ha\hcj-c\cj \ha}=\ee{-\frac{\abs{c}^2}{2}}\ee{ca\hcj}\ee{-c\cj a}}
+    又由于$\ha\ket{0}=0$，可知$\ee{-c\cj \ha}\ket{0}=\ket{0}$，因此
+    \alg{\ket{c}&=\ee{c\ha\hcj-c\cj \ha}\\
+    &=\ee{-\frac{\abs{c}^2}{2}}\ee{c\ha\hcj}\ket{0}\\
+    &=\ee{-\frac{\abs{c}^2}{2}}\sum_{n=0}^\infty\frac{c^n}{\sqrt{n!}}\ket{n}}
+    容易看出$\ket{c}$是归一化的，因为
+    \alg{\bra{c}\ket{c}=\ee{-\abs{c}^2}\sum_{n=0}^\infty\frac{\abs{c^2}^n}{n!}=\ee{-\abs{c^2}}\ee{\abs{c^2}}=1}
+    这里用到了$\ket{n}$这组基正交归一的性质。下面证明$\ket{c}$是$\ha$的本征态：
+    \alg{\ha\ket{c}&=\ee{-\frac{\abs{c}^2}{2}}\sum_{n=0}^\infty\frac{c^{n}}{\sqrt{n!}}\sqrt{n}\ket{n-1}\\
+    &=\ee{-\frac{\abs{c}^2}{2}}\sum_{n=1}^\infty c\frac{c^{n-1}}{\sqrt{(n-1)!}}\ket{n-1}\\
+    &=c\ket{c}}
+    可见$\ket{c}$是$\ha$的本征态，本征值是$c$.
+    
+    \item 首先将$x$和$p$用产生消灭算符表示：
+    \alg{&x=\sqrt{\frac{\hbar}{2m\omega}}\xkh{\ha\hcj+\ha}\\
+    &p=\im\sqrt{\frac{\hbar m\omega}{2}}\xkh{\ha\hcj-\ha}\\
+    &x^2=\frac{\hbar}{2m\omega}\xkh{2\ha\hcj \ha+1+\ha\hcjsq+\ha^2}\\
+    &p^2=\frac{1}{2}\hbar m\omega\xkh{2\ha\hcj \ha+1-\ha\hcjsq-a^2}}
+    由于$\ket{c}$是$a$的本征态，容易得到$\jkh{\ha}=c$，$\jkh{\ha^2}=c^2$，以及
+    \alg{&\jkh{\ha\hcj}=\xkh{\ket{c},\,\ha\hcj\ket{c}}=\xkh{\ha\ket{c},\,\ket{c}}=c\cj\xkh{\ket{c},\,\ket{c}}=c\cj\\
+    &\jkh{\ha\hcj \ha}=\xkh{\ket{c},\,\ha\hcj \ha\ket{c}}=\xkh{\ha\ket{c},\,\ha\ket{c}}=c\cj c\xkh{\ket{c},\,\ket{c}}=\abs{c}^2\\
+    &\jkh{\ha\hcjsq}={c\cj}^2}
+    其中$\xkh{\ket{i},\,\ket{j}}$表示内积。容易看出
+    \alg{&\jkh{x}=\sqrt{\frac{\hbar}{2m\omega}}\xkh{c+c\cj}\\
+    &\jkh{p}=\im\sqrt{\frac{\hbar m\omega}{2}}\xkh{c\cj-c}\\
+    &\jkh{x^2}=\frac{\hbar}{2m\omega}\xkh{2\abs{c}^2+1+c^2+{c\cj}^2}\\
+    &\jkh{p^2}=\frac{\hbar m\omega}{2}\xkh{2\abs{c}^2+1-c^2-{c\cj}^2}}
+    由此可得
+    \alg{\Delta x\Delta p=\sqrt{\xkh{\jkh{x^2}-\jkh{x}^2}\xkh{\jkh{p^2}-\jkh{p}^2}}=\frac{\hbar}{2}}
+    
+\end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}[label=\textbf{4.\Alph*}, listparindent=\parindent]
+\setcounter{enumi}{2}
+\item \emph{题目：曾书3.26题，将势能函数改为
+\alg{V(x)=\begin{cases}\gamma\,\delta(x), &x< a\\\infty,&x\geq a\end{cases}}
+其中$a>0$.}
+
+\noindent【解法一】
+
+采用常规方法计算。首先分析出波函数$\psi(a)=0$, 可分三个区间设波函数为
+\alg{\psi(x)=\begin{cases}
+\ee{\im k x} + r\ee{-\im k x},& x<0\\
+A\sin k(x-a), &0\leq x< a\\
+0,& x\geq a
+\end{cases}}
+待定参量为$r$和$A$。
+根据$x=0,\,a$的边条件有
+\alg{&1+r = -A\sin ka\\
+&\im k(1-r) + \frac{2m\gamma}{\hbar^2}(1+r)=k A\cos ka}
+按照之前单$\delta$势无量纲化的方案，设$\theta = \frac{k\hbar^2}{m\gamma}$，
+则第二个等式化简为
+\[\im\theta (1-r)+2(1+r)=\theta A\cos ka\]
+与第一个等式相除，可以化简得到
+\[r = \frac{-\im\theta-2-\theta\cot ka}{-\im\theta+2+\theta\cot ka}
+= \frac{-\theta \cos ka + (-2-\im\theta)\sin ka}{\theta \cos ka + (2-\im\theta)\sin ka}
+= \frac{\ee{-\im ka}+(-1-\im\theta)\,\ee{\im ka}}{(-1+\im\theta)\,\ee{-\im ka}+\ee{\im ka}}\]
+上面三种结果是等价表述。显然地，反射系数为$R=\abs{r}^2=1$，透射系数$T=1-R=0$。不存在完全透射即$T=1$的情况。
+
+\noindent{\color{red}\textbf{说明：}}本题的透射系数是针对整个体系而言的，即应考虑$x>a$区域内透射波的情况（显然无透射波存在）。部分同学考虑了经过$\delta(x)$的“透射系数”，但这样其实没有较好的定义，因为$x<0$和$0<x<a$区间内都含有沿两个方向传递的波的成分。抱歉本题没说清楚，大家只要正确计算出上面的$r$就算对了。
+
+\noindent【解法二】
+
+可参考4.26、4.27作业解答里给出的特殊解法。考虑入射波$\ee{\im kx}$，让该波在$\delta$势和墙壁之间无限次反射、透射，可得全空间波的分布，请同学们自己画示意图。需要注意，这里的墙壁会给波带来“半波损失”的效果，即入射墙壁的波前振幅为$\tilde{A}$的话，反射波前振幅应为$-\tilde{A}$，这样才能使二者在墙壁处叠加为0.
+
+由4.26知单$\delta$势对波的反射与透射有$r_0=\frac{1}{\im\theta-1}$, $s_0=\frac{\im\theta}{\im\theta-1}$，将所有$x<0$区域沿$-x$方向传播的波的波前叠加，得到
+\alg{r &= r_0-s_0^2\ee{2\im ka}\qty(1-r_0\ee{2\im ka}+(-r_0\ee{2\im ka})^2+\cdots)\\
+&= r_0 -\frac{s_0^2\ee{2\im ka}}{1+r_0\ee{2\im ka}} = \frac{r_0-(1+2r_0)\,\ee{2\im ka}}{1+r_0\ee{2\im ka}}
+= \frac{\ee{-\im ka}-(1+\im\theta)\,\ee{\im ka}}{(-1+\im\theta)\,\ee{-\im ka}+\ee{\im ka}}}
+与法一结果相同。
+\end{enumerate}
+
+\begin{enumerate}[label=\textbf{5.\Alph*}, listparindent=\parindent]
+\setcounter{enumi}{1}
+\item \emph{作业5.20题加分小问：计算能量满足$E<E_0$ ($E_0$很大)系统的束缚态能级数量，再从相空间的角度计算束缚态能级数量，二者比较结果。（注：$z$向动能不计入总能量）}
+
+\noindent【解答】
+
+本题讨论二维谐振子模型，能级为
+\[E = (n_1+n_2+1)\hbar \omega\]
+对$E<E_0$的能级，要求$n_1+n_2+1<\frac{E_0}{\hbar \omega}$，其中$\frac{E_0}{\hbar \omega}\gg 1$。$n_1,\,n_2$取非负整数，这样的能级数量约为$N = \frac{1}{2}\qty(\frac{E_0}{\hbar\omega})^2$个。
+
+再从相空间考虑，设二维谐振子
+\[H = \frac{p_x^2}{2m}+\frac{p_y^2}{2m}+\frac{1}{2}m\omega^2 x^2+\frac{1}{2}m\omega^2 y^2,\]
+相空间为$(x,\,y,\,p_x,\,p_y)$构成的四维空间。相空间上满足$H<E_0$的点所构成区域（即经典可达到的点构成的区域）应为四维椭球。需要知道半径为$R$的四维球的超体积公式为
+\[V = \frac{1}{2}\pi^2R^4,\quad(\text{$N$维球超体积公式为$V = \frac{\pi^\frac{N}{2}}{\Gamma(1+\frac{N}{2})}R^N$})\]
+则四维椭球的超体积为
+\[V = \frac{1}{2}\pi^2\cdot\sqrt{2mE_0}\cdot \sqrt{2mE_0} \cdot \sqrt{\frac{2E}{m\omega^2}} \cdot \sqrt{\frac{2E}{m\omega^2}} = \frac{2\pi^2E_0^2}{\omega^2}\]
+若量子态个数为$n$，应当有$V \approx nh$，因此
+\[n = \frac{2\pi^2E_0^2}{h^2\omega^2 } = \frac{E_0^2}{2\hbar^2\omega^2}\]
+与直接求解能级个数的结果相同。
+
+\item \emph{题目：
+一电子质量$\mu$，电荷$-e$被限制在$R_1<\rho<R_2$, $0<z<L$的中空圆柱壳内运动。
+\begin{enumerate}
+    \item 求本征波函数（无需归一化）。证明本征能量为
+    \[E_{\ell mn}=\frac{\hbar^2}{2\mu}\qty[k_{mn}^2+\qty(\frac{\ell\pi}{L})^2]\]
+    其中$k_{mn}$为以下方程的第$n$个根：
+    \[\J_m(k_{mn}R_2)\N_m(k_{mn}R_1)=\J_m(k_{mn}R_1)\N_m(k_{mn}R_2).\]
+    \item
+    在$0<\rho<R_1$区域内施加$\vec{B}=B\hat{\vec{z}}$磁场，求电子本征能量.
+    \item
+    证明施加如上磁场后，基态能量不变的条件为
+    \[\pi R_1^2 B = \frac{2\pi N \hbar c}{e},\quad (N=0,\,\pm1,\,\pm2,\cdots).\]
+\end{enumerate}}
+
+\noindent【解答】
+
+\noindent (a)
+
+容易看出本题选极坐标最为方便。在$R_1<\rho<R_2$区间，薛定谔方程为
+\[\hH\psi = -\frac{\hbar^2}{2\mu}\qty[\frac{1}{\rho}\pdv{\rho}\qty(\rho\pdv{\rho})+\frac{1}{\rho^2}\pdv[2]{\varphi}+\pdv[2]{z}]\psi = E\psi\]
+分离变量$\psi(\rho,\,\varphi,\,z)=R(\rho)\Phi(\varphi)Z(z)$，代入可得
+\[\frac{1}{R(\rho)}\,\frac{1}{\rho}\dv{\rho}\qty(\rho\dv{R(\rho)}{\rho})+\frac{1}{\rho^2}\frac{\Psi''(\varphi)}{\Psi(\varphi)}+\frac{Z''(z)}{Z(z)} + \frac{2\mu E}{\hbar^2}=0\]
+波函数边界条件为$Z(0)=0$, $Z(L)=0$, $R(R_1)=0$, $R(R_2)=0$。首先$Z''/Z$一定为常数，为满足$z$的边条件，只能有
+\[Z(z)=A\sin(\frac{\ell \pi}{L}z),\quad \ell=1,2,\cdots\]
+于是
+\[\frac{\rho^2}{R}\qty(\frac{1}{\rho} R'(\rho)+R''(\rho))+\rho^2\qty(\frac{2\mu E}{\hbar^2}-\frac{\ell^2 \pi^2}{L^2})+\frac{\Psi''(\varphi)}{\Psi(\varphi)}=0\]
+因此$\Psi''/\Psi$一定为常数，为满足周期性边界条件$\Psi(\varphi)=\Psi(\varphi+2\pi)$，只能有
+\[\Psi(\varphi)=B\,\ee{\im m\varphi},\quad m=0,\pm1,\pm2,\cdots\]
+于是
+\begin{equation}\label{eq:1}
+    \frac{1}{\rho}R'+R''+\qty(\frac{2\mu E}{\hbar^2}-\frac{\ell^2\pi^2}{L^2}-\frac{m^2}{\rho^2})R=0
+\end{equation}
+设$k^2 = \frac{2\mu E}{\hbar^2}-\frac{\ell^2\pi^2}{L^2}>0$ (即要求$z$方向动能不能太高), 令$\xi =k\rho$，方程可化为标准Bessel方程。解得径向波函数
+\[R(\rho)=C\J_m(k\rho) + D\N_m(k\rho)\]
+需满足边条件
+\alg{\begin{cases} C\J_m(kR_1) + D\N_m(kR_1)=0\\
+C\J_m(kR_2) + D\N_m(kR_2)=0\end{cases}}
+有非零的$C,\,D$解说明两式线性相关，即要求
+\[\J_m(kR_1)\N_m(kR_2)-\J_m(kR_2)\N_m(kR_1)=0\]
+满足上式的第$n$个$k$记为$k_{mn}$。将三项拼起来可得本征波函数
+\alg{\psi(\rho,\,\varphi,\,z)=C'\,\Big[\N_m(k_{mn} R_1)\J_m(k_{mn} \rho)-\J_m(k_{mn} R_1)&\N_m(k_{mn} \rho)\Big]\,\ee{\im m\varphi}\sin(\frac{\ell \pi}{L}z),\\
+& \text{$\ell,\,m,\,k_{mn}$取值见上}}
+本征能量由$k$表达式解得
+\[E_{\ell mn} =\frac{\hbar^2}{2\mu}\qty[k_{mn}^2+\qty(\frac{\ell\pi}{L})^2]\]
+
+\noindent (b)
+
+在$\rho<R_1$区域内施加$z$方向恒磁场，根据$\curl{\vec{A}}=\vec{B}=B\,\vec{e}_z$。在$R_1<\rho<R_2$区域内，由对称性和环路定理$A(\rho)\,2\pi\rho = \pi R_1^2 B$解得
+\[\vec{A}(\rho)=\frac{R_1^2B}{2\rho}\,\vec{e}_\varphi,\quad R_1<\rho<R_2\]
+（或者，数学上看可以类比电流产生磁场$\curl{\vec{B}}=\mu_0 \vec{j}$，$\vec{A}$场的分布数学上等同与柱形$z$方向的电流在周围形成的磁场$\vec{B}$的分布。）
+
+由于有$\div{\vec{A}}=0$，于是$\hp\vec{\cdot A}-\vec{A\cdot }\hp=-\im\hbar\div{\vec{A}}=0$，故新的薛定谔方程为（注意电荷量$q=-e$）
+\[\hat{H}=\frac{1}{2\mu}\qty(\hp+\frac{e\vec{A}(\vec{r})}{c})^2 = \frac{1}{2\mu}\qty(\hp^2+\frac{e^2\vec{A}^2(\vec{r})}{c^2}+2\vec{A}(\vec{r})\vec{\cdot}\hp)\]
+第三项为
+\alg{\vec{A}(\vec{r})\vec{\cdot}\hp &= (-\im\hbar)\frac{eR_1^2 B}{2c}\qty(-\frac{y}{\rho^2},\,\frac{x}{\rho^2},\,0)\vec{\cdot}\qty(\pdv{x},\,\pdv{y},\,\pdv{z})\\
+&= (-\im\hbar)\frac{eR_1^2 B}{2c}\qty(-\frac{y}{\rho^2}\pdv{x} + \frac{x}{\rho^2}\pdv{y})\\
+&= (-\im\hbar)\frac{eR_1^2 B}{2c}\frac{1}{\rho^2}\pdv{\varphi}}
+因此将第二、第三项代入并将第一项在柱坐标下展开后，发现可以对$\pdv*{\varphi}$配方:
+\alg{\hH\psi &= -\frac{\hbar^2}{2\mu}\qty[\frac{1}{\rho}\pdv{\rho}\qty(\rho\pdv{\rho})+\frac{1}{\rho^2}\pdv[2]{\varphi}+\pdv[2]{z} - \frac{e^2R_1^4B^2}{4\hbar^2 c^2}\frac{1}{\rho^2}+
+\frac{\im eR_1^2 B}{\hbar c}\frac{1}{\rho^2}\pdv{\varphi}]\psi \\
+&= -\frac{\hbar^2}{2\mu}\qty[\frac{1}{\rho}\pdv{\rho}\qty(\rho\pdv{\rho})+\frac{1}{\rho^2}\qty(\pdv{\varphi}+\frac{\im eR_1^2 B}{2\hbar c} )^2+\pdv[2]{z}]\psi}
+令$\beta = \frac{eR_1^2 B}{2\hbar c}$进行无量纲化。仿照第(a)问分离变量的步骤，$Z(z)$函数没有变，$\Phi(\varphi)$的方程变为
+\[\frac{1}{\Phi}\qty(\pdv{\varphi}+\im \beta)^2\Phi = \text{常数}=\lambda\]
+即二阶常系数微分方程
+\[\Phi'' + 2\im\beta\Phi'-(\beta^2+\lambda) \Phi =0\]
+考虑试探解$\Phi = \ee{\im m \varphi}$，要求周期边界条件需要$m=0,\pm1,\pm2,\cdots$。代入有
+\[-m^2-2\beta m-\beta^2-\lambda = -(m+\beta)^2-\lambda = 0\]
+因此$\lambda = -(m+\beta)^2$。这与(a)问的$\lambda=-m^2$有所不同，会影响径向波函数的参数，但角向波函数仍为$\Phi(\varphi)=B\ee{\im m \varphi}$。
+
+令$m' = m+\beta$，继续求解径向波函数时，只需用$m'$替换第(a)中的$m$即可，因此径向波函数通解是
+\[R(\rho) = C\J_{m'}(k\rho)+D\N_{m'}(k\rho)\]
+最终波函数解为
+\alg{\psi(\rho,\,\varphi,\,z)=C'\,\Big[\N_{m'}(k_{m'n} R_1)\J_{m'}(k_{m'n} \rho)-\J_{m'}(k_{m'n} R_1)&\N_{m'}(k_{m'n} \rho)\Big]\,\ee{\im m\varphi}\sin(\frac{\ell \pi}{L}z)}
+$k_{m'n}$是以下方程的第$n$个根
+\[\J_{m'}(kR_1)\N_{m'}(kR_2)-\J_{m'}(kR_2)\N_{m'}(kR_1)=0\]
+可见只有径向波函数发生了变化。相应的本征能量是
+\[E_{\ell mn} =\frac{\hbar^2}{2\mu}\qty[k_{m'n}^2+\qty(\frac{\ell\pi}{L})^2],\quad \text{$m' = m+\frac{eR_1^2 B}{2\hbar c},\quad k_{m'n}$由上式定义.}\]
+
+\noindent(c) 
+
+一个直观的感觉是：当$\beta$为整数时，上述$m'$依旧是整数，只相当于对原整数格点做了平移后再次重合，能级未发生变化，基态能级当然也不会变化。但我们需要严谨说明之。
+
+我们作如下论证：$\abs{m}$越小，超越方程的解$k_{mn}$越小。我们可以巧用HF定理证明之。根据(\ref{eq:1})式的特征构造一个径向波函数的哈密顿量：
+\[\hat{H}_0=\begin{dcases}-\frac{\hbar^2}{2\mu}\qty(\dv[2]{\rho}+\frac{1}{\rho}\dv{\rho}-\frac{\ell^2\pi^2}{L^2}-\frac{m^2}{\rho^2}),&R_1<\rho<R_2\\
+\infty,&\text{其他}
+\end{dcases}\]
+则(a)问中径向波函数解$R_{mn}(\rho)$满足$\hat{H}_0R_{mn}(\rho)=E_{\ell mn}R_{mn}(\rho)$。
+请注意这一哈密顿量并不具有实际意义，它甚至不是厄米的。但这不影响HF定理的使用。将$m$升级为连续参量，考虑$\hat{H}_0$，$E_{\ell mn}$, $R_{mn}(\rho)$随$m$的变化，则有
+\[\mel**{R_{mn}}{\pdv{\hat{H}_0}{m}}{R_{mn}}=\mel**{R_{mn}}{\frac{\hbar^2}{2\mu}\frac{2m}{\rho^2}}{R_{mn}} = \pdv{E_{\ell mn}}{m}\]
+可以看出当$m>0$时，上式为正，$E_{\ell mn}$随$m$的增加而增加；$m<0$时，上式为负，从而$E_{\ell mn}$随$m$的减小也增加。于是$m=0$时能量是最小的。对应到(a)问的情形，基态应该对应$\ell=1$，$m=0$，$n=1$ (第1个解)。对(b)问，应有$\ell=1$，$m'=m+\beta$绝对值最小，$n=1$时达到基态。所以只有$\beta=\frac{eR_1^2B}{2\hbar c}$为整数时$\abs{m'}$最小值才为0，基态能量与不加磁场的情形相同。于是
+\[\pi R_1^2B=\frac{2\pi N\hbar c}{e},\quad N=0,\pm1,\pm2,\cdots\]
+磁通量出现“量子化”的现象。
+
+\noindent{\color{red}\textbf{【讨论】}}
+
+根据电磁场规范变换的理论，若对磁矢势场做变换$\vec{A}(\vec{r})\rightarrow \vec{A'}(\vec{r})=\vec{A}(\vec{r})+\grad{\chi}(\vec{r})$，则只需对波函数作相位变换
+\[\psi(\vec{r})\rightarrow \psi'(\vec{r})=\ee{-\im e\chi(\vec{r})/\hbar c}\,\psi(\vec{r})\]
+即可得到变换后的矢势下的波函数解。注意这里电荷$q=-e$。
+
+(b)问相比(a)问在$R_1<\rho<R_2$多了矢势场$\vec{A}(\rho)=\frac{R_1^2B}{2\rho}\vec{e}_\varphi$。因此可以构造函数
+\[\chi(\rho,\varphi,z)=\frac{R_1^2B}{2\rho}\varphi=\frac{\hbar c \beta}{e}\varphi,\quad \varphi\in(0,\,2\pi-\epsilon)\]
+它在$0<\varphi<2\pi-\epsilon$区间内使$\vec{A}=\grad{\chi}$成立。当然不可能在全空间找到这样的$\chi$，因为$\vec{A}$在$\varphi\in(0,2\pi]$内将是有旋的，而任意梯度场都是无旋的。不过这至少可让我们在$0<\varphi<2\pi-\epsilon$区间内，对(a)求得的波函数作变换
+\[\psi(\rho,\varphi,z)\rightarrow \psi'(\rho,\varphi,z)=\ee{-\im e\chi/\hbar c}\,\psi(\rho,\varphi,z)
+= \ee{-\im \beta}\,\psi(\rho,\varphi,z)\]
+它在$0<\varphi<2\pi-\epsilon$区间内是满足(b)问的薛定谔方程的。
+显然它只变动了(a)的角向波函数
+\[\Phi(\varphi)\rightarrow \Phi'(\varphi) =\ee{-\im\beta}\,\Phi(\varphi)= B\,\ee{\im(m-\beta)}\]
+我们不能轻易将$\varphi\in(0,\,2\pi-\epsilon)$扩展至$(0,2\pi]$范围，因为角向的周期性边条件将不再满足。但我们可大胆地将$m$改成$m'$使得$m'-\beta$为整数，这样角向波函数即可扩展至$(0,2\pi]$范围了，而$m$的变动将会导致径向波函数的参数发生变化，这会导致本征能量发生改变。但改变后的波函数将会在全空间满足薛定谔方程，相当于我们直接猜出了(b)的答案。
+
+\end{enumerate}

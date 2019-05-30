@@ -1,0 +1,118 @@
+以下为第二章小测的后两题解答。几乎一半同学都有掉进2.A题设好的坑里，反映出大家普遍有知识漏洞。我们将较严重的错误汇总如下，希望大家能重视起来。
+
+\begin{enumerate}[label=2.\Alph*]
+\item
+\emph{物理量$\hat{F}$是$\hr$和$\hp$的函数。求$[\hp\times\hl,\,\hat{F}]$.}
+
+{\color{red}\textbf{首先总结下很容易犯的错误：}}
+\begin{enumerate}
+    \item 忘记了求解过程中任何相乘的物理量都不能随意交换顺序。常见的错误包括从
+    $\hp\times(\nabla_p\hat{F}\times\hp)$直接继续化简出$\hat{p^2}\nabla_p\hat{F}-(\hp\cdot\nabla_p\hat{F})\hp$。交换任意两个相邻的算符都需要加上额外的对易项。
+    
+    \item 直接将过程中的$\hp$换成$-\im\hbar\nabla_r$是不合要求的。因为我们始终希望在抽象的希尔伯特空间推导算符形式，不能依赖于具体表象。对于可能出现$\nabla_r$的情形，是将其仅仅作用在$\hat{F}(\hr,\hp)$上，这相当于对$\hat{F}$的形式求导数。作用后的$\nabla_r\hat{F}(\hr,\hp)$仍是抽象算符，不依赖于$r$表象或者$p$表象，需要大家注意。
+    
+    \item $\qty[\hat{p^2},\,\hat{F}]\neq-\hbar^2\nabla^2_r \hat{F}$. 正确结果应为$-\im\hbar\,(\hp\cdot \nabla_r\hat{F} + \nabla_r\hat{F}\cdot \hp)$.
+    
+    \item $\hp\times(\hr\times\hp)\neq 0$. 即使在经典力学中也不可能为0呀.
+\end{enumerate}
+【本题简答】
+
+首先，根据作业得知有
+\[\qty[\hp,\,\hat{F}] = -\im\hbar\nabla_r\hat{F},\quad
+\qty[\hr,\,\hat{F}] = \im\hbar \nabla_p\hat{F},\quad
+\qty[\hr\times\hp,\,\hat{F}] = -\im\hbar\,(\hr\times\nabla_r\hat{F} - \nabla_p\hat{F}\times\hp).\]
+原式可化简为
+\alg{\qty[\hp\times\hl,\,\hat{F}] &= \hp\times[\hl,\,\hat{F}]+[\hp,\,\hat{F}]\times\hl\\
+&=-\im\hbar\,\qty(\hp\times(\hr\times\nabla_r\hat{F}) - \hp\times(\nabla_p\hat{F}\times\hp)+\nabla_r\hat{F}\times(\hr\times\hp)).}
+我们发现再往后就不好化简了，因为传统矢量乘法中
+$\bm{a}\times(\bm{b}\times\bm{c}) = (\bm{a}\cdot\bm{c})\bm{b}-(\bm{a}\cdot\bm{b})\bm{c}$
+在这里不成立，如需交换算符的相乘顺序必须要额外多出一个对易项。因此，若要保证算符顺序不变进行“矢量运算”将不太容易，故我们选用Levi-Civita指标辅助计算。以第二项为例：
+\alg{\qty(\hp\times(\nabla_p\hat{F}\times\hp))_i &= \eijk p_j(\nabla_p\hat{F}\times\hp)_k = \eijk p_j \varepsilon_{kmn}(\partial_{p_m}\hat{F}) p_n\\
+&= (\delta_{im}\delta_{jn}-\delta_{in}\delta_{jm})\,p_j (\partial_{p_m}\hat{F}) p_n \\
+&= p_j (\partial_{p_i}\hat{F}) p_j - p_j (\partial_{p_j}\hat{F}) p_i \\
+&= p_j p_j (\partial_{p_i}\hat{F}) - p_j \qty[p_j,\,(\partial_{p_i}\hat{F})] - p_j (\partial_{p_j}\hat{F}) p_i\\
+&= p_j p_j (\partial_{p_i}\hat{F}) + \im\hbar\,p_j (\partial_{r_j}\partial_{p_i}\hat{F}) - p_j (\partial_{p_j}\hat{F}) p_i\\
+}
+因此可知矢量形式为
+\alg{\hp\times(\nabla_p\hat{F}\times\hp) = \hat{p^2}\nabla_p\hat{F} + \im\hbar\,(\hp\cdot\nabla_r)(\nabla_p\hat{F}) - (\hp\cdot\nabla_p\hat{F})\hp}
+{\color{red}可见相比经典的公式多了中间一项，这是在交换算符时由于算符的对易子不为0导致的，请一定留意。}其它两项也可以做类似计算，最终得到不含矢量叉乘的结果。
+
+同时也容易发现，我们实际上可任意地对相邻算符进行对换，每次对换都会多出一个对易子项。由于挑选需要交换位置的算符有太多种可能，所以本题的最终化简结果多种多样，有的简洁有的复杂。显然，上面的计算方法并不能给出很简洁的形式。我们不妨尝试用另一种方法求解。
+
+首先从$(\hp\times\hl)$出发，将其化简为
+\alg{(\hp\times\hl)_i &= \qty(\hp\times(\hr\times\hp))_i = \eijk p_j \varepsilon_{kmn}r_m p_n \\
+&= p_j r_i p_j - p_jr_jp_i \\
+&=p_jp_jr_i + p_j\qty[r_i,\,p_j] - p_jr_jp_i \\
+&= p_jp_jr_i + p_j(\im\hbar\,\delta_{ij}) - p_jr_jp_i \\
+&= p_jp_jr_i + \im\hbar\, p_i - p_jr_jp_i
+}
+即
+{\color{red}\alg{\hp\times\hl = \hat{p^2}\hr + \im\hbar\,\hp - (\hp\cdot\hr)\hp}}
+于是
+\alg{\qty[\hp\times\hl,\,\hat{F}] &= (\hp\cdot[\hp,\,\hat{F}])\hr+ ([\hp,\,\hat{F}]\cdot\hp)\hr + \hat{p^2}[\hr,\hat{F}]
++ \im\hbar\,[\hp,\,\hat{F}] + (\hp\cdot\hr)[\hp,\,\hat{F}] - (\hp\cdot[\hr,\,\hat{F}])\hp - ([\hp,\,\hat{F}]\cdot\hr)\hp\\
+&= -\im\hbar\qty((\hp\cdot\nabla_r \hat{F})\hr+ (\nabla_r \hat{F}\cdot\hp)\hr - \hat{p^2}\nabla_p \hat{F}
++ \im\hbar\nabla_r \hat{F} + (\hp\cdot\hr)\nabla_r \hat{F} + (\hp\cdot\nabla_p \hat{F})\hp - (\nabla_r \hat{F}\cdot\hr)\hp)
+}
+即给出另一种化简结果。
+
+\item
+\emph{试证明，对一算符$\hat{A}$，其解析函数$F(\hat{A})$可以一般地表述为
+\alg{F(\hat{A}) = \sum_{n=0}^{\infty}\frac{F^{(n)}(0)}{n!}\hat{A}^n,}
+其中$F^{(n)}$为函数$F$的$n$阶导数。}
+
+{\color{red}\textbf{首先总结下常见的问题：}}
+\begin{enumerate}
+    \item 坚决不可写出形如$\dfrac{\dd{F(\hA)}}{\dd{\hA}}$的式子。我们目前没有定义过算符的导数，甚至无法说明是否有良好的定义能给出唯一的导函数，故这个式子无意义。
+    \item 有同学给出$\dfrac{\dd{F(\lambda \hA)}}{\dd{\lambda}} = \hA\,F'(\lambda\hA)$。左式的确是有良好定义的，右式的$F'$理解为基于$F$的函数形式的一阶导数也是没有问题的，但为什么左式等于右式却有待进一步论证。
+    
+\end{enumerate}
+
+首先需要指出，本题的背景是不完整的，它没有针对$F(\hA)$如何定义作详细说明。所以同学们需自己给出一些其它的背景。以下几种说法都是可以的：
+
+【论证一】
+
+给$F(\hA)$赋予如下定义：当$\hA$是厄米算符时，$A$用其自身本征态$\{\ket{a_i}\}$（相应本征值$a_i$）显然可以表示为
+\[\hA = \sum_i a_i\ketbra{a_i}\]
+于是我们定义$F(\hA)$为
+\[F(\hA) = \sum_i F(a_i)\ketbra{a_i}\]
+我们由此作为出发点来论证本题。$F(z)$（现在是复变函数）的解析性保证了在特定区域内可对其泰勒展开：
+\[F(z) = \sum_{n=0}^{\infty}\frac{F^{(n)}(0)}{n!}z^n\]
+只考虑${a_i}$都在该区域的情形，由于
+\[\hA^n = \sum_i a_i^n\ketbra{a_i}\]
+故可构造
+\[\sum_{n=0}^{\infty}\frac{F^{(n)}(0)}{n!}\hat{A}^n = \sum_i \qty(\sum_{n=0}^{\infty}\frac{F^{(n)}(0)}{n!}a_i^n)\ketbra{a_i} = \sum_i F(a_i) \ketbra{a_i}\]
+可见这一构造的算符与$F(\hA)$的定义式恰好相同，从而论证了原命题。
+
+若$\hA$不是厄米矩阵，则根据作业题目可将其写作$\hA = \frac{\hA+\hA^\dagger}{2}+\im\frac{\hA-\hA^\dagger}{2\im}=\hA_1+\im \hA_2$，其中$\hA_1$, $\hA_2$为对易的厄米矩阵，它们所拥有共同本征态亦可将$\hA$对角化。故上面过程对任意$\hA$也成立。
+
+【论证二】
+
+给$F(\hA)$赋予这样的定义：对尚未有过定义的函数形式，如$\ee{\hA}$, $\sin\hA$等，给出与需论证的公式相自洽的定义，如认为$\ee{\hA}$的定义式：
+\[\ee{\hA}  \xlongequal{\mathrm{def}} \sum_{n=0}^{\infty}\frac{1}{n!}\hA^n.\]
+其它函数形式的定义同理。则可试图论证对这些函数形式的任意组合（相乘、复合函数等）$F(\hA)$，都有原命题的泰勒展开形式。论证如下：
+
+构造函数关于复数$\lambda$的函数$F(\lambda\hA)$，可以说明
+\[\dv{\lambda}F(\lambda\hA) = \hA\,F'(\lambda\hA)\]
+其中$F'$为基于$F$函数形式的一阶导数。论证的方法是将构成$F(\hA)$的所有基本函数作泰勒展开（如$\exp(\;),\,\sin(\;)$等，基于它们的定义式），这样就可以将$F(\hA)$展开为复杂的$\hA$多项式，在多项式的基础上不难论证上式成立。因此，不妨假设$F(\hA)$按上面过程展开的$\hA$的复杂多项式可最终整理作
+\[F(\hA) = \sum_{n=0}^\infty c_n \hA^n,\]
+则有
+\[
+\begin{cases}
+\eval{F(\lambda \hA)}_{\lambda=0} = F(0) =  c_0,\\
+\eval{\dv{\lambda}F(\lambda \hA)}_{\lambda=0} = \hA F'(0) = c_1\hA,\\
+\eval{\dv[2]{\lambda}F(\lambda \hA)}_{\lambda=0} = \hA^2 F''(0) = 2c_2\hA^2,\\
+\cdots
+\end{cases}
+\]
+可证明$c_n = \dfrac{F^{(n)}(0)}{n!}$.
+
+【论证三】
+
+经查阅数学文献，希尔伯特空间上的算符$\hA$的函数$F(\hA)$是基于柯西积分定义的：
+\[F(\hA)\xlongequal{\mathrm{def}} \oint_\gamma \,\frac{F(z)}{z-\hA},\]
+其中$ \frac{1}{z-\hA}$认为是$(z-\hA)^{-1}$，$\gamma$是包围了算符$\hA$全部本征值$\{a_i\}$的封闭围道。可以看出这与数理方法中$F(z)$的柯西积分形式完全相同。因此，可以仿照数理方法中推导$F(z)$泰勒展开式的过程，首先将$(z-\hA)^{-1}$展开为多项式和：
+\[(z-\hA)^{-1} = \frac{1}{z}\,\sum_{n=0}^{\infty}\frac{\hA^n}{z^n},\]
+然后分别作围道积分，即得到了$F(\hA)$的泰勒展开形式。（过程请同学们思考补全）
+
+\end{enumerate}
